@@ -10,4 +10,9 @@ public interface UserInfoDao extends PagingAndSortingRepository<UserInfo, Long>{
 
 	UserInfo findByUserNameAndPassword(String name, String password);
 
+	UserInfo findByUserName(String userName);
+
+	UserInfo findById(Long userId);
+ 
+
 }

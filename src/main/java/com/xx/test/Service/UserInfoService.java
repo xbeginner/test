@@ -22,6 +22,29 @@ public class UserInfoService implements IUserInfoService{
 	public UserInfo add(UserInfo userInfo) {
 		return userInfoDao.save(userInfo);
 	}
+
+	@Override
+	public int getErrorLog(UserInfo userInfo) {
+		int log = 0;
+		
+		UserInfo user = userInfoDao.findByUserName(userInfo.getUserName());
+		if(user==null){
+			return 1;
+		}else{
+			user = userInfoDao.findByUserNameAndPassword(userInfo.getUserName(), userInfo.getPassword());
+			if(user==null){
+				return 2;
+			}
+		}
+		
+		return log;
+	}
+
+	@Override
+	public UserInfo findById(Long userId) {
+		
+		return userInfoDao.findById(userId);
+	}
 	
 
 }
