@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head  th:include="common">
+<head th:replace="common :: common_header(~{::title},~{::link},~{::script})">
+	<link rel="stylesheet" href="../static/main.css"  th:href="@{/css/main.css}"  />
+	<script src="../static/js/main.js" th:src="@{/js/main.js}"></script>
 </head>
 <body style="background: none">
 <span th:text="${userInfo.idcard}"></span>
