@@ -1,16 +1,23 @@
 package com.xx.test;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.xx.test.Model.UserInfo;
 
 /**
  * Hello world!
@@ -50,4 +57,31 @@ public class App {
 				dataSource.setPoolPreparedStatements(false);//是否缓存preparedStatement，也就是PSCache
 				return dataSource;
 			}
+			
+			
+			
+			@Configuration 
+			static class WebMvcConfigurer extends WebMvcConfigurerAdapter {
+				public void addInterceptors(InterceptorRegistry registry) {
+					registry.addInterceptor(new HandlerInterceptorAdapter() { 
+					@Override public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception { 
+								if(request.getServletPath().contains("login")||request.getServletPath().contains("Login")){
+									  return true; 
+								}else{
+									System.out.println(request.getSession().getAttribute("currentUserInfo"));
+									UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+									System.out.println(userInfo);
+									  if(request.getSession().getAttribute("currentUserInfo")!=null){
+										     return true;
+									  }else{
+										  response.sendRedirect("/login");
+										  return false;
+									  }
+								}	
+							}
+						})
+					 .addPathPatterns("/**"); 
+					} 
+				}
+ 
 }

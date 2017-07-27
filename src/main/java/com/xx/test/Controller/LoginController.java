@@ -79,9 +79,11 @@ public class LoginController extends BaseController{
 	  
 	  
 	  @RequestMapping(value="/login",method=RequestMethod.GET)
-	  public ModelAndView toLogin(){
+	  public ModelAndView toLogin(HttpServletRequest request , HttpServletResponse response){
 		    UserInfo userInfo = new UserInfo();
 		    ModelAndView modelAndView = new ModelAndView("login");
+		    //将UserInfo记入session
+		    //request.getSession().setAttribute("currentUserInfo", userInfo);
 		    modelAndView.addObject(userInfo);
 		    return modelAndView;
 	  }
