@@ -13,7 +13,7 @@ import redis.clients.jedis.Jedis;
 @RestController
 public class MainController extends BaseController {
 
-	  @RequestMapping(value="/initMainMenu",method=RequestMethod.POST)
+	  @RequestMapping(value="/index/initMainMenu",method=RequestMethod.POST)
 	  @ResponseBody
 	  public String initMainMenu(){
 		      StringBuffer json = new StringBuffer();

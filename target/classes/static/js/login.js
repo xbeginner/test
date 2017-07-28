@@ -8,7 +8,7 @@
 			$.ajax({
 					cache: false,
 					type: "POST",
-					url:"/checkLogin", 
+					url:"/login/checkLogin", 
                     data:$('#loginForm').serialize(), 
 					async: false,
 					error: function(request) {
@@ -22,7 +22,7 @@
 				         }else if(data=='tomuch'){
 				        	 alert("您输入错误次数过多，请10分钟后尝试");
 				         } else{
-                              StandardPost('/openMainPage',{userId:data});
+                              StandardPost('/login/openMainPage',{userId:data});
 				         } 
 					}
 			});

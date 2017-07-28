@@ -24,7 +24,7 @@ import redis.clients.jedis.Jedis;
 @RestController
 public class LoginController extends BaseController{
  
-	  @RequestMapping(value="/checkLogin",method=RequestMethod.POST)
+	  @RequestMapping(value="/login/checkLogin",method=RequestMethod.POST)
 	  @ResponseBody
 	  public String login(UserInfo userInfo,Model model){
 		  
@@ -67,7 +67,7 @@ public class LoginController extends BaseController{
 	  }
 	  
 	  
-	  @RequestMapping(value="/add",method=RequestMethod.GET)
+	  @RequestMapping(value="/test/add",method=RequestMethod.GET)
 	  public void add(HttpServletRequest request , HttpServletResponse response){
 		     UserInfo userInfo = new UserInfo();
 		     userInfo.setUserName("john");
@@ -89,7 +89,7 @@ public class LoginController extends BaseController{
 	  }
 	  
 	  
-	  @RequestMapping(value="/openMainPage",method=RequestMethod.POST)
+	  @RequestMapping(value="/login/openMainPage",method=RequestMethod.POST)
 	  public ModelAndView openMainPage(HttpServletRequest request , HttpServletResponse response){
 	   	String userId = request.getParameter("userId");
 		 UserInfo userInfo = userInfoService.findById(Long.valueOf(userId));
