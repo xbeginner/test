@@ -82,8 +82,6 @@ public class LoginController extends BaseController{
 	  public ModelAndView toLogin(HttpServletRequest request , HttpServletResponse response){
 		    UserInfo userInfo = new UserInfo();
 		    ModelAndView modelAndView = new ModelAndView("login");
-		    //将UserInfo记入session
-		    //request.getSession().setAttribute("currentUserInfo", userInfo);
 		    modelAndView.addObject(userInfo);
 		    return modelAndView;
 	  }
@@ -93,6 +91,8 @@ public class LoginController extends BaseController{
 	  public ModelAndView openMainPage(HttpServletRequest request , HttpServletResponse response){
 	   	String userId = request.getParameter("userId");
 		 UserInfo userInfo = userInfoService.findById(Long.valueOf(userId));
+		    //将UserInfo记入session
+		  request.getSession().setAttribute("currentUserInfo", userInfo);
 		  ModelAndView modelAndView = new ModelAndView("main");
 		  modelAndView.addObject("userInfo",userInfo);
 		  return modelAndView;

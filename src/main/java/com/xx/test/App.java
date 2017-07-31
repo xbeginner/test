@@ -7,9 +7,12 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -59,30 +62,62 @@ public class App {
 				return dataSource;
 			}
 			
+			@Bean
+			public EmbeddedServletContainerCustomizer containerCustomizer() {
+			 
+			   return (container -> {
+			        ErrorPage error401Page = new ErrorPage(HttpStatus.UNAUTHORIZED, "/401.html");
+			        ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/404.html");
+			        ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500.html");
+			  
+			        container.addErrorPages(error401Page, error404Page, error500Page);
+			   });
+			}
 			
 			
-//			@Configuration 
-//			static class WebMvcConfigurer extends WebMvcConfigurerAdapter {
-//				public void addInterceptors(InterceptorRegistry registry) {
-//					registry.addInterceptor(new HandlerInterceptorAdapter() { 
-//					@Override public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception { 
-//								if(request.getServletPath().contains("login")||request.getServletPath().contains("Login")){
-//									  return true; 
-//								}else{
-//									System.out.println(request.getSession().getAttribute("currentUserInfo"));
-//									UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
-//									System.out.println(userInfo);
-//									  if(request.getSession().getAttribute("currentUserInfo")!=null){
-//										     return true;
-//									  }else{
-//										  response.sendRedirect("/login");
-//										  return false;
-//									  }
-//								}	
-//							}
-//						})
-//					 .addPathPatterns("/**"); 
-//					} 
-//				}
+//			@Bean
+//			public EmbeddedServletContainerCustomizer containerCustomizer() {
+//			 
+//			    return new EmbeddedServletContainerCustomizer() {
+//			        @Override
+//			        public void customize(ConfigurableEmbeddedServletContainer container) {
+//			 
+//			            ErrorPage error401Page = new ErrorPage(HttpStatus.UNAUTHORIZED, "/401.html");
+//			            ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/404.html");
+//			            ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500.html");
+//			 
+//			            container.addErrorPages(error401Page, error404Page, error500Page);
+//			        }
+//			    };
+//			}
+			
+			
+			@Configuration 
+			static class WebMvcConfigurer extends WebMvcConfigurerAdapter {
+				
+				@Override
+				public void addInterceptors(InterceptorRegistry registry) {
+					
+					registry.addInterceptor(new HandlerInterceptorAdapter() { 
+					@Override public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception { 
+								if(request.getServletPath().contains("login")||request.getServletPath().contains("Login")){
+									  return true; 
+								}else{
+									UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+									  if(request.getSession().getAttribute("currentUserInfo")!=null){
+										     return true;
+									  }else{
+										  response.sendRedirect("/login");
+										  return false;
+									  }
+								}	
+							}
+						})
+					 .addPathPatterns("/**"); 
+					} 
+				}
+			
+			
+			
  
 }

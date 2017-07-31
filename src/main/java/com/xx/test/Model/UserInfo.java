@@ -29,6 +29,9 @@ public class UserInfo implements Serializable {
 	
 	@ManyToOne
 	private Org org;
+	
+	@ManyToOne
+	private Role role;
 
 	public Long getId() {
 		return id;
@@ -72,6 +75,14 @@ public class UserInfo implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 	
 	
