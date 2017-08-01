@@ -21,6 +21,11 @@ public class Role {
 	  
 	  private String info;
 	  
+	  /**
+	   * 管理权限分类，0为普通用户，1为管理员
+	   */
+	  private int manageLog;
+	  
 	  @OneToMany(mappedBy="role")
 	  private List<UserInfo> userinfoList;
 	  
@@ -78,7 +83,15 @@ public class Role {
 		this.menuList = menuList;
 	}
 
- 
+	public int getManageLog() {
+		return manageLog;
+	}
+
+	public void setManageLog(int manageLog) {
+		this.manageLog = manageLog;
+	}
+
+    
 
 	  
 
