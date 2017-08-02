@@ -1,6 +1,8 @@
 package com.xx.test.Model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.CascadeType;
@@ -33,6 +35,13 @@ public class Menu {
 	@ManyToOne(cascade={CascadeType.REFRESH,CascadeType.MERGE},fetch=FetchType.LAZY ,optional = true)
     @JoinColumn(name = "parentMenu")     
     private Menu parentMenu;
+	
+	@OneToMany(
+			   cascade=CascadeType.ALL,
+			   fetch=FetchType.EAGER,
+			   mappedBy="parentMenu"
+	)
+	private List<Menu> childMenuList = new ArrayList<Menu>();	
 
 	public int getId() {
 		return id;
@@ -85,6 +94,16 @@ public class Menu {
 	public void setParentMenu(Menu parentMenu) {
 		this.parentMenu = parentMenu;
 	}
+	
+	
+
+	public List<Menu> getChildMenuList() {
+		return childMenuList;
+	}
+
+	public void setChildMenuList(List<Menu> childMenuList) {
+		this.childMenuList = childMenuList;
+	}
 
 	public Map<String,String> getMap(){
 		   Map<String,String> map = new HashMap<String, String>();
@@ -92,7 +111,8 @@ public class Menu {
 		   map.put("id", String.valueOf(id));
 		   map.put("name", name);
 		   map.put("info", info);
-		   map.put("url", url);
+		   map.put("url", url==null?"#":"/"+url);
+		   
 		   
 		   return  map;
 	}

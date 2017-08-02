@@ -86,6 +86,13 @@ public class LoginController extends BaseController{
 		    return modelAndView;
 	  }
 	  
+	  @RequestMapping(value="/logout",method=RequestMethod.GET)
+	  public ModelAndView logout(HttpServletRequest request , HttpServletResponse response){
+            request.getSession().removeAttribute("currentUserInfo");
+		    ModelAndView modelAndView = new ModelAndView("login");
+		    return modelAndView;
+	  }
+	  
 	  
 	  @RequestMapping(value="/login/openMainPage",method=RequestMethod.POST)
 	  public ModelAndView openMainPage(HttpServletRequest request , HttpServletResponse response){
@@ -95,6 +102,12 @@ public class LoginController extends BaseController{
 		  request.getSession().setAttribute("currentUserInfo", userInfo);
 		  ModelAndView modelAndView = new ModelAndView("main");
 		  modelAndView.addObject("userInfo",userInfo);
+		  if(userInfo.getRole().getManageLog()==0){
+			    modelAndView.addObject("title","可参加测试");
+		  }else{
+			   modelAndView.addObject("title","测试管理");
+		  }
+		  
 		  return modelAndView;
 	  }
 	  

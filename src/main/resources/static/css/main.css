@@ -1,6 +1,14 @@
 @CHARSET "UTF-8";
 
+span{
+    font-size: large;
+ }
  
+ a{
+     font-size: large;
+     font-style: inherit;
+     font-weight: bolder;
+ }
  
 .topbar{
 	width:100%;
@@ -39,4 +47,23 @@
   background:#6cf;
   height:50px;
  } 
+ 
+ .content{
+   padding-bottom: 0;
+ }
+ 
+ #user_container{
+    padding-top: 50px;
+ }
+ 
+ .messageContent{
+    width: 70%;
+ }
+ 
+ 
+  .messageTime{
+    width: 30%;
+ }
+ 
+ 
  

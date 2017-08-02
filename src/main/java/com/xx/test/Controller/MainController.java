@@ -36,15 +36,45 @@ public class MainController extends BaseController {
 		    	    if(menuList.size()>0){
 			    	    Map<String,String> map = new HashMap<String,String>();
 			    	    for(Menu m:menuList){
-			    	    	map  =  m.getMap();
-			    	    	json.append(JsonUtils.getJsonString(map));
-			    	    	json.append(",");
+			    	    	if(m.getParentMenu()==null){
+				    	    	map  =  m.getMap();
+				    	    	json.append("{");
+				    	    	json.append(JsonUtils.getAddableJsonString(map));
+				    	    	if(m.getChildMenuList().size()>0){
+				    	    		   json.append(",\"children\":[");
+				    	    		   for(Menu menu:m.getChildMenuList()){
+				    	    			   json.append(JsonUtils.getJsonString(menu.getMap()));
+				    	    		   }
+				    	    		   json.append("]");
+				    	    	}
+				    	    	json.append("},");
+			    	    	}
 			    	    }
 		    	    }
 		    	    json.deleteCharAt(json.length()-1);
 		      }
 		      json.append( "]" );
+		      System.out.println(json.toString());
 		      return json.toString();
 	  }
 	
+	  
+	  
+	  @RequestMapping(value="/index/initExamInfo",method=RequestMethod.GET)
+	  @ResponseBody
+	  public String initExamInfo(HttpServletRequest request , HttpServletResponse response){
+              System.out.println(request.getParameter("page"));
+		       String json = "{\"info\":[{\"name\":\"测试1\",\"time\":\"2017-09-08\"},{\"name\":\"测试2\",\"time\":\"2017-09-09\"}],\"page\":1}";
+		      return json;
+	  }
+	
+	  
+	  
+	  @RequestMapping(value="/index/initMessageInfo",method=RequestMethod.GET)
+	  @ResponseBody
+	  public String initMessageInfo(HttpServletRequest request , HttpServletResponse response){
+ 
+		      String json = "[{\"name\":\"测试1\",\"time\":\"2017-09-08\"},{\"name\":\"测试2\",\"time\":\"2017-09-09\"}]";
+		      return json;
+	  }
 }

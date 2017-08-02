@@ -22,6 +22,22 @@ public  class JsonUtils {
 		    return json.toString();
 	}
 	
+	public static String getAddableJsonString(Map<String,String> map){
+		   
+	    StringBuffer json = new StringBuffer();
+	    for(String key:map.keySet()){
+	    	  
+	    	    json.append("\""+key+"\":");
+	    	    json.append("\""+map.get(key)+"\",");
+	    	   
+	    }
+	    if(map.size()>=1){
+	    	json.deleteCharAt(json.length()-1);
+	    }
+
+	    return json.toString();
+}
+	
 	
 	
 	public static String getJsonStringByName(String name,Map<String,String> map){

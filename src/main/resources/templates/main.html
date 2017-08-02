@@ -7,7 +7,8 @@
 	<script src="../static/js/main.js" th:src="@{/js/main.js}"></script>
 	<script type="text/javascript">
 	      initMainMenu();
-	      initExamInfo();
+	      initExamInfo(1);
+	      initMessageInfo();
 	</script>
 </head>
 <body style="background: none">
@@ -28,30 +29,66 @@
               </div>
            </div>
  </div>
+ </div>
+ 
+ 
+ <!-- 显示公告信息 -->
+  <div th:if="${userInfo.role.manageLog}==0">
+    <div class="container" id="message_container">
+        <div class="content " role="main">
+ <div class="panel panel-primary">
+	 <div class="panel-heading">
+	 公告信息
+	 </div>
+	 <div class="panel-body">
+				<table class="table">
+				  <thead>
+				    <tr>
+					      <th><span>公告信息</span></th>
+					      <th><span>发布时间</span></th>
+				    </tr>
+				  </thead>
+				  <tbody id="message_tbody">
+				           
+				  </tbody>
+				</table>
+		   </div>
+	    </div>
+        </div>
+ </div>
+ </div>
  
  <!-- 显示考试界面 -->
  <div class="container" id="user_container">
-<table class="table">
-  <thead>
-    <tr>
-	      <th>测试名称</th>
-	      <th>时间</th>
-	      <th>操作</th>
-    </tr>
-  </thead>
-  <tbody id="exam_tbody">
-           
-  </tbody>
-</table>
- 
- <div class="tf_pagination style3">
-    <div class="inner"  id="exam_page">
-       
-    </div>
-</div>
+ <div class="panel panel-primary">
+	 <div class="panel-heading">
+	 <span th:text=${title}>可参加测试</span>
+	 </div>
+	 <div class="panel-body">
+		
+				<table class="table">
+				  <thead>
+				    <tr>
+					      <th><span>测试名称</span></th>
+					      <th><span>时间</span></th>
+					      <th><span>操作</span></th>
+				    </tr>
+				  </thead>
+				  <tbody id="exam_tbody">
+				           
+				  </tbody>
+				</table>
+		   </div>
+	 </div>
+				 <div class="tf_pagination style3">
+				    <div class="inner"  id="exam_page">
+				       
+				    </div>
+				</div>
+
  </div>
  
- </div>
+ 
  <div th:insert="footer :: copy" class="footer"></div>
 </body>
 </html>
