@@ -4,17 +4,7 @@ function initMainMenu(){
 	        $("#menuContentUl").html("");//清空info内容
 	        var menuInfo="" ;
 	        $.each(data, function(i, item) {
-	         
-	        	if(item.children!=null){
-	        		menuInfo+="<li ><a href='"+item.url+"'><span>"+item.name+"</span></a>";
-	        		menuInfo += "<ul class='submenu-3'>";
-	        		   $.each(item.children, function(i, item) {
-	        				menuInfo+="<li class='menu-level-3'  ><a href='"+item.url+"' ><span>"+item.name+"</span></a></li>";
-	        		   });
-	        		   menuInfo += "</ul></li>";
-	        	}else{
 	        		menuInfo+="<li ><a href='"+item.url+"'><span>"+item.name+"</span></a></li>";
-	        	}
 	        });
 	        $("#menuContentUl").html(menuInfo);
 	     });

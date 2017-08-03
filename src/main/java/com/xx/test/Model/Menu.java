@@ -32,16 +32,16 @@ public class Menu {
 	@ManyToOne
 	private Role role;
 	
-	@ManyToOne(cascade={CascadeType.REFRESH,CascadeType.MERGE},fetch=FetchType.LAZY ,optional = true)
-    @JoinColumn(name = "parentMenu")     
-    private Menu parentMenu;
-	
-	@OneToMany(
-			   cascade=CascadeType.ALL,
-			   fetch=FetchType.EAGER,
-			   mappedBy="parentMenu"
-	)
-	private List<Menu> childMenuList = new ArrayList<Menu>();	
+//	@ManyToOne(cascade={CascadeType.REFRESH,CascadeType.MERGE},fetch=FetchType.LAZY ,optional = true)
+//    @JoinColumn(name = "parentMenu")     
+//    private Menu parentMenu;
+//	
+//	@OneToMany(
+//			   cascade=CascadeType.ALL,
+//			   fetch=FetchType.EAGER,
+//			   mappedBy="parentMenu"
+//	)
+//	private List<Menu> childMenuList = new ArrayList<Menu>();	
 
 	public int getId() {
 		return id;
@@ -87,23 +87,23 @@ public class Menu {
 	
 	
 
-	public Menu getParentMenu() {
-		return parentMenu;
-	}
-
-	public void setParentMenu(Menu parentMenu) {
-		this.parentMenu = parentMenu;
-	}
-	
-	
-
-	public List<Menu> getChildMenuList() {
-		return childMenuList;
-	}
-
-	public void setChildMenuList(List<Menu> childMenuList) {
-		this.childMenuList = childMenuList;
-	}
+//	public Menu getParentMenu() {
+//		return parentMenu;
+//	}
+//
+//	public void setParentMenu(Menu parentMenu) {
+//		this.parentMenu = parentMenu;
+//	}
+//	
+//	
+//
+//	public List<Menu> getChildMenuList() {
+//		return childMenuList;
+//	}
+//
+//	public void setChildMenuList(List<Menu> childMenuList) {
+//		this.childMenuList = childMenuList;
+//	}
 
 	public Map<String,String> getMap(){
 		   Map<String,String> map = new HashMap<String, String>();

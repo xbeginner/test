@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.xx.test.Model.Menu;
 import com.xx.test.Model.Role;
@@ -36,19 +37,10 @@ public class MainController extends BaseController {
 		    	    if(menuList.size()>0){
 			    	    Map<String,String> map = new HashMap<String,String>();
 			    	    for(Menu m:menuList){
-			    	    	if(m.getParentMenu()==null){
-				    	    	map  =  m.getMap();
-				    	    	json.append("{");
-				    	    	json.append(JsonUtils.getAddableJsonString(map));
-				    	    	if(m.getChildMenuList().size()>0){
-				    	    		   json.append(",\"children\":[");
-				    	    		   for(Menu menu:m.getChildMenuList()){
-				    	    			   json.append(JsonUtils.getJsonString(menu.getMap()));
-				    	    		   }
-				    	    		   json.append("]");
-				    	    	}
-				    	    	json.append("},");
-			    	    	}
+			    	    	map  =  m.getMap();
+			    	    	json.append("{");
+			    	    	json.append(JsonUtils.getAddableJsonString(map));
+			    	    	json.append("},");
 			    	    }
 		    	    }
 		    	    json.deleteCharAt(json.length()-1);
@@ -76,5 +68,14 @@ public class MainController extends BaseController {
  
 		      String json = "[{\"name\":\"测试1\",\"time\":\"2017-09-08\"},{\"name\":\"测试2\",\"time\":\"2017-09-09\"}]";
 		      return json;
+	  }
+	  
+	  
+	  @RequestMapping(value="/index/manageUserInfo",method=RequestMethod.GET)
+	  public ModelAndView openMainPage(HttpServletRequest request , HttpServletResponse response){
+		  UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+		  ModelAndView modelAndView = new ModelAndView("manageUserInfo");
+		  modelAndView.addObject("userInfo",userInfo);
+		  return modelAndView;
 	  }
 }
