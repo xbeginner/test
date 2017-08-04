@@ -30,10 +30,10 @@ import com.xx.test.Model.UserInfo;
 @SpringBootApplication
 public class App {
 	
-	@RequestMapping("/")
-	public String index(){
-		return "Hello Spring Boot";
-	}
+//	@RequestMapping("/")
+//	public String index(){
+//		return "Hello Spring Boot";
+//	}
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
 	}
@@ -92,30 +92,30 @@ public class App {
 //			}
 			
 			
-			@Configuration 
-			static class WebMvcConfigurer extends WebMvcConfigurerAdapter {
-				
-				@Override
-				public void addInterceptors(InterceptorRegistry registry) {
-					
-					registry.addInterceptor(new HandlerInterceptorAdapter() { 
-					@Override public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception { 
-								if(request.getServletPath().contains("login")||request.getServletPath().contains("Login")){
-									  return true; 
-								}else{
-									UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
-									  if(request.getSession().getAttribute("currentUserInfo")!=null){
-										     return true;
-									  }else{
-										  response.sendRedirect("/login");
-										  return false;
-									  }
-								}	
-							}
-						})
-					 .addPathPatterns("/**"); 
-					} 
-				}
+//			@Configuration 
+//			static class WebMvcConfigurer extends WebMvcConfigurerAdapter {
+//				
+//				@Override
+//				public void addInterceptors(InterceptorRegistry registry) {
+//					
+//					registry.addInterceptor(new HandlerInterceptorAdapter() { 
+//					@Override public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception { 
+//								if(request.getServletPath().contains("login")||request.getServletPath().contains("Login")){
+//									  return true; 
+//								}else{
+//									UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+//									  if(request.getSession().getAttribute("currentUserInfo")!=null){
+//										     return true;
+//									  }else{
+//										  response.sendRedirect("/login");
+//										  return false;
+//									  }
+//								}	
+//							}
+//						})
+//					 .addPathPatterns("/**"); 
+//					} 
+//				}
 			
 			
 			

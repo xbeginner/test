@@ -1,4 +1,6 @@
  
+
+
  function login(){
 	 if($("#name").val()==null||$("#name").val()==""){
 		 $("#username_log").html(" <font color='red'>请输入用户名</font>");
@@ -27,6 +29,8 @@
 					}
 			});
 	}
+	 
+
  };
  
  

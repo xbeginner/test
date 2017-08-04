@@ -2966,3 +2966,766 @@ org.hibernate.LazyInitializationException: failed to lazily initialize a collect
 2017-08-03 10:46:51.407  INFO 9552 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
 2017-08-03 10:46:51.418  INFO 9552 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 10 ms
 2017-08-03 10:47:03.001  INFO 9552 --- [http-nio-8080-exec-4] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2017-08-04 08:44:59.327  INFO 6692 --- [restartedMain] com.xx.test.App                          : Starting App on pc-PC with PID 6692 (C:\git\test\test\target\classes started by pc in C:\git\test\test)
+2017-08-04 08:44:59.338  INFO 6692 --- [restartedMain] com.xx.test.App                          : No active profile set, falling back to default profiles: default
+2017-08-04 08:45:00.984  INFO 6692 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@75fb89ea: startup date [Fri Aug 04 08:45:00 CST 2017]; root of context hierarchy
+2017-08-04 08:45:17.602  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-08-04 08:45:17.708  INFO 6692 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-08-04 08:45:17.740  INFO 6692 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.15
+2017-08-04 08:45:19.567  INFO 6692 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-08-04 08:45:19.569  INFO 6692 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 18614 ms
+2017-08-04 08:45:20.874  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-08-04 08:45:20.898  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-08-04 08:45:20.901  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-08-04 08:45:20.903  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-08-04 08:45:20.905  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-08-04 08:45:22.961  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-08-04 08:45:23.071  INFO 6692 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-08-04 08:45:23.598  INFO 6692 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2017-08-04 08:45:23.609  INFO 6692 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2017-08-04 08:45:23.618  INFO 6692 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2017-08-04 08:45:23.959  INFO 6692 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2017-08-04 08:45:27.209  INFO 6692 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2017-08-04 08:45:27.294  INFO 6692 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-08-04 08:45:30.109  INFO 6692 --- [restartedMain] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2017-08-04 08:45:30.750  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 08:45:34.769  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@75fb89ea: startup date [Fri Aug 04 08:45:00 CST 2017]; root of context hierarchy
+2017-08-04 08:45:35.189  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String com.xx.test.App.index()
+2017-08-04 08:45:35.198  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test/add],methods=[GET]}" onto public void com.xx.test.Controller.LoginController.add(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:45:35.201  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.toLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:45:35.203  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/openMainPage],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.openMainPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:45:35.205  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.logout(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:45:35.207  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/checkLogin],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.LoginController.login(com.xx.test.Model.UserInfo,org.springframework.ui.Model)
+2017-08-04 08:45:35.212  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageUserInfo],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.openMainPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:45:35.214  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMainMenu],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMainMenu(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:45:35.217  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initExamInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initExamInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:45:35.219  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMessageInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMessageInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:45:35.233  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-08-04 08:45:35.236  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:45:35.452  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 08:45:35.462  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 08:45:35.774  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 08:45:36.205  WARN 6692 --- [restartedMain] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2017-08-04 08:45:40.169  INFO 6692 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-08-04 08:45:40.623  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-08-04 08:45:40.629  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2017-08-04 08:45:40.694  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2017-08-04 08:45:41.470  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-08-04 08:45:41.495  INFO 6692 --- [restartedMain] com.xx.test.App                          : Started App in 43.988 seconds (JVM running for 46.839)
+2017-08-04 08:46:32.825  INFO 6692 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-08-04 08:46:32.826  INFO 6692 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-08-04 08:46:33.037  INFO 6692 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 209 ms
+2017-08-04 08:46:43.215  INFO 6692 --- [http-nio-8080-exec-10] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2017-08-04 08:47:47.304  INFO 6692 --- [Thread-6] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@75fb89ea: startup date [Fri Aug 04 08:45:00 CST 2017]; root of context hierarchy
+2017-08-04 08:47:47.310  INFO 6692 --- [Thread-6] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-08-04 08:47:47.312  INFO 6692 --- [Thread-6] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2017-08-04 08:47:47.321  INFO 6692 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 08:47:47.340  INFO 6692 --- [Thread-6] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2017-08-04 08:47:51.776  INFO 6692 --- [restartedMain] com.xx.test.App                          : Starting App on pc-PC with PID 6692 (C:\git\test\test\target\classes started by pc in C:\git\test\test)
+2017-08-04 08:47:51.778  INFO 6692 --- [restartedMain] com.xx.test.App                          : No active profile set, falling back to default profiles: default
+2017-08-04 08:47:51.810  INFO 6692 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7f8514b7: startup date [Fri Aug 04 08:47:51 CST 2017]; root of context hierarchy
+2017-08-04 08:47:56.713  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-08-04 08:47:56.719  INFO 6692 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-08-04 08:47:56.721  INFO 6692 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.15
+2017-08-04 08:47:57.108  INFO 6692 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-08-04 08:47:57.112  INFO 6692 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 5303 ms
+2017-08-04 08:47:57.637  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-08-04 08:47:57.646  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-08-04 08:47:57.648  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-08-04 08:47:57.649  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-08-04 08:47:57.654  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-08-04 08:47:57.700  WARN 6692 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Cannot deserialize session attribute [currentUserInfo] for session [1D5B5A81579D5B9425D1B270C599723E]
+2017-08-04 08:47:58.704  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-08-04 08:47:58.706  INFO 6692 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-08-04 08:47:59.204  INFO 6692 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} inited
+2017-08-04 08:47:59.206  INFO 6692 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-08-04 08:47:59.947  INFO 6692 --- [restartedMain] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2017-08-04 08:48:00.502  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 08:48:01.330  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7f8514b7: startup date [Fri Aug 04 08:47:51 CST 2017]; root of context hierarchy
+2017-08-04 08:48:01.369  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String com.xx.test.App.index()
+2017-08-04 08:48:01.382  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test/add],methods=[GET]}" onto public void com.xx.test.Controller.LoginController.add(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:01.384  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.toLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:01.412  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/openMainPage],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.openMainPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:01.627  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.logout(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:01.631  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/checkLogin],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.LoginController.login(com.xx.test.Model.UserInfo,org.springframework.ui.Model)
+2017-08-04 08:48:01.657  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMainMenu],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMainMenu(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:01.668  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initExamInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initExamInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:01.670  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMessageInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMessageInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:01.674  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageUserInfo],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageUserInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:01.679  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageOrg],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageOrg(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:01.694  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-08-04 08:48:01.698  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:01.812  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 08:48:01.814  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 08:48:02.248  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 08:48:02.475  WARN 6692 --- [restartedMain] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2017-08-04 08:48:04.027  INFO 6692 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-08-04 08:48:04.394  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-08-04 08:48:04.396  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2017-08-04 08:48:04.411  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2017-08-04 08:48:04.455  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-08-04 08:48:04.470  INFO 6692 --- [restartedMain] com.xx.test.App                          : Started App in 12.985 seconds (JVM running for 189.814)
+2017-08-04 08:48:26.300  INFO 6692 --- [Thread-10] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7f8514b7: startup date [Fri Aug 04 08:47:51 CST 2017]; root of context hierarchy
+2017-08-04 08:48:26.304  INFO 6692 --- [Thread-10] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-08-04 08:48:26.305  INFO 6692 --- [Thread-10] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2017-08-04 08:48:26.308  INFO 6692 --- [Thread-10] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 08:48:26.315  INFO 6692 --- [Thread-10] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} closed
+2017-08-04 08:48:30.116  INFO 6692 --- [restartedMain] com.xx.test.App                          : Starting App on pc-PC with PID 6692 (C:\git\test\test\target\classes started by pc in C:\git\test\test)
+2017-08-04 08:48:30.117  INFO 6692 --- [restartedMain] com.xx.test.App                          : No active profile set, falling back to default profiles: default
+2017-08-04 08:48:30.127  INFO 6692 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@35c820ce: startup date [Fri Aug 04 08:48:30 CST 2017]; root of context hierarchy
+2017-08-04 08:48:32.422  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-08-04 08:48:32.425  INFO 6692 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-08-04 08:48:32.426  INFO 6692 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.15
+2017-08-04 08:48:32.521  INFO 6692 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-08-04 08:48:32.524  INFO 6692 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2397 ms
+2017-08-04 08:48:32.677  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-08-04 08:48:32.679  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-08-04 08:48:32.690  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-08-04 08:48:32.696  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-08-04 08:48:32.699  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-08-04 08:48:33.224  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-08-04 08:48:33.226  INFO 6692 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-08-04 08:48:33.782  INFO 6692 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-3} inited
+2017-08-04 08:48:33.818  INFO 6692 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-08-04 08:48:34.827  INFO 6692 --- [restartedMain] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2017-08-04 08:48:36.890  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 08:48:37.903  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@35c820ce: startup date [Fri Aug 04 08:48:30 CST 2017]; root of context hierarchy
+2017-08-04 08:48:37.929  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String com.xx.test.App.index()
+2017-08-04 08:48:37.934  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test/add],methods=[GET]}" onto public void com.xx.test.Controller.LoginController.add(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:37.938  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.toLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:37.940  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/openMainPage],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.openMainPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:37.944  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.logout(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:37.946  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/checkLogin],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.LoginController.login(com.xx.test.Model.UserInfo,org.springframework.ui.Model)
+2017-08-04 08:48:37.950  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMainMenu],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMainMenu(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:37.951  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initExamInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initExamInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:37.951  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMessageInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMessageInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:37.952  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageUserInfo],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageUserInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:37.953  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageOrg],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageOrg(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:37.962  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-08-04 08:48:37.964  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 08:48:37.992  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 08:48:37.993  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 08:48:38.116  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 08:48:38.207  WARN 6692 --- [restartedMain] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2017-08-04 08:48:38.576  INFO 6692 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-08-04 08:48:38.798  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-08-04 08:48:38.819  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2017-08-04 08:48:38.838  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2017-08-04 08:48:38.877  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-08-04 08:48:38.882  INFO 6692 --- [restartedMain] com.xx.test.App                          : Started App in 8.949 seconds (JVM running for 224.226)
+2017-08-04 09:00:38.780  INFO 6692 --- [Thread-16] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@35c820ce: startup date [Fri Aug 04 08:48:30 CST 2017]; root of context hierarchy
+2017-08-04 09:00:38.787  INFO 6692 --- [Thread-16] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-08-04 09:00:38.791  INFO 6692 --- [Thread-16] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2017-08-04 09:00:38.856  INFO 6692 --- [Thread-16] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 09:00:38.867  INFO 6692 --- [Thread-16] com.alibaba.druid.pool.DruidDataSource   : {dataSource-3} closed
+2017-08-04 09:00:43.371  INFO 6692 --- [restartedMain] com.xx.test.App                          : Starting App on pc-PC with PID 6692 (C:\git\test\test\target\classes started by pc in C:\git\test\test)
+2017-08-04 09:00:43.373  INFO 6692 --- [restartedMain] com.xx.test.App                          : No active profile set, falling back to default profiles: default
+2017-08-04 09:00:43.381  INFO 6692 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3c1de117: startup date [Fri Aug 04 09:00:43 CST 2017]; root of context hierarchy
+2017-08-04 09:00:45.672  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-08-04 09:00:45.675  INFO 6692 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-08-04 09:00:45.676  INFO 6692 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.15
+2017-08-04 09:00:45.747  INFO 6692 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-08-04 09:00:45.750  INFO 6692 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2369 ms
+2017-08-04 09:00:45.893  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-08-04 09:00:45.909  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-08-04 09:00:45.911  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-08-04 09:00:45.920  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-08-04 09:00:45.921  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-08-04 09:00:46.234  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-08-04 09:00:46.235  INFO 6692 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-08-04 09:00:46.656  INFO 6692 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-4} inited
+2017-08-04 09:00:46.664  INFO 6692 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-08-04 09:00:47.360  INFO 6692 --- [restartedMain] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2017-08-04 09:00:47.758  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 09:00:48.546  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3c1de117: startup date [Fri Aug 04 09:00:43 CST 2017]; root of context hierarchy
+2017-08-04 09:00:48.576  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String com.xx.test.App.index()
+2017-08-04 09:00:48.579  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test/add],methods=[GET]}" onto public void com.xx.test.Controller.LoginController.add(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 09:00:48.583  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.toLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 09:00:48.585  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/openMainPage],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.openMainPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 09:00:48.587  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.logout(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 09:00:48.588  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/checkLogin],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.LoginController.login(com.xx.test.Model.UserInfo,org.springframework.ui.Model)
+2017-08-04 09:00:48.590  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMainMenu],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMainMenu(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 09:00:48.591  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initExamInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initExamInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 09:00:48.592  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMessageInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMessageInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 09:00:48.593  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageUserInfo],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageUserInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 09:00:48.595  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageOrg],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageOrg(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 09:00:48.601  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-08-04 09:00:48.603  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 09:00:48.623  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 09:00:48.623  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 09:00:48.659  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 09:00:48.749  WARN 6692 --- [restartedMain] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2017-08-04 09:00:49.247  INFO 6692 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-08-04 09:00:49.496  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-08-04 09:00:49.500  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2017-08-04 09:00:49.513  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2017-08-04 09:00:49.566  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-08-04 09:00:49.573  INFO 6692 --- [restartedMain] com.xx.test.App                          : Started App in 6.37 seconds (JVM running for 954.917)
+2017-08-04 09:03:34.363  INFO 6692 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-08-04 09:03:34.364  INFO 6692 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-08-04 09:03:34.378  INFO 6692 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 13 ms
+2017-08-04 09:03:37.787  INFO 6692 --- [http-nio-8080-exec-1] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2017-08-04 15:53:00.973  INFO 6692 --- [Thread-22] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3c1de117: startup date [Fri Aug 04 09:00:43 CST 2017]; root of context hierarchy
+2017-08-04 15:53:01.311  INFO 6692 --- [Thread-22] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-08-04 15:53:01.313  INFO 6692 --- [Thread-22] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2017-08-04 15:53:01.482  INFO 6692 --- [Thread-22] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:53:01.646  INFO 6692 --- [Thread-22] com.alibaba.druid.pool.DruidDataSource   : {dataSource-4} closed
+2017-08-04 15:53:11.797  INFO 6692 --- [restartedMain] com.xx.test.App                          : Starting App on pc-PC with PID 6692 (C:\git\test\test\target\classes started by pc in C:\git\test\test)
+2017-08-04 15:53:11.799  INFO 6692 --- [restartedMain] com.xx.test.App                          : No active profile set, falling back to default profiles: default
+2017-08-04 15:53:12.146  INFO 6692 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@73e35d23: startup date [Fri Aug 04 15:53:12 CST 2017]; root of context hierarchy
+2017-08-04 15:53:16.826  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-08-04 15:53:16.830  INFO 6692 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-08-04 15:53:16.830  INFO 6692 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.15
+2017-08-04 15:53:16.938  INFO 6692 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-08-04 15:53:16.945  INFO 6692 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4799 ms
+2017-08-04 15:53:17.103  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-08-04 15:53:17.104  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-08-04 15:53:17.105  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-08-04 15:53:17.106  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-08-04 15:53:17.107  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-08-04 15:53:17.371  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:53:17.372  INFO 6692 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-08-04 15:53:17.663  INFO 6692 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-5} inited
+2017-08-04 15:53:17.665  INFO 6692 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-08-04 15:53:18.052  INFO 6692 --- [restartedMain] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2017-08-04 15:53:18.426  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:53:19.159  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@73e35d23: startup date [Fri Aug 04 15:53:12 CST 2017]; root of context hierarchy
+2017-08-04 15:53:19.201  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String com.xx.test.App.index()
+2017-08-04 15:53:19.203  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test/add],methods=[GET]}" onto public void com.xx.test.Controller.LoginController.add(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:53:19.204  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.toLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:53:19.205  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/openMainPage],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.openMainPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:53:19.207  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.logout(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:53:19.208  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/checkLogin],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.LoginController.login(com.xx.test.Model.UserInfo,org.springframework.ui.Model)
+2017-08-04 15:53:19.216  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMainMenu],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMainMenu(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:53:19.218  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initExamInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initExamInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:53:19.223  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMessageInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMessageInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:53:19.224  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageUserInfo],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageUserInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:53:19.225  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageOrg],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageOrg(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:53:19.248  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-08-04 15:53:19.251  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:53:19.313  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:53:19.313  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:53:19.380  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:53:19.473  WARN 6692 --- [restartedMain] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2017-08-04 15:53:20.061  INFO 6692 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-08-04 15:53:20.288  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-08-04 15:53:20.290  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2017-08-04 15:53:20.306  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2017-08-04 15:53:20.347  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-08-04 15:53:20.353  INFO 6692 --- [restartedMain] com.xx.test.App                          : Started App in 8.767 seconds (JVM running for 25705.699)
+2017-08-04 15:54:52.552  INFO 6692 --- [Thread-28] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@73e35d23: startup date [Fri Aug 04 15:53:12 CST 2017]; root of context hierarchy
+2017-08-04 15:54:52.556  INFO 6692 --- [Thread-28] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-08-04 15:54:52.557  INFO 6692 --- [Thread-28] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2017-08-04 15:54:52.562  INFO 6692 --- [Thread-28] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:54:52.576  INFO 6692 --- [Thread-28] com.alibaba.druid.pool.DruidDataSource   : {dataSource-5} closed
+2017-08-04 15:54:57.206  INFO 6692 --- [restartedMain] com.xx.test.App                          : Starting App on pc-PC with PID 6692 (C:\git\test\test\target\classes started by pc in C:\git\test\test)
+2017-08-04 15:54:57.208  INFO 6692 --- [restartedMain] com.xx.test.App                          : No active profile set, falling back to default profiles: default
+2017-08-04 15:54:57.222  INFO 6692 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@999c58e: startup date [Fri Aug 04 15:54:57 CST 2017]; root of context hierarchy
+2017-08-04 15:55:03.627  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-08-04 15:55:03.635  INFO 6692 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-08-04 15:55:03.637  INFO 6692 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.15
+2017-08-04 15:55:03.756  INFO 6692 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-08-04 15:55:03.760  INFO 6692 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6538 ms
+2017-08-04 15:55:04.568  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-08-04 15:55:04.574  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-08-04 15:55:04.581  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-08-04 15:55:04.582  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-08-04 15:55:04.583  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-08-04 15:55:05.182  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:55:05.183  INFO 6692 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-08-04 15:55:05.544  INFO 6692 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-6} inited
+2017-08-04 15:55:05.546  INFO 6692 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-08-04 15:55:05.889  INFO 6692 --- [restartedMain] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2017-08-04 15:55:06.266  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:55:06.986  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@999c58e: startup date [Fri Aug 04 15:54:57 CST 2017]; root of context hierarchy
+2017-08-04 15:55:07.033  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String com.xx.test.App.index()
+2017-08-04 15:55:07.042  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test/add],methods=[GET]}" onto public void com.xx.test.Controller.LoginController.add(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:55:07.043  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.toLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:55:07.045  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/openMainPage],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.openMainPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:55:07.048  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.logout(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:55:07.049  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/checkLogin],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.LoginController.login(com.xx.test.Model.UserInfo,org.springframework.ui.Model)
+2017-08-04 15:55:07.051  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMainMenu],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMainMenu(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:55:07.054  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initExamInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initExamInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:55:07.055  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMessageInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMessageInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:55:07.057  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageUserInfo],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageUserInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:55:07.059  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageOrg],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageOrg(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:55:07.065  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-08-04 15:55:07.069  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:55:07.169  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:55:07.260  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:55:07.479  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:55:07.570  WARN 6692 --- [restartedMain] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2017-08-04 15:55:08.033  INFO 6692 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-08-04 15:55:08.305  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-08-04 15:55:08.307  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2017-08-04 15:55:08.333  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2017-08-04 15:55:08.461  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-08-04 15:55:08.474  INFO 6692 --- [restartedMain] com.xx.test.App                          : Started App in 11.409 seconds (JVM running for 25813.817)
+2017-08-04 15:55:52.826  INFO 6692 --- [Thread-34] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@999c58e: startup date [Fri Aug 04 15:54:57 CST 2017]; root of context hierarchy
+2017-08-04 15:55:52.831  INFO 6692 --- [Thread-34] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-08-04 15:55:52.835  INFO 6692 --- [Thread-34] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2017-08-04 15:55:52.842  INFO 6692 --- [Thread-34] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:55:52.860  INFO 6692 --- [Thread-34] com.alibaba.druid.pool.DruidDataSource   : {dataSource-6} closed
+2017-08-04 15:55:57.523  INFO 6692 --- [restartedMain] com.xx.test.App                          : Starting App on pc-PC with PID 6692 (C:\git\test\test\target\classes started by pc in C:\git\test\test)
+2017-08-04 15:55:57.524  INFO 6692 --- [restartedMain] com.xx.test.App                          : No active profile set, falling back to default profiles: default
+2017-08-04 15:55:57.532  INFO 6692 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1bc8fa18: startup date [Fri Aug 04 15:55:57 CST 2017]; root of context hierarchy
+2017-08-04 15:56:00.219  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-08-04 15:56:00.222  INFO 6692 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-08-04 15:56:00.223  INFO 6692 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.15
+2017-08-04 15:56:00.310  INFO 6692 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-08-04 15:56:00.312  INFO 6692 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2780 ms
+2017-08-04 15:56:00.458  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-08-04 15:56:00.459  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-08-04 15:56:00.460  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-08-04 15:56:00.460  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-08-04 15:56:00.461  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-08-04 15:56:00.827  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:56:00.828  INFO 6692 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-08-04 15:56:01.261  INFO 6692 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-7} inited
+2017-08-04 15:56:01.263  INFO 6692 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-08-04 15:56:01.692  INFO 6692 --- [restartedMain] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2017-08-04 15:56:02.042  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:56:02.776  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1bc8fa18: startup date [Fri Aug 04 15:55:57 CST 2017]; root of context hierarchy
+2017-08-04 15:56:02.812  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String com.xx.test.App.index()
+2017-08-04 15:56:02.815  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test/add],methods=[GET]}" onto public void com.xx.test.Controller.LoginController.add(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:56:02.816  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.toLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:56:02.817  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/openMainPage],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.openMainPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:56:02.818  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.logout(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:56:02.818  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/checkLogin],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.LoginController.login(com.xx.test.Model.UserInfo,org.springframework.ui.Model)
+2017-08-04 15:56:02.819  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMainMenu],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMainMenu(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:56:02.821  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initExamInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initExamInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:56:02.822  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMessageInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMessageInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:56:02.822  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageUserInfo],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageUserInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:56:02.823  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageOrg],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageOrg(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:56:02.826  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-08-04 15:56:02.828  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:56:03.005  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:56:03.006  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:56:03.071  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:56:03.145  WARN 6692 --- [restartedMain] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2017-08-04 15:56:03.593  INFO 6692 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-08-04 15:56:03.807  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-08-04 15:56:03.809  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2017-08-04 15:56:03.826  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2017-08-04 15:56:03.917  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-08-04 15:56:03.923  INFO 6692 --- [restartedMain] com.xx.test.App                          : Started App in 6.509 seconds (JVM running for 25869.269)
+2017-08-04 15:57:05.598  INFO 6692 --- [Thread-40] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1bc8fa18: startup date [Fri Aug 04 15:55:57 CST 2017]; root of context hierarchy
+2017-08-04 15:57:05.602  INFO 6692 --- [Thread-40] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-08-04 15:57:05.603  INFO 6692 --- [Thread-40] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2017-08-04 15:57:05.605  INFO 6692 --- [Thread-40] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:57:05.610  INFO 6692 --- [Thread-40] com.alibaba.druid.pool.DruidDataSource   : {dataSource-7} closed
+2017-08-04 15:57:09.384  INFO 6692 --- [restartedMain] com.xx.test.App                          : Starting App on pc-PC with PID 6692 (C:\git\test\test\target\classes started by pc in C:\git\test\test)
+2017-08-04 15:57:09.385  INFO 6692 --- [restartedMain] com.xx.test.App                          : No active profile set, falling back to default profiles: default
+2017-08-04 15:57:09.393  INFO 6692 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@256f9952: startup date [Fri Aug 04 15:57:09 CST 2017]; root of context hierarchy
+2017-08-04 15:57:12.446  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-08-04 15:57:12.449  INFO 6692 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-08-04 15:57:12.449  INFO 6692 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.15
+2017-08-04 15:57:12.526  INFO 6692 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-08-04 15:57:12.530  INFO 6692 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3137 ms
+2017-08-04 15:57:12.664  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-08-04 15:57:12.665  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-08-04 15:57:12.665  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-08-04 15:57:12.667  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-08-04 15:57:12.667  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-08-04 15:57:13.012  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:57:13.013  INFO 6692 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-08-04 15:57:13.294  INFO 6692 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-8} inited
+2017-08-04 15:57:13.318  INFO 6692 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-08-04 15:57:14.383  INFO 6692 --- [restartedMain] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2017-08-04 15:57:15.042  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:57:16.085  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@256f9952: startup date [Fri Aug 04 15:57:09 CST 2017]; root of context hierarchy
+2017-08-04 15:57:16.106  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String com.xx.test.App.index()
+2017-08-04 15:57:16.109  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test/add],methods=[GET]}" onto public void com.xx.test.Controller.LoginController.add(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:57:16.110  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.toLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:57:16.110  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/openMainPage],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.openMainPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:57:16.111  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.logout(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:57:16.112  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/checkLogin],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.LoginController.login(com.xx.test.Model.UserInfo,org.springframework.ui.Model)
+2017-08-04 15:57:16.114  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMainMenu],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMainMenu(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:57:16.117  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initExamInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initExamInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:57:16.118  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMessageInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMessageInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:57:16.119  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageUserInfo],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageUserInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:57:16.120  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageOrg],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageOrg(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:57:16.134  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.WebController.checkPersonInfo(com.xx.test.Form.PersonForm,org.springframework.validation.BindingResult)
+2017-08-04 15:57:16.135  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.WebController.showForm(com.xx.test.Form.PersonForm)
+2017-08-04 15:57:16.139  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-08-04 15:57:16.140  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:57:16.160  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/results] onto handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+2017-08-04 15:57:16.170  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:57:16.170  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:57:16.206  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:57:16.249  WARN 6692 --- [restartedMain] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2017-08-04 15:57:16.533  INFO 6692 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-08-04 15:57:16.687  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-08-04 15:57:16.688  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2017-08-04 15:57:16.692  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2017-08-04 15:57:16.721  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-08-04 15:57:16.726  INFO 6692 --- [restartedMain] com.xx.test.App                          : Started App in 7.568 seconds (JVM running for 25942.073)
+2017-08-04 15:57:49.927  INFO 6692 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-08-04 15:57:49.928  INFO 6692 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-08-04 15:57:49.938  INFO 6692 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 10 ms
+2017-08-04 15:59:06.001  INFO 6692 --- [Thread-46] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@256f9952: startup date [Fri Aug 04 15:57:09 CST 2017]; root of context hierarchy
+2017-08-04 15:59:06.008  INFO 6692 --- [Thread-46] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-08-04 15:59:06.009  INFO 6692 --- [Thread-46] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2017-08-04 15:59:06.011  INFO 6692 --- [Thread-46] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:59:06.018  INFO 6692 --- [Thread-46] com.alibaba.druid.pool.DruidDataSource   : {dataSource-8} closed
+2017-08-04 15:59:09.916  INFO 6692 --- [restartedMain] com.xx.test.App                          : Starting App on pc-PC with PID 6692 (C:\git\test\test\target\classes started by pc in C:\git\test\test)
+2017-08-04 15:59:09.917  INFO 6692 --- [restartedMain] com.xx.test.App                          : No active profile set, falling back to default profiles: default
+2017-08-04 15:59:09.924  INFO 6692 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2a9cd26c: startup date [Fri Aug 04 15:59:09 CST 2017]; root of context hierarchy
+2017-08-04 15:59:12.331  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-08-04 15:59:12.332  INFO 6692 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-08-04 15:59:12.333  INFO 6692 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.15
+2017-08-04 15:59:12.384  INFO 6692 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-08-04 15:59:12.386  INFO 6692 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2462 ms
+2017-08-04 15:59:12.463  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-08-04 15:59:12.464  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-08-04 15:59:12.465  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-08-04 15:59:12.465  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-08-04 15:59:12.465  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-08-04 15:59:12.658  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:59:12.659  INFO 6692 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-08-04 15:59:12.822  INFO 6692 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-9} inited
+2017-08-04 15:59:12.824  INFO 6692 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-08-04 15:59:13.075  INFO 6692 --- [restartedMain] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2017-08-04 15:59:13.348  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:59:13.919  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2a9cd26c: startup date [Fri Aug 04 15:59:09 CST 2017]; root of context hierarchy
+2017-08-04 15:59:13.938  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test/add],methods=[GET]}" onto public void com.xx.test.Controller.LoginController.add(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:13.940  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.toLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:13.941  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/openMainPage],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.openMainPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:13.942  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.logout(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:13.944  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/checkLogin],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.LoginController.login(com.xx.test.Model.UserInfo,org.springframework.ui.Model)
+2017-08-04 15:59:13.949  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMainMenu],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMainMenu(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:13.950  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initExamInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initExamInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:13.951  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMessageInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMessageInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:13.954  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageUserInfo],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageUserInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:13.955  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageOrg],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageOrg(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:13.960  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.WebController.checkPersonInfo(com.xx.test.Form.PersonForm,org.springframework.validation.BindingResult)
+2017-08-04 15:59:13.962  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.WebController.showForm(com.xx.test.Form.PersonForm)
+2017-08-04 15:59:13.966  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-08-04 15:59:13.967  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:13.982  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/results] onto handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+2017-08-04 15:59:13.997  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:59:13.998  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:59:14.086  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:59:14.161  WARN 6692 --- [restartedMain] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2017-08-04 15:59:14.601  INFO 6692 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-08-04 15:59:14.816  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-08-04 15:59:14.836  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2017-08-04 15:59:14.845  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2017-08-04 15:59:14.898  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-08-04 15:59:14.903  INFO 6692 --- [restartedMain] com.xx.test.App                          : Started App in 5.135 seconds (JVM running for 26060.25)
+2017-08-04 15:59:22.919  INFO 6692 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-08-04 15:59:22.920  INFO 6692 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-08-04 15:59:22.929  INFO 6692 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 9 ms
+2017-08-04 15:59:39.362  INFO 6692 --- [Thread-52] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@2a9cd26c: startup date [Fri Aug 04 15:59:09 CST 2017]; root of context hierarchy
+2017-08-04 15:59:39.366  INFO 6692 --- [Thread-52] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-08-04 15:59:39.367  INFO 6692 --- [Thread-52] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2017-08-04 15:59:39.367  INFO 6692 --- [Thread-52] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:59:39.373  INFO 6692 --- [Thread-52] com.alibaba.druid.pool.DruidDataSource   : {dataSource-9} closed
+2017-08-04 15:59:42.543  INFO 6692 --- [restartedMain] com.xx.test.App                          : Starting App on pc-PC with PID 6692 (C:\git\test\test\target\classes started by pc in C:\git\test\test)
+2017-08-04 15:59:42.545  INFO 6692 --- [restartedMain] com.xx.test.App                          : No active profile set, falling back to default profiles: default
+2017-08-04 15:59:42.553  INFO 6692 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@10dc34db: startup date [Fri Aug 04 15:59:42 CST 2017]; root of context hierarchy
+2017-08-04 15:59:44.606  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-08-04 15:59:44.607  INFO 6692 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-08-04 15:59:44.608  INFO 6692 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.15
+2017-08-04 15:59:44.667  INFO 6692 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-08-04 15:59:44.669  INFO 6692 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2116 ms
+2017-08-04 15:59:44.747  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-08-04 15:59:44.748  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-08-04 15:59:44.748  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-08-04 15:59:44.748  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-08-04 15:59:44.749  INFO 6692 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-08-04 15:59:44.885  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:59:44.886  INFO 6692 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-08-04 15:59:45.027  INFO 6692 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-10} inited
+2017-08-04 15:59:45.029  INFO 6692 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-08-04 15:59:45.225  INFO 6692 --- [restartedMain] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2017-08-04 15:59:45.431  INFO 6692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 15:59:46.064  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@10dc34db: startup date [Fri Aug 04 15:59:42 CST 2017]; root of context hierarchy
+2017-08-04 15:59:46.093  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test/add],methods=[GET]}" onto public void com.xx.test.Controller.LoginController.add(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:46.093  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.toLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:46.094  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/openMainPage],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.openMainPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:46.095  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.logout(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:46.096  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/checkLogin],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.LoginController.login(com.xx.test.Model.UserInfo,org.springframework.ui.Model)
+2017-08-04 15:59:46.098  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMainMenu],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMainMenu(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:46.099  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initExamInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initExamInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:46.100  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMessageInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMessageInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:46.103  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageUserInfo],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageUserInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:46.104  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageOrg],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageOrg(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:46.107  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.WebController.checkPersonInfo(com.xx.test.Form.PersonForm,org.springframework.validation.BindingResult)
+2017-08-04 15:59:46.108  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.WebController.showForm(com.xx.test.Form.PersonForm)
+2017-08-04 15:59:46.112  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-08-04 15:59:46.113  INFO 6692 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 15:59:46.138  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/results] onto handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+2017-08-04 15:59:46.155  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:59:46.156  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:59:46.250  INFO 6692 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 15:59:46.413  WARN 6692 --- [restartedMain] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2017-08-04 15:59:46.866  INFO 6692 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-08-04 15:59:46.964  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-08-04 15:59:46.965  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2017-08-04 15:59:46.987  INFO 6692 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2017-08-04 15:59:47.060  INFO 6692 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-08-04 15:59:47.069  INFO 6692 --- [restartedMain] com.xx.test.App                          : Started App in 4.636 seconds (JVM running for 26092.416)
+2017-08-04 15:59:57.455  INFO 6692 --- [http-nio-8080-exec-10] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-08-04 15:59:57.456  INFO 6692 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-08-04 15:59:57.465  INFO 6692 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 9 ms
+2017-08-04 17:48:35.072  INFO 6576 --- [restartedMain] com.xx.test.App                          : Starting App on pc-PC with PID 6576 (C:\git\test\test\target\classes started by pc in C:\git\test\test)
+2017-08-04 17:48:35.081  INFO 6576 --- [restartedMain] com.xx.test.App                          : No active profile set, falling back to default profiles: default
+2017-08-04 17:48:38.344  INFO 6576 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@75fb89ea: startup date [Fri Aug 04 17:48:38 CST 2017]; root of context hierarchy
+2017-08-04 17:48:51.089  INFO 6576 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-08-04 17:48:51.196  INFO 6576 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-08-04 17:48:51.241  INFO 6576 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.15
+2017-08-04 17:48:51.831  INFO 6576 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-08-04 17:48:51.832  INFO 6576 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 13499 ms
+2017-08-04 17:48:52.707  INFO 6576 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-08-04 17:48:52.726  INFO 6576 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-08-04 17:48:52.729  INFO 6576 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-08-04 17:48:52.729  INFO 6576 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-08-04 17:48:52.730  INFO 6576 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-08-04 17:48:53.949  INFO 6576 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-08-04 17:48:54.017  INFO 6576 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-08-04 17:48:54.453  INFO 6576 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2017-08-04 17:48:54.460  INFO 6576 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2017-08-04 17:48:54.467  INFO 6576 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2017-08-04 17:48:54.680  INFO 6576 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2017-08-04 17:48:56.553  INFO 6576 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2017-08-04 17:48:56.609  INFO 6576 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-08-04 17:48:59.078  INFO 6576 --- [restartedMain] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2017-08-04 17:48:59.706  INFO 6576 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 17:49:02.893  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@75fb89ea: startup date [Fri Aug 04 17:48:38 CST 2017]; root of context hierarchy
+2017-08-04 17:49:03.422  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test/add],methods=[GET]}" onto public void com.xx.test.Controller.LoginController.add(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:49:03.430  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.toLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:49:03.436  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/checkLogin],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.LoginController.login(com.xx.test.Model.UserInfo,org.springframework.ui.Model)
+2017-08-04 17:49:03.439  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/openMainPage],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.openMainPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:49:03.456  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.logout(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:49:03.471  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageOrg],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageOrg(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:49:03.478  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMainMenu],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMainMenu(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:49:03.479  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageUserInfo],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageUserInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:49:03.487  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initExamInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initExamInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:49:03.491  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMessageInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMessageInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:49:03.524  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.WebController.checkPersonInfo(com.xx.test.Form.PersonForm,org.springframework.validation.BindingResult)
+2017-08-04 17:49:03.571  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.WebController.showForm(com.xx.test.Form.PersonForm)
+2017-08-04 17:49:03.585  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-08-04 17:49:03.589  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:49:03.990  INFO 6576 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/results] onto handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+2017-08-04 17:49:04.238  INFO 6576 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 17:49:04.260  INFO 6576 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 17:49:04.811  INFO 6576 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 17:49:05.235  WARN 6576 --- [restartedMain] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2017-08-04 17:49:12.051  INFO 6576 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-08-04 17:49:12.907  INFO 6576 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-08-04 17:49:12.912  INFO 6576 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2017-08-04 17:49:13.076  INFO 6576 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2017-08-04 17:49:14.531  INFO 6576 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-08-04 17:49:14.594  INFO 6576 --- [restartedMain] com.xx.test.App                          : Started App in 41.333 seconds (JVM running for 43.833)
+2017-08-04 17:52:09.936  INFO 6576 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-08-04 17:52:09.937  INFO 6576 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-08-04 17:52:10.197  INFO 6576 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 259 ms
+2017-08-04 17:52:22.655 ERROR 6576 --- [http-nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is javax.validation.UnexpectedTypeException: HV000030: No validator could be found for constraint 'javax.validation.constraints.Pattern' validating type 'java.lang.Integer'. Check configuration for 'age'] with root cause
+
+javax.validation.UnexpectedTypeException: HV000030: No validator could be found for constraint 'javax.validation.constraints.Pattern' validating type 'java.lang.Integer'. Check configuration for 'age'
+	at org.hibernate.validator.internal.engine.constraintvalidation.ConstraintTree.throwExceptionForNullValidator(ConstraintTree.java:229) ~[hibernate-validator-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.validator.internal.engine.constraintvalidation.ConstraintTree.getConstraintValidatorNoUnwrapping(ConstraintTree.java:310) ~[hibernate-validator-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.validator.internal.engine.constraintvalidation.ConstraintTree.getConstraintValidatorInstanceForAutomaticUnwrapping(ConstraintTree.java:244) ~[hibernate-validator-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.validator.internal.engine.constraintvalidation.ConstraintTree.getInitializedConstraintValidator(ConstraintTree.java:163) ~[hibernate-validator-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.validator.internal.engine.constraintvalidation.ConstraintTree.validateConstraints(ConstraintTree.java:116) ~[hibernate-validator-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.validator.internal.engine.constraintvalidation.ConstraintTree.validateConstraints(ConstraintTree.java:87) ~[hibernate-validator-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.validator.internal.metadata.core.MetaConstraint.validateConstraint(MetaConstraint.java:73) ~[hibernate-validator-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateMetaConstraint(ValidatorImpl.java:620) ~[hibernate-validator-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateConstraint(ValidatorImpl.java:583) ~[hibernate-validator-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateConstraintsForSingleDefaultGroupElement(ValidatorImpl.java:527) ~[hibernate-validator-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateConstraintsForDefaultGroup(ValidatorImpl.java:495) ~[hibernate-validator-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateConstraintsForCurrentGroup(ValidatorImpl.java:460) ~[hibernate-validator-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateInContext(ValidatorImpl.java:410) ~[hibernate-validator-5.3.5.Final.jar:5.3.5.Final]
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validate(ValidatorImpl.java:207) ~[hibernate-validator-5.3.5.Final.jar:5.3.5.Final]
+	at org.springframework.validation.beanvalidation.SpringValidatorAdapter.validate(SpringValidatorAdapter.java:118) ~[spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.boot.autoconfigure.web.WebMvcValidator.validate(WebMvcValidator.java:69) ~[spring-boot-autoconfigure-1.5.4.RELEASE.jar:1.5.4.RELEASE]
+	at org.springframework.validation.DataBinder.validate(DataBinder.java:891) ~[spring-context-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.method.annotation.ModelAttributeMethodProcessor.validateIfApplicable(ModelAttributeMethodProcessor.java:168) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.method.annotation.ModelAttributeMethodProcessor.resolveArgument(ModelAttributeMethodProcessor.java:115) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:158) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:128) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97) ~[spring-webmvc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827) ~[spring-webmvc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738) ~[spring-webmvc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85) ~[spring-webmvc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967) ~[spring-webmvc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901) ~[spring-webmvc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) ~[spring-webmvc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872) ~[spring-webmvc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661) ~[tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) ~[spring-webmvc-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742) ~[tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) ~[tomcat-embed-websocket-8.5.15.jar:8.5.15]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:105) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.9.RELEASE.jar:4.3.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) ~[tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478) [tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80) [tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) [tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799) [tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861) [tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455) [tomcat-embed-core-8.5.15.jar:8.5.15]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.15.jar:8.5.15]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [na:1.8.0_101]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [na:1.8.0_101]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.15.jar:8.5.15]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_101]
+
+2017-08-04 17:52:22.759  WARN 6576 --- [http-nio-8080-exec-5] o.s.web.servlet.PageNotFound             : Request method 'POST' not supported
+2017-08-04 17:52:22.761  WARN 6576 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved exception caused by Handler execution: org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported
+2017-08-04 17:53:58.989  INFO 6576 --- [Thread-6] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@75fb89ea: startup date [Fri Aug 04 17:48:38 CST 2017]; root of context hierarchy
+2017-08-04 17:53:58.996  INFO 6576 --- [Thread-6] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-08-04 17:53:58.998  INFO 6576 --- [Thread-6] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2017-08-04 17:53:59.004  INFO 6576 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 17:53:59.025  INFO 6576 --- [Thread-6] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2017-08-04 17:54:05.346  INFO 6576 --- [restartedMain] com.xx.test.App                          : Starting App on pc-PC with PID 6576 (C:\git\test\test\target\classes started by pc in C:\git\test\test)
+2017-08-04 17:54:05.347  INFO 6576 --- [restartedMain] com.xx.test.App                          : No active profile set, falling back to default profiles: default
+2017-08-04 17:54:05.359  INFO 6576 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1346242f: startup date [Fri Aug 04 17:54:05 CST 2017]; root of context hierarchy
+2017-08-04 17:54:13.364  INFO 6576 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-08-04 17:54:13.377  INFO 6576 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-08-04 17:54:13.382  INFO 6576 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.15
+2017-08-04 17:54:13.607  INFO 6576 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-08-04 17:54:13.619  INFO 6576 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 8260 ms
+2017-08-04 17:54:14.438  INFO 6576 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-08-04 17:54:14.444  INFO 6576 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-08-04 17:54:14.453  INFO 6576 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-08-04 17:54:14.454  INFO 6576 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-08-04 17:54:14.455  INFO 6576 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-08-04 17:54:15.044  INFO 6576 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-08-04 17:54:15.049  INFO 6576 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-08-04 17:54:15.447  INFO 6576 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} inited
+2017-08-04 17:54:15.451  INFO 6576 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-08-04 17:54:16.241  INFO 6576 --- [restartedMain] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2017-08-04 17:54:16.997  INFO 6576 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 17:54:18.390  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1346242f: startup date [Fri Aug 04 17:54:05 CST 2017]; root of context hierarchy
+2017-08-04 17:54:18.591  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test/add],methods=[GET]}" onto public void com.xx.test.Controller.LoginController.add(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:54:18.595  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.toLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:54:18.599  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/checkLogin],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.LoginController.login(com.xx.test.Model.UserInfo,org.springframework.ui.Model)
+2017-08-04 17:54:18.606  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/openMainPage],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.openMainPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:54:18.609  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.logout(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:54:18.615  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageOrg],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageOrg(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:54:18.620  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMainMenu],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMainMenu(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:54:18.632  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageUserInfo],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageUserInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:54:18.635  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initExamInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initExamInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:54:18.637  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMessageInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMessageInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:54:18.643  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.WebController.checkPersonInfo(com.xx.test.Form.PersonForm,org.springframework.validation.BindingResult)
+2017-08-04 17:54:18.648  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.WebController.showForm(com.xx.test.Form.PersonForm)
+2017-08-04 17:54:18.666  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-08-04 17:54:18.671  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:54:18.743  INFO 6576 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/results] onto handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+2017-08-04 17:54:18.774  INFO 6576 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 17:54:18.775  INFO 6576 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 17:54:18.942  INFO 6576 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 17:54:19.159  WARN 6576 --- [restartedMain] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2017-08-04 17:54:20.806  INFO 6576 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-08-04 17:54:21.945  INFO 6576 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-08-04 17:54:21.947  INFO 6576 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2017-08-04 17:54:22.079  INFO 6576 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2017-08-04 17:54:22.387  INFO 6576 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-08-04 17:54:22.402  INFO 6576 --- [restartedMain] com.xx.test.App                          : Started App in 17.559 seconds (JVM running for 351.64)
+2017-08-04 17:55:04.580  INFO 6576 --- [http-nio-8080-exec-10] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-08-04 17:55:04.581  INFO 6576 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-08-04 17:55:04.595  INFO 6576 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 13 ms
+2017-08-04 17:58:02.509  INFO 6576 --- [Thread-10] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1346242f: startup date [Fri Aug 04 17:54:05 CST 2017]; root of context hierarchy
+2017-08-04 17:58:02.516  INFO 6576 --- [Thread-10] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-08-04 17:58:02.520  INFO 6576 --- [Thread-10] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2017-08-04 17:58:02.524  INFO 6576 --- [Thread-10] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 17:58:02.544  INFO 6576 --- [Thread-10] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} closed
+2017-08-04 17:58:06.542  INFO 6576 --- [restartedMain] com.xx.test.App                          : Starting App on pc-PC with PID 6576 (C:\git\test\test\target\classes started by pc in C:\git\test\test)
+2017-08-04 17:58:06.544  INFO 6576 --- [restartedMain] com.xx.test.App                          : No active profile set, falling back to default profiles: default
+2017-08-04 17:58:06.554  INFO 6576 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5885b75b: startup date [Fri Aug 04 17:58:06 CST 2017]; root of context hierarchy
+2017-08-04 17:58:11.379  INFO 6576 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-08-04 17:58:11.383  INFO 6576 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2017-08-04 17:58:11.384  INFO 6576 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.15
+2017-08-04 17:58:11.546  INFO 6576 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-08-04 17:58:11.548  INFO 6576 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4994 ms
+2017-08-04 17:58:12.145  INFO 6576 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-08-04 17:58:12.147  INFO 6576 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-08-04 17:58:12.150  INFO 6576 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-08-04 17:58:12.151  INFO 6576 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-08-04 17:58:12.153  INFO 6576 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-08-04 17:58:13.167  INFO 6576 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-08-04 17:58:13.169  INFO 6576 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-08-04 17:58:14.128  INFO 6576 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-3} inited
+2017-08-04 17:58:14.134  INFO 6576 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-08-04 17:58:14.819  INFO 6576 --- [restartedMain] org.hibernate.tool.hbm2ddl.SchemaUpdate  : HHH000228: Running hbm2ddl schema update
+2017-08-04 17:58:15.361  INFO 6576 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-08-04 17:58:16.274  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5885b75b: startup date [Fri Aug 04 17:58:06 CST 2017]; root of context hierarchy
+2017-08-04 17:58:16.315  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/test/add],methods=[GET]}" onto public void com.xx.test.Controller.LoginController.add(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:58:16.317  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.toLogin(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:58:16.319  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/checkLogin],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.LoginController.login(com.xx.test.Model.UserInfo,org.springframework.ui.Model)
+2017-08-04 17:58:16.320  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/login/openMainPage],methods=[POST]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.openMainPage(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:58:16.323  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/logout],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.LoginController.logout(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:58:16.326  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageOrg],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageOrg(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:58:16.327  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMainMenu],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMainMenu(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:58:16.328  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/manageUserInfo],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.xx.test.Controller.MainController.manageUserInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:58:16.329  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initExamInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initExamInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:58:16.330  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index/initMessageInfo],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.MainController.initMessageInfo(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:58:16.335  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[POST]}" onto public java.lang.String com.xx.test.Controller.WebController.checkPersonInfo(com.xx.test.Form.PersonForm,org.springframework.validation.BindingResult)
+2017-08-04 17:58:16.336  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String com.xx.test.Controller.WebController.showForm(com.xx.test.Form.PersonForm)
+2017-08-04 17:58:16.340  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-08-04 17:58:16.341  INFO 6576 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-08-04 17:58:16.356  INFO 6576 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/results] onto handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+2017-08-04 17:58:16.366  INFO 6576 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 17:58:16.367  INFO 6576 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 17:58:16.470  INFO 6576 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-08-04 17:58:16.768  WARN 6576 --- [restartedMain] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2017-08-04 17:58:17.661  INFO 6576 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-08-04 17:58:17.969  INFO 6576 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-08-04 17:58:17.970  INFO 6576 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2017-08-04 17:58:17.993  INFO 6576 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2017-08-04 17:58:18.094  INFO 6576 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-08-04 17:58:18.105  INFO 6576 --- [restartedMain] com.xx.test.App                          : Started App in 11.732 seconds (JVM running for 587.344)
+2017-08-04 17:58:20.907  INFO 6576 --- [http-nio-8080-exec-10] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-08-04 17:58:20.908  INFO 6576 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-08-04 17:58:20.937  INFO 6576 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 28 ms

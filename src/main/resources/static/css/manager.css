@@ -8,3 +8,11 @@
       text-align: right;
  }
  
+ .modal_button{
+    font-size: large;
+ }
+ 
+ .modal_button:hover {
+     background-color: #6cf;
+ }
+ 

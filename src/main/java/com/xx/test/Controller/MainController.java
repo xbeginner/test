@@ -72,10 +72,20 @@ public class MainController extends BaseController {
 	  
 	  
 	  @RequestMapping(value="/index/manageUserInfo",method=RequestMethod.GET)
-	  public ModelAndView openMainPage(HttpServletRequest request , HttpServletResponse response){
+	  public ModelAndView manageUserInfo(HttpServletRequest request , HttpServletResponse response){
 		  UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
 		  ModelAndView modelAndView = new ModelAndView("manageUserInfo");
 		  modelAndView.addObject("userInfo",userInfo);
+		  return modelAndView;
+	  }
+	  
+	  
+	  @RequestMapping(value="/index/manageOrg",method=RequestMethod.GET)
+	  public ModelAndView manageOrg(HttpServletRequest request , HttpServletResponse response){
+		  UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+		  ModelAndView modelAndView = new ModelAndView("manageOrg");
+		  modelAndView.addObject("userInfo",userInfo);
+		  modelAndView.addObject("org",userInfo.getOrg());
 		  return modelAndView;
 	  }
 }

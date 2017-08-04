@@ -38,6 +38,10 @@
     font-size: large;
  }
  
+  strong{
+    font-size: large;
+ }
+ 
  a{
      font-size: large;
      font-style: inherit;
