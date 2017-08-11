@@ -1,5 +1,6 @@
 package com.xx.test.IService;
 
+import com.xx.test.Model.Org;
 import com.xx.test.Model.UserInfo;
 
 public interface IUserInfoService {
@@ -19,5 +20,7 @@ public interface IUserInfoService {
 	  int getErrorLog(UserInfo userInfo);
     
 	UserInfo findById(Long userId);
+	
+	int alterUserInfoOrg(Org org, Long userId);
 	
 }

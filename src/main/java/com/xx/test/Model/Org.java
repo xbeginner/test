@@ -1,13 +1,17 @@
 package com.xx.test.Model;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.xx.test.Utils.JsonUtils;
 
 @Entity
 @Table(name="t_org")
@@ -96,6 +100,21 @@ public class Org implements Serializable{
 		return serialVersionUID;
 	}
 	
+	
+	public String getOrgJson(){
+		return JsonUtils.getJsonString(getOrgMap());
+	}
+	
+	private Map<String,String> getOrgMap(){
+		   Map<String,String> map = new HashMap<String, String>();
+		   
+		   map.put("id", String.valueOf(id));
+		   map.put("orgName", orgName);
+		   map.put("tel", tel);
+		   map.put("master",master);
+ 
+		   return  map;
+	}
 	
 	
 }

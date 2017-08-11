@@ -6,22 +6,32 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.xx.test.Form.OrgAddForm;
+import com.xx.test.Form.PersonForm;
 import com.xx.test.Model.Menu;
+import com.xx.test.Model.Org;
 import com.xx.test.Model.Role;
 import com.xx.test.Model.UserInfo;
 import com.xx.test.Utils.JsonUtils;
 
 import redis.clients.jedis.Jedis;
 
-@RestController
+@Controller
 public class MainController extends BaseController {
 
 	  @RequestMapping(value="/index/initMainMenu",method=RequestMethod.GET)
@@ -46,7 +56,7 @@ public class MainController extends BaseController {
 		    	    json.deleteCharAt(json.length()-1);
 		      }
 		      json.append( "]" );
-		      System.out.println(json.toString());
+		 
 		      return json.toString();
 	  }
 	
@@ -55,7 +65,7 @@ public class MainController extends BaseController {
 	  @RequestMapping(value="/index/initExamInfo",method=RequestMethod.GET)
 	  @ResponseBody
 	  public String initExamInfo(HttpServletRequest request , HttpServletResponse response){
-              System.out.println(request.getParameter("page"));
+  
 		       String json = "{\"info\":[{\"name\":\"测试1\",\"time\":\"2017-09-08\"},{\"name\":\"测试2\",\"time\":\"2017-09-09\"}],\"page\":1}";
 		      return json;
 	  }
@@ -65,7 +75,6 @@ public class MainController extends BaseController {
 	  @RequestMapping(value="/index/initMessageInfo",method=RequestMethod.GET)
 	  @ResponseBody
 	  public String initMessageInfo(HttpServletRequest request , HttpServletResponse response){
- 
 		      String json = "[{\"name\":\"测试1\",\"time\":\"2017-09-08\"},{\"name\":\"测试2\",\"time\":\"2017-09-09\"}]";
 		      return json;
 	  }
@@ -88,4 +97,48 @@ public class MainController extends BaseController {
 		  modelAndView.addObject("org",userInfo.getOrg());
 		  return modelAndView;
 	  }
+	  
+	    @GetMapping("/manage/toAddOrg")
+	    public String toAddOrg(OrgAddForm orgAddForm) {
+	        return "addOrg";
+	    }
+	  
+	  
+		 @PostMapping("/manage/addOrg.do")
+	    public String addOrg(@Valid OrgAddForm orgAddForm, BindingResult bindingResult,HttpServletRequest request) {
+		 
+	        if (bindingResult.hasErrors()) {
+	               return "addOrg";
+	        }
+	         Org org = new Org();
+	         org.setAddress(orgAddForm.getAddress());
+	         org.setMaster(orgAddForm.getMaster());
+	         org.setMasterTel(orgAddForm.getMasterTel());
+	         org.setOrgName(orgAddForm.getOrgName());
+	         org.setTel(orgAddForm.getTel());
+	         this.orgService.saveOrg(org);
+	         UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+	         userInfo.setOrg(org);
+	         this.userInfoService.alterUserInfoOrg(org, userInfo.getId());
+	         return "redirect:/success";
+	    }
+		 
+		 
+		 
+		    @GetMapping("/index/initOrgList")
+		    @ResponseBody
+		    public String initOrgList(HttpServletRequest request , HttpServletResponse response) {
+		    	String json = "[";
+		    	 UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+		    	int parentId = Integer.valueOf(request.getParameter("parentId"));
+		    	if(parentId==0){
+		    		  json += userInfo.getOrg().getOrgJson();
+		    	}else{
+		    		
+		    	}
+		    	json += "]";
+		    	System.out.println(json);
+		    	
+		        return json;
+		    }
 }

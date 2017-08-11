@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="../static/manager.css"  th:href="@{/css/manager.css}"  />
 	<script src="../static/js/manager.js" th:src="@{/js/manager.js}"></script>
 	<script type="text/javascript">
-	       initOrg();
+	       initOrg(0);
 	</script>
 </head>
 <body style="background: none">
@@ -17,7 +17,7 @@
 		        &times;
 		    </a>
 		    <strong>注意！</strong>请先建立您所在机构信息。
-		      <a class="btn btn-red "   data-toggle="modal" data-target="#org_add_Modal"><span>添加所在机构</span></a>
+		      <a class="btn btn-red "  onclick="openAddOrgPage()"><span>添加所在机构</span></a>
 		</div>
  </div>
  <div class="container" id="org_container" th:if="${org}!=null">
@@ -26,6 +26,21 @@
 			 <span>机构管理</span>
 			 </div>
 			 <div class="panel-body">
+			 
+					 <table class="table">
+						  <thead>
+						    <tr>
+							      <th><span>机构名称</span></th>
+							      <th><span>联系电话</span></th>
+							      <th><span>联系人</span></th>
+							       <th><span>操作</span></th>
+						    </tr>
+						  </thead>
+						  <tbody id="org_tbody">
+						           
+						  </tbody>
+						</table>
+			 
 			  </div>
 	       	<div class="panel-footer import_button_div" >
 	       	        <a href="#" class="btn btn-red "><span>添加辖内机构</span></a>
@@ -36,24 +51,6 @@
  <div th:insert="footer :: copy" class="footer"></div>
 </body>
 
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="org_add_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">添加机构信息</h4>
-            </div>
-            <div class="modal-body">
-  
-                     <!-- 添加机构信息 -->
 
-            </div>
-            <div class="modal-footer">
-                <a  class="btn btn-default modal_button" data-dismiss="modal">关闭</a>
-                <a  class="btn btn-primary modal_button">提交更改</a>
-            </div>
-        </div> 
-    </div> 
 
 </html>

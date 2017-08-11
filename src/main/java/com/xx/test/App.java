@@ -15,6 +15,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -30,10 +31,7 @@ import com.xx.test.Model.UserInfo;
 @SpringBootApplication
 public class App {
 	
-//	@RequestMapping("/")
-//	public String index(){
-//		return "Hello Spring Boot";
-//	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
 	}
@@ -74,6 +72,12 @@ public class App {
 			   });
 			}
 			
+			
+			@RequestMapping("/success")
+			public ModelAndView success(){
+				ModelAndView model = new ModelAndView("success");
+				return model;
+			}
 			
 //			@Bean
 //			public EmbeddedServletContainerCustomizer containerCustomizer() {

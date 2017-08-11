@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.xx.test.Dao.UserInfoDao;
 import com.xx.test.IService.IUserInfoService;
+import com.xx.test.Model.Org;
 import com.xx.test.Model.UserInfo;
 
 @Service
@@ -44,6 +45,11 @@ public class UserInfoService implements IUserInfoService{
 	public UserInfo findById(Long userId) {
 		
 		return userInfoDao.findById(userId);
+	}
+	
+	@Override
+	public int alterUserInfoOrg(Org org, Long userId){
+		   return userInfoDao.update(org, userId);
 	}
 	
 
