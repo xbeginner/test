@@ -111,6 +111,21 @@ public class LoginController extends BaseController{
 		  return modelAndView;
 	  }
 	  
+	  @RequestMapping(value="/openMainPage",method=RequestMethod.GET)
+	  public ModelAndView toOpenMainPage(HttpServletRequest request , HttpServletResponse response){
+ 
+		    //将UserInfo记入session
+		 UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+		  ModelAndView modelAndView = new ModelAndView("main");
+		  modelAndView.addObject("userInfo",userInfo);
+		  if(userInfo.getRole().getManageLog()==0){
+			    modelAndView.addObject("title","可参加测试");
+		  }else{
+			   modelAndView.addObject("title","测试管理");
+		  }
+		  return modelAndView;
+	  }
+	  
 	  
 	  
 	

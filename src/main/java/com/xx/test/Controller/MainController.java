@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -104,22 +105,27 @@ public class MainController extends BaseController {
 	    }
 	  
 	  
-		 @PostMapping("/manage/addOrg.do")
+		 @PostMapping("/manage/addOrg")
 	    public String addOrg(@Valid OrgAddForm orgAddForm, BindingResult bindingResult,HttpServletRequest request) {
 		 
 	        if (bindingResult.hasErrors()) {
 	               return "addOrg";
 	        }
-	         Org org = new Org();
+	        Org org = new Org();
 	         org.setAddress(orgAddForm.getAddress());
 	         org.setMaster(orgAddForm.getMaster());
 	         org.setMasterTel(orgAddForm.getMasterTel());
 	         org.setOrgName(orgAddForm.getOrgName());
 	         org.setTel(orgAddForm.getTel());
+	        UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+	        if(userInfo.getOrg()==null){
+	        	 userInfo.setOrg(org);
+	 	         this.userInfoService.alterUserInfoOrg(org, userInfo.getId());
+	        }else{
+	        	 org.setParentOrg(userInfo.getOrg());
+	        }
 	         this.orgService.saveOrg(org);
-	         UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
-	         userInfo.setOrg(org);
-	         this.userInfoService.alterUserInfoOrg(org, userInfo.getId());
+ 
 	         return "redirect:/success";
 	    }
 		 
@@ -133,11 +139,17 @@ public class MainController extends BaseController {
 		    	int parentId = Integer.valueOf(request.getParameter("parentId"));
 		    	if(parentId==0){
 		    		  json += userInfo.getOrg().getOrgJson();
+		    		  List<Orgt> orgList = this.orgService.
+		    		  System.out.println(userInfo.getOrg().getChildOrgList());
+                      if(!userInfo.getOrg().getChildOrgList().isEmpty()){
+                    	  json = json.replace("}",",\"childCount\":"+ userInfo.getOrg().getChildOrgList().size()+"}");
+                      }else{
+                    	  json = json.replace("}",",\"childCount\":0}");
+                      }
 		    	}else{
 		    		
 		    	}
 		    	json += "]";
-		    	System.out.println(json);
 		    	
 		        return json;
 		    }

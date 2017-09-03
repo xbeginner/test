@@ -1,5 +1,7 @@
 package com.xx.test.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,10 @@ public class OrgService implements IOrgService{
 	
 	public Org saveOrg(Org org){
 		return orgDao.save(org);
+	}
+	
+	public List<Org> findOrgListByParentId(int paentId){
+		 
 	}
 
 }

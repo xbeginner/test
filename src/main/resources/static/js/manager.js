@@ -20,7 +20,12 @@ function initOrg(parentId){
 	        	orgBodyInfo += "<td><span>"+item.orgName+"</span></td>";
 	        	orgBodyInfo += "<td><span>"+item.tel+"</span></td>";
 	        	orgBodyInfo += "<td><span>"+item.master+"</span></td>";
-	        	orgBodyInfo += "<td><a>操作</a></td>";
+	        	if(item.childCount=="0"){
+	        		orgBodyInfo += "<td><a>修改</a></td>";
+	        	}else{
+	        		orgBodyInfo += "<td><a>修改</a><a>查看辖区机构</a></td>";
+	        	}
+	        	
 	        	orgBodyInfo += "</tr>";
 	        });
 	        $("#org_tbody").html(orgBodyInfo );
@@ -34,7 +39,7 @@ function initOrg(parentId){
  function openAddOrgPage(){
 	 var $browser=$(window);
 	 
-	  var winWidth;
+	    var winWidth;
 	    var winHeight;
 	   
 	    var scrollLeft;
@@ -57,5 +62,7 @@ function initOrg(parentId){
      left=scrollLeft+(winWidth-clientWidth)/2;
      top=scrollTop+(winHeight-clientHeight)/2;   
      
-	 window.open("/manage/toAddOrg","","top="+top+"px,left="+left+"px,width=800,height=600");
+	 window.open("/manage/toAddOrg","","top="+top+"px,left="+left+"px,width=700,height=500");
  }
+ 
+ 

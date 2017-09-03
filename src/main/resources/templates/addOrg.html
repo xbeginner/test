@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="modal-dialog">
-    <form action="#" th:action="@{/manage/addOrg.do}"  th:object="${orgAddForm}" method="post" id="org_add_form">
+    <form action="#" th:action="@{/manage/addOrg}"  th:object="${orgAddForm}" method="post" id="org_add_form">
         <div class="modal-content">
             <div class="modal-header">
  
@@ -52,7 +52,7 @@
             </div>
             <div class="modal-footer">
                 <a  class="btn btn-default modal_button" data-dismiss="modal">关闭</a>
-                <button  class="btn btn-primary modal_button" type="submit">提交</button>
+                <button  class="btn btn-default modal_button" type="submit">提交</button>
             </div>
                 </form>
         </div> 

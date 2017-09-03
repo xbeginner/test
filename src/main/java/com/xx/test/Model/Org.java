@@ -1,13 +1,18 @@
 package com.xx.test.Model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -39,6 +44,10 @@ public class Org implements Serializable{
 	
 	@OneToMany(mappedBy="org")
 	private List<UserInfo> userInfoList;
+	
+ 
+    private Integer parentOrgId;
+	
 
 	public Long getId() {
 		return id;
@@ -105,6 +114,17 @@ public class Org implements Serializable{
 		return JsonUtils.getJsonString(getOrgMap());
 	}
 	
+	
+	
+  
+	public Integer getParentOrgId() {
+		return parentOrgId;
+	}
+
+	public void setParentOrgId(Integer parentOrgId) {
+		this.parentOrgId = parentOrgId;
+	}
+
 	private Map<String,String> getOrgMap(){
 		   Map<String,String> map = new HashMap<String, String>();
 		   
@@ -112,7 +132,7 @@ public class Org implements Serializable{
 		   map.put("orgName", orgName);
 		   map.put("tel", tel);
 		   map.put("master",master);
- 
+           
 		   return  map;
 	}
 	

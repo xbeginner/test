@@ -11,6 +11,13 @@
 </head>
 <body style="background: none">
 <div th:insert="header:: header" ></div>
+<div>
+<ol class="breadcrumb">
+    <li><a href="/openMainPage">首页</a></li>
+    <li class="active">机构管理</li>
+</ol>
+
+</div>
  <div th:if="${org}==null">
 		<div class="alert alert-danger">
 		    <a href="#" class="close" data-dismiss="alert">
@@ -43,7 +50,7 @@
 			 
 			  </div>
 	       	<div class="panel-footer import_button_div" >
-	       	        <a href="#" class="btn btn-red "><span>添加辖内机构</span></a>
+	       	        <a onclick="openAddOrgPage()" class="btn btn-red "><span>添加辖内机构</span></a>
 			  </div>
 		 </div>
  </div>
