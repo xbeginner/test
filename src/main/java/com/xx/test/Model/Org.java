@@ -46,7 +46,7 @@ public class Org implements Serializable{
 	private List<UserInfo> userInfoList;
 	
  
-    private Integer parentOrgId;
+    private Long parentOrgId;
 	
 
 	public Long getId() {
@@ -117,11 +117,11 @@ public class Org implements Serializable{
 	
 	
   
-	public Integer getParentOrgId() {
+	public Long getParentOrgId() {
 		return parentOrgId;
 	}
 
-	public void setParentOrgId(Integer parentOrgId) {
+	public void setParentOrgId(Long parentOrgId) {
 		this.parentOrgId = parentOrgId;
 	}
 

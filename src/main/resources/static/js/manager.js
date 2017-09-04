@@ -23,7 +23,7 @@ function initOrg(parentId){
 	        	if(item.childCount=="0"){
 	        		orgBodyInfo += "<td><a>修改</a></td>";
 	        	}else{
-	        		orgBodyInfo += "<td><a>修改</a><a>查看辖区机构</a></td>";
+	        		orgBodyInfo += "<td><a onclick='alterOrg("+item.id+");'>修改</a>&nbsp;&nbsp;&nbsp;<a onclick='showOwnOrg("+item.id+">查看辖区机构</a></td>";
 	        	}
 	        	
 	        	orgBodyInfo += "</tr>";
@@ -65,4 +65,13 @@ function initOrg(parentId){
 	 window.open("/manage/toAddOrg","","top="+top+"px,left="+left+"px,width=700,height=500");
  }
  
+ 
+ function alterOrg(orgId){
+	 
+ }
+ 
+ 
+ function showOwnOrg(orgId){
+	 
+ }
  

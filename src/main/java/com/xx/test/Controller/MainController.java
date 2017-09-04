@@ -122,7 +122,7 @@ public class MainController extends BaseController {
 	        	 userInfo.setOrg(org);
 	 	         this.userInfoService.alterUserInfoOrg(org, userInfo.getId());
 	        }else{
-	        	 org.setParentOrg(userInfo.getOrg());
+	        	 org.setParentOrgId(userInfo.getOrg().getId());
 	        }
 	         this.orgService.saveOrg(org);
  
@@ -139,10 +139,10 @@ public class MainController extends BaseController {
 		    	int parentId = Integer.valueOf(request.getParameter("parentId"));
 		    	if(parentId==0){
 		    		  json += userInfo.getOrg().getOrgJson();
-		    		  List<Orgt> orgList = this.orgService.
-		    		  System.out.println(userInfo.getOrg().getChildOrgList());
-                      if(!userInfo.getOrg().getChildOrgList().isEmpty()){
-                    	  json = json.replace("}",",\"childCount\":"+ userInfo.getOrg().getChildOrgList().size()+"}");
+		    		  List<Org> orgList = this.orgService.findOrgListByParentId(userInfo.getOrg().getId());
+		    		  System.out.println(orgList.isEmpty());
+                      if(!orgList.isEmpty()){
+                    	  json = json.replace("}",",\"childCount\":"+ orgList.size()+"}");
                       }else{
                     	  json = json.replace("}",",\"childCount\":0}");
                       }

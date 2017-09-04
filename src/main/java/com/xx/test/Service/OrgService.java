@@ -20,8 +20,8 @@ public class OrgService implements IOrgService{
 		return orgDao.save(org);
 	}
 	
-	public List<Org> findOrgListByParentId(int paentId){
-		 
+	public List<Org> findOrgListByParentId(Long parentOrgId){
+		 return orgDao.findByParentOrgId(parentOrgId);
 	}
 
 }
