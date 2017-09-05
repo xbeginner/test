@@ -20,8 +20,20 @@ public class OrgService implements IOrgService{
 		return orgDao.save(org);
 	}
 	
+	public int alterOrg(Org org){
+		return orgDao.updateOrg(org.getOrgName(), org.getTel(), org.getAddress(), org.getMaster(), org.getMasterTel(), org.getId());
+	}
+	
 	public List<Org> findOrgListByParentId(Long parentOrgId){
 		 return orgDao.findByParentOrgId(parentOrgId);
 	}
+
+	@Override
+	public Org findOrgById(Long id) {
+		// TODO Auto-generated method stub
+		return orgDao.findOne(id);
+	}
+	
+	
 
 }

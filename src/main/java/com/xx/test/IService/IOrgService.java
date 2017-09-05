@@ -6,8 +6,12 @@ import com.xx.test.Model.Org;
 
 public interface IOrgService {
 	
-	Org saveOrg(Org org);
+	public Org saveOrg(Org org);
 	
 	public List<Org> findOrgListByParentId(Long long1);
+	
+	public Org findOrgById(Long id);
+
+	public int alterOrg(Org org);
 
 }

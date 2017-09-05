@@ -135,7 +135,7 @@ public class MainController extends BaseController {
 		    @ResponseBody
 		    public String initOrgList(HttpServletRequest request , HttpServletResponse response) {
 		    	String json = "[";
-		    	 UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+		    	UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
 		    	int parentId = Integer.valueOf(request.getParameter("parentId"));
 		    	if(parentId==0){
 		    		  json += userInfo.getOrg().getOrgJson();
@@ -149,9 +149,25 @@ public class MainController extends BaseController {
 		    		
 		    	}
 		    	json += "]";
+		    	 
 		        return json;
 		    }
 		    
+		    
+		    @GetMapping("/index/showOwnOrgList")
+		    @ResponseBody
+		    public String showOwnOrgList(HttpServletRequest request , HttpServletResponse response) {
+		    	String json = "[";
+		    	Long parentId = Long.valueOf(request.getParameter("parentId"));
+		    	List<Org> orgList = this.orgService.findOrgListByParentId(parentId);
+		    	for(Org org:orgList){
+		    		 json += org.getOrgJson();
+		    		 json += ",";
+		    	}
+                json = json.substring(0, json.length()-1);	    	
+		    	json += "]";
+		        return json;
+		    }
 		    
 		    
 		    @PostMapping(value="/index/addOwnOrg")
@@ -168,4 +184,30 @@ public class MainController extends BaseController {
 			         this.orgService.saveOrg(org);
 		             return SUCCESS;
 		    }
+		    
+		    
+		    @PostMapping(value="/index/alterOrg")
+		    @ResponseBody
+		    public String alterOrg(HttpServletRequest request , HttpServletResponse response) {
+		    	     Long id = Long.valueOf(request.getParameter("orgId"));
+			         Org org = orgService.findOrgById(id);
+			         org.setAddress(request.getParameter("address"));
+			         org.setMaster(request.getParameter("master"));
+			         org.setMasterTel(request.getParameter("tel"));
+			         org.setOrgName(request.getParameter("orgName"));
+			         org.setTel(request.getParameter("tel"));
+			         this.orgService.alterOrg(org);
+		             return SUCCESS;
+		    }
+		 
+		    @GetMapping("/index/showOrgInfo")
+		    @ResponseBody
+		    public String showOrgInfo(HttpServletRequest request , HttpServletResponse response) {
+		    	Long orgId = Long.valueOf(request.getParameter("orgId"));
+		    	Org org = orgService.findOrgById(orgId);
+		    	String json = org.getOrgJson();
+		    	System.out.println(json);
+		        return json;
+		    }
+		    
 }

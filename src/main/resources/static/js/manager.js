@@ -67,19 +67,61 @@ function initOrg(parentId){
 	 window.open("/manage/toAddOrg","","top="+top+"px,left="+left+"px,width=700,height=500");
  }
  
- 
+ /**
+  * 修改org
+  * @param orgId
+  * @returns
+  */
  function alterOrg(orgId){
-	 
+	    $("#addOwnOrgModal").modal('show');
+	    
+	    $.getJSON("/index/showOrgInfo?orgId="+orgId, function(data) {
+	          $('#orgName').val(data.orgName);
+	          $('#tel').val(data.tel);
+	          $('#address').val(data.address);
+	          $('#master').val(data.master);
+	          $('#masterTel').val(data.masterTel);
+	     });
+		 
+		    $('#orgForm').submit(function() { 
+				 $('#orgForm').ajaxSubmit({
+			  			url:'/index/alterOrg?orgId='+orgId,
+			  			dataType:'text',
+			  			success:function(data){
+			  				$("#addOwnOrgModal").modal('hide');
+			  				$('#orgForm')[0].reset();
+	                        alert(data);
+	                        initOrg(0);
+			  		    }
+			  	     });
+				 return false;
+		    }); 
+	    
  }
  
  
  function showOwnOrg(orgId){
-	 
+
+		$.getJSON("/index/showOwnOrgList?parentId="+orgId, function(data) {
+			  $("#org_tbody").html("");//清空info内容
+			  var orgBodyInfo = "";
+		        $.each(data, function(i, item) {
+		        	orgBodyInfo += "<tr>";
+		        	orgBodyInfo += "<td><span>"+item.orgName+"</span></td>";
+		        	orgBodyInfo += "<td><span>"+item.tel+"</span></td>";
+		        	orgBodyInfo += "<td><span>"+item.master+"</span></td>";
+	                orgBodyInfo += "<td><a>修改</a>&nbsp;&nbsp;&nbsp;<a>删除</a></td>";
+		        	orgBodyInfo += "</tr>";
+		        });
+		    
+		        $("#org_tbody").html(orgBodyInfo );
+	    });
+
  }
  
  function addOwnOrg(){
 	 $("#addOwnOrgModal").modal('show');
-	// $('#orgForm').attr("action","/index/addOwnOrg");
+	 
 	    $('#orgForm').submit(function() { 
 			 $('#orgForm').ajaxSubmit({
 		  			url:'/index/addOwnOrg',
@@ -87,14 +129,12 @@ function initOrg(parentId){
 		  			success:function(data){
 		  				$("#addOwnOrgModal").modal('hide');
 		  				$('#orgForm')[0].reset();
-                        alert(data);
-                        initOrg(0);
+                    alert(data);
+                    initOrg(0);
 		  		    }
 		  	     });
 			 return false;
-	    });
-	    
-	   
-	    
+	    }); 
+	
  }
  

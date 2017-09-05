@@ -131,8 +131,9 @@ public class Org implements Serializable{
 		   map.put("id", String.valueOf(id));
 		   map.put("orgName", orgName);
 		   map.put("tel", tel);
+		   map.put("address", address);
 		   map.put("master",master);
-           
+		   map.put("masterTel",masterTel);
 		   return  map;
 	}
 	
