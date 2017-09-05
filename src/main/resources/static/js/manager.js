@@ -20,14 +20,16 @@ function initOrg(parentId){
 	        	orgBodyInfo += "<td><span>"+item.orgName+"</span></td>";
 	        	orgBodyInfo += "<td><span>"+item.tel+"</span></td>";
 	        	orgBodyInfo += "<td><span>"+item.master+"</span></td>";
+ 
 	        	if(item.childCount=="0"){
 	        		orgBodyInfo += "<td><a>修改</a></td>";
 	        	}else{
-	        		orgBodyInfo += "<td><a onclick='alterOrg("+item.id+");'>修改</a>&nbsp;&nbsp;&nbsp;<a onclick='showOwnOrg("+item.id+">查看辖区机构</a></td>";
+	        		orgBodyInfo += "<td><a onclick='alterOrg("+item.id+");'>修改</a>&nbsp;&nbsp;&nbsp;<a onclick='showOwnOrg("+item.id+");'>查看辖区机构</a></td>";
 	        	}
 	        	
 	        	orgBodyInfo += "</tr>";
 	        });
+	    
 	        $("#org_tbody").html(orgBodyInfo );
     });
 }
@@ -73,5 +75,26 @@ function initOrg(parentId){
  
  function showOwnOrg(orgId){
 	 
+ }
+ 
+ function addOwnOrg(){
+	 $("#addOwnOrgModal").modal('show');
+	// $('#orgForm').attr("action","/index/addOwnOrg");
+	    $('#orgForm').submit(function() { 
+			 $('#orgForm').ajaxSubmit({
+		  			url:'/index/addOwnOrg',
+		  			dataType:'text',
+		  			success:function(data){
+		  				$("#addOwnOrgModal").modal('hide');
+		  				$('#orgForm')[0].reset();
+                        alert(data);
+                        initOrg(0);
+		  		    }
+		  	     });
+			 return false;
+	    });
+	    
+	   
+	    
  }
  

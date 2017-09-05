@@ -140,17 +140,32 @@ public class MainController extends BaseController {
 		    	if(parentId==0){
 		    		  json += userInfo.getOrg().getOrgJson();
 		    		  List<Org> orgList = this.orgService.findOrgListByParentId(userInfo.getOrg().getId());
-		    		  System.out.println(orgList.isEmpty());
                       if(!orgList.isEmpty()){
-                    	  json = json.replace("}",",\"childCount\":"+ orgList.size()+"}");
+                    	  json = json.replace("}",",\"childCount\":\""+orgList.size()+"\"}");
                       }else{
-                    	  json = json.replace("}",",\"childCount\":0}");
+                    	  json = json.replace("}",",\"childCount\":\"0\"}");
                       }
 		    	}else{
 		    		
 		    	}
 		    	json += "]";
-		    	
 		        return json;
+		    }
+		    
+		    
+		    
+		    @PostMapping(value="/index/addOwnOrg")
+		    @ResponseBody
+		    public String addOwnOrg(HttpServletRequest request , HttpServletResponse response) {
+		    	     UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+			         Org org = new Org();
+			         org.setAddress(request.getParameter("address"));
+			         org.setMaster(request.getParameter("master"));
+			         org.setMasterTel(request.getParameter("tel"));
+			         org.setOrgName(request.getParameter("orgName"));
+			         org.setTel(request.getParameter("tel"));
+			         org.setParentOrgId(userInfo.getOrg().getId());
+			         this.orgService.saveOrg(org);
+		             return SUCCESS;
 		    }
 }

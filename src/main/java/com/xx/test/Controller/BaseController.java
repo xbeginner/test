@@ -7,6 +7,8 @@ import com.xx.test.IService.IUserInfoService;
 
 public abstract class BaseController {
 	
+	protected static final String SUCCESS="操作成功";
+	
 	  @Autowired
 	  protected IUserInfoService userInfoService;
 	  

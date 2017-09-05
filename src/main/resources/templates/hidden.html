@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+ <body>
+  
+   <div th:fragment="hidden">
+  
+  
+       <div class="modal fade" id="addOwnOrgModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		data-backdrop="static">
+		<form  id="orgForm" method="post" >
+		 <div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body ">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="form-group">
+								<div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>机构名称：</span> <input type="text"
+										name="orgName"  id="orgName"   class="form-control" required>
+								</div>
+							  <div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>电话：</span> <input type="text"
+										name="tel"   id="tel" class="form-control" required>
+								</div>
+							    <div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>地址：</span> <input type="text"
+										name="address"  id="address"  class="form-control" required>
+								</div>
+								 <div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>联系人：</span> <input type="text"
+										name="master"  id="master"   class="form-control" required>
+								</div>
+								 <div class="input-group">
+									<span class="input-group-addon">联系人电话：</span> <input type="text"
+										name="masterTel"  id="masterTel" class="form-control" >
+								</div>
+							</div>
+						</div>
+					</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="submit" class="btn btn-default" >提交</button>
+				</div>
+			</div>
+		</div>
+		</form>
+		<script>
+$("#commentForm").validate({
+	rules:{
+		orgName:{
+			required:true
+		},
+		tel:{
+			required:true
+		},
+		address:{
+			required:true
+		},
+		master:{
+			required:true
+		}
+	},
+	messages:{
+		orgName:{
+			required:'请输入名称'
+		},
+		tel:{
+			required:'请输入电话号码'
+		},
+		address:{
+			required:'请输入地址'
+		},
+		master:{
+			required:'请输入联系人'
+		}
+	}
+});
+</script>
+ <style>
+	#orgForm label.error 
+{ 
+	color:Red; 
+	font-size:13px; 
+	margin-left:5px; 
+	padding-left:16px; 
+} 
+	</style>
+ </div>
+      
+  
+   </div>
+   
+ </body>
+</html>
