@@ -138,6 +138,7 @@ public class MainController extends BaseController {
 		    	UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
 		    	int parentId = Integer.valueOf(request.getParameter("parentId"));
 		    	if(parentId==0){
+		    		System.out.println(userInfo.getOrg().getMaster());
 		    		  json += userInfo.getOrg().getOrgJson();
 		    		  List<Org> orgList = this.orgService.findOrgListByParentId(userInfo.getOrg().getId());
                       if(!orgList.isEmpty()){
@@ -149,7 +150,7 @@ public class MainController extends BaseController {
 		    		
 		    	}
 		    	json += "]";
-		    	 
+		    	 System.out.println(json);
 		        return json;
 		    }
 		    

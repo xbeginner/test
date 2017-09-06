@@ -2,11 +2,15 @@ package com.xx.test.Model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name="t_userinfo")
@@ -27,7 +31,7 @@ public class UserInfo implements Serializable {
 	
 	private String idcard;
 	
-	@ManyToOne
+	@ManyToOne(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
 	private Org org;
 	
 	@ManyToOne
