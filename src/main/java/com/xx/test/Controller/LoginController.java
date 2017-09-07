@@ -8,20 +8,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.support.IsNewStrategyFactorySupport;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.xx.test.Form.OrgAddForm;
+import com.xx.test.Form.RegisteUserForm;
 import com.xx.test.IService.IUserInfoService;
 import com.xx.test.Model.UserInfo;
 import com.xx.test.Service.UserInfoService;
 
 import redis.clients.jedis.Jedis;
 
-@RestController
+@Controller
 public class LoginController extends BaseController{
  
 	  @RequestMapping(value="/login/checkLogin",method=RequestMethod.POST)
@@ -89,7 +93,9 @@ public class LoginController extends BaseController{
 	  @RequestMapping(value="/logout",method=RequestMethod.GET)
 	  public ModelAndView logout(HttpServletRequest request , HttpServletResponse response){
             request.getSession().removeAttribute("currentUserInfo");
+            UserInfo userInfo = new UserInfo();
 		    ModelAndView modelAndView = new ModelAndView("login");
+		    modelAndView.addObject(userInfo);
 		    return modelAndView;
 	  }
 	  
@@ -127,6 +133,10 @@ public class LoginController extends BaseController{
 	  }
 	  
 	  
+	    @GetMapping("/manage/toRegisteUser")
+	    public String toRegisteUser(RegisteUserForm registeUserForm) {
+	        return "registeUser";
+	    }
 	  
 	
 }

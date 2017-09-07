@@ -24,8 +24,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.xx.test.Form.OrgAddForm;
 import com.xx.test.Form.PersonForm;
+import com.xx.test.Form.RegisteUserForm;
 import com.xx.test.Model.Menu;
 import com.xx.test.Model.Org;
+import com.xx.test.Model.RegisterUser;
 import com.xx.test.Model.Role;
 import com.xx.test.Model.UserInfo;
 import com.xx.test.Utils.JsonUtils;
@@ -130,6 +132,26 @@ public class MainController extends BaseController {
 	    }
 		 
 		 
+		    @PostMapping("/manage/registerUser")
+		    public String registerUser(@Valid RegisteUserForm registeUserForm, BindingResult bindingResult,HttpServletRequest request) {
+			 
+		        if (bindingResult.hasErrors()) {
+		               return "registeUser";
+		        }
+		        RegisterUser registerUser = new RegisterUser();
+		        registerUser.setIdcard(registeUserForm.getIdcard());
+		        registerUser.setTel(registeUserForm.getTel());
+		        registerUser.setUserName(registeUserForm.getUserName());
+		        if(request.getParameter("org")!=null){
+		            Long id = Long.valueOf(request.getParameter("org"));
+			         Org org = this.orgService.findOrgById(id);
+			         registerUser.setOrg(org);
+		        }
+		         this.registeUserService.saveRegisteUser(registerUser);
+		         return "redirect:/success";
+		    }
+			 
+		 
 		 
 		    @GetMapping("/index/initOrgList")
 		    @ResponseBody
@@ -152,6 +174,23 @@ public class MainController extends BaseController {
 		    	json += "]";
 		        return json;
 		    }
+		    
+		    
+		    @GetMapping("/manage/getAllRegisteOrgs")
+		    @ResponseBody
+		    public String getAllRegisteOrgs(HttpServletRequest request , HttpServletResponse response) {
+		    	String json = "[";
+		    	List<Org> orgs = this.orgService.findByParentOrgIdNotNull();
+		    	for(Org o:orgs){
+		    		json += o.getOrgJson();
+		    		json += ",";
+		    	}
+		    	json = json.substring(0,json.length()-1);
+		    	json += "]";
+		    	System.out.println(json);
+		        return json;
+		    }
+		    
 		    
 		    
 		    @GetMapping("/index/showOwnOrgList")

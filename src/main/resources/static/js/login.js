@@ -64,6 +64,36 @@
      form.appendTo("body").submit();
      form.remove();  
  };
+ 
+ 
+ function openRegisteUserPage(){
+	 var $browser=$(window);
+	 
+	    var winWidth;
+	    var winHeight;
+	   
+	    var scrollLeft;
+	    var scrollTop;
+	   
+	    var left=0,top=0;
+	    var $currentWin=$("div.win");//弹出窗口
+	    var clientWidth;
+	    var clientHeight;
+	    
+	 winWidth=$browser.width();
+     winHeight=$browser.height();
+    
+     scrollLeft=$browser.scrollLeft();
+     scrollTop=$browser.scrollTop();
+    
+     clientWidth=$currentWin.outerWidth();
+     clientHeight=$currentWin.outerHeight();
+
+     left=scrollLeft+(winWidth-clientWidth)/2;
+     top=scrollTop+(winHeight-clientHeight)/2;   
+     
+	 window.open("/manage/toRegisteUser","","top="+top+"px,left="+left+"px,width=700,height=500");
+ };
 
  
  

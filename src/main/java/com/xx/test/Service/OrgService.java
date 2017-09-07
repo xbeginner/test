@@ -39,5 +39,9 @@ public class OrgService implements IOrgService{
 		   orgDao.delete(id);
 	}
 	
+	
+	public List<Org> findByParentOrgIdNotNull(){
+		  return orgDao.findByParentOrgIdNotNull();
+	}
 
 }

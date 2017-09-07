@@ -20,4 +20,6 @@ public interface OrgDao extends PagingAndSortingRepository<Org, Long>{
     @Query("update Org o set o.orgName = ?1,o.tel=?2,o.address=?3,o.master=?4,o.masterTel=?5  where o.id = ?6")
     int updateOrg(String orgName,String tel,String address,String master,String masterTel, long id);
 	
+    
+    List<Org> findByParentOrgIdNotNull();
 }

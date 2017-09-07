@@ -15,5 +15,7 @@ public interface IOrgService {
 	public int alterOrg(Org org);
 	
 	public void deleteOrg(Long id);
+	
+	public List<Org> findByParentOrgIdNotNull();
 
 }

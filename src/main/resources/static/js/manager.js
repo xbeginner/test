@@ -166,5 +166,18 @@ function initOrg(parentId){
 				}
 			 }
 			  $.ajax(delete_org_options);
+ };
+ 
+ 
+ function initRegisterOrgs(){
+	 $.getJSON("/manage/getAllRegisteOrgs", function(data) {
+		  $("#org_select").html("");//清空info内容
+		  var orgBodyInfo = "";
+	        $.each(data, function(i, item) {
+	        	orgBodyInfo += "<option value="+item.id+">"+item.orgName+"</option>";
+	        });
+	    
+	        $("#org_select").html(orgBodyInfo );
+   });
  }
  
