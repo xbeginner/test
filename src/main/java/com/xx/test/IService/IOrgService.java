@@ -13,5 +13,7 @@ public interface IOrgService {
 	public Org findOrgById(Long id);
 
 	public int alterOrg(Org org);
+	
+	public void deleteOrg(Long id);
 
 }

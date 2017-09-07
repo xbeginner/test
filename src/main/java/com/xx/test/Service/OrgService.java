@@ -35,5 +35,9 @@ public class OrgService implements IOrgService{
 	}
 	
 	
+	public void deleteOrg(Long id){
+		   orgDao.delete(id);
+	}
+	
 
 }

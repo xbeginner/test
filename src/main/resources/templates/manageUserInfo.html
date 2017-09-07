@@ -12,6 +12,11 @@
 </head>
 <body style="background: none">
 <div th:insert="header:: header" ></div>
+
+ <ol class="breadcrumb"  id="bread_nav">
+    <li><a href="/openMainPage">首页</a></li>
+    <li class="active">人员管理</li>
+</ol>
  
  <div class="container" id="not_register_container">
 		 <div class="panel panel-danger">
@@ -19,6 +24,20 @@
 			 <span>待注册审批人员</span>
 			 </div>
 			 <div class="panel-body">
+			 	 <table class="table">
+						  <thead>
+						    <tr>
+							      <th><span>姓名</span></th>
+							      <th><span>机构</span></th>
+							      <th><span>联系电话</span></th>
+							       <th><span>操作</span></th>
+						    </tr>
+						  </thead>
+						  <tbody id="not_regist_tbody">
+						            
+						  </tbody>
+						</table>
+			 
 			  </div>
 		
 		 </div>
@@ -31,6 +50,20 @@
 			 <span>已注册人员</span>
 			 </div>
 			 <div class="panel-body">
+			  <table class="table">
+						  <thead>
+						    <tr>
+							      <th><span>姓名</span></th>
+							      <th><span>机构</span></th>
+							      <th><span>联系电话</span></th>
+							       <th><span>操作</span></th>
+						    </tr>
+						  </thead>
+						  <tbody id="has_regist_tbody">
+						            
+						  </tbody>
+						</table>
+			 
 			  </div>
 	       	<div class="panel-footer import_button_div" >
 	       	       <a href="#" class="btn btn-red "><span>批量导入人员</span></a>

@@ -138,8 +138,8 @@ public class MainController extends BaseController {
 		    	UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
 		    	int parentId = Integer.valueOf(request.getParameter("parentId"));
 		    	if(parentId==0){
-		    		System.out.println(userInfo.getOrg().getMaster());
-		    		  json += userInfo.getOrg().getOrgJson();
+		    		  Org org = this.orgService.findOrgById(userInfo.getOrg().getId());
+		    		  json += org.getOrgJson();
 		    		  List<Org> orgList = this.orgService.findOrgListByParentId(userInfo.getOrg().getId());
                       if(!orgList.isEmpty()){
                     	  json = json.replace("}",",\"childCount\":\""+orgList.size()+"\"}");
@@ -150,7 +150,6 @@ public class MainController extends BaseController {
 		    		
 		    	}
 		    	json += "]";
-		    	 System.out.println(json);
 		        return json;
 		    }
 		    
@@ -207,8 +206,28 @@ public class MainController extends BaseController {
 		    	Long orgId = Long.valueOf(request.getParameter("orgId"));
 		    	Org org = orgService.findOrgById(orgId);
 		    	String json = org.getOrgJson();
-		    	System.out.println(json);
 		        return json;
 		    }
+		    
+		    
+		    
+		    @GetMapping("/index/deleteOrg")
+		    @ResponseBody
+		    public String deleteOrg(HttpServletRequest request , HttpServletResponse response) {
+		    	Long orgId = Long.valueOf(request.getParameter("id"));
+		    	orgService.deleteOrg(orgId);
+		        return SUCCESS;
+		    }
+		    
+		    
+		    @GetMapping("/index/showNoRegistUserInfo")
+		    @ResponseBody
+		    public String showNoRegistUserInfo(HttpServletRequest request , HttpServletResponse response) {
+		    	String json = "[";
+		    	 
+		    	json += "]";
+		        return null;
+		    }
+		    
 		    
 }
