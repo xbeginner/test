@@ -146,6 +146,7 @@ public class MainController extends BaseController {
 		            Long id = Long.valueOf(request.getParameter("org"));
 			         Org org = this.orgService.findOrgById(id);
 			         registerUser.setOrg(org);
+			         registerUser.setManageOrgId(org.getParentOrgId());
 		        }
 		         this.registeUserService.saveRegisteUser(registerUser);
 		         return "redirect:/success";
@@ -263,9 +264,16 @@ public class MainController extends BaseController {
 		    @ResponseBody
 		    public String showNoRegistUserInfo(HttpServletRequest request , HttpServletResponse response) {
 		    	String json = "[";
-		    	 
+		    	UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+		    	Long orgId = userInfo.getOrg().getId();
+		    	List<RegisterUser> registUsers = this.registeUserService.findRegisteUserByOrgId(orgId);
+		    	for(RegisterUser user:registUsers){
+		    		   json += user.getRegisteUserJson();
+		    		   json += ",";
+		    	}
+		    	json = json.substring(0, json.length()-1);
 		    	json += "]";
-		        return null;
+		        return json;
 		    }
 		    
 		    

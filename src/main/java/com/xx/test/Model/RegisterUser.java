@@ -1,6 +1,8 @@
 package com.xx.test.Model;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -11,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
+
+import com.xx.test.Utils.JsonUtils;
 
 @Entity
 @Table(name="t_registerUser")
@@ -34,6 +38,9 @@ public class RegisterUser implements Serializable {
 	private Org org;
 	
 	private String tel;
+	
+	//管理机构id
+	private Long manageOrgId;
 	
 
 	public Long getId() {
@@ -80,8 +87,31 @@ public class RegisterUser implements Serializable {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-
-
 	
+	
+ 
+
+	public Long getManageOrgId() {
+		return manageOrgId;
+	}
+
+	public void setManageOrgId(Long manageOrgId) {
+		this.manageOrgId = manageOrgId;
+	}
+
+	private Map<String,String> getRegisteUserMap(){
+		   Map<String,String> map = new HashMap<String, String>();
+		   map.put("id", String.valueOf(id));
+		   map.put("userName", userName);
+		   map.put("tel", tel);
+		   map.put("idcard", idcard);
+		   map.put("orgName", org.getOrgName());
+		   return  map;
+	}
+	
+	
+	public String getRegisteUserJson(){
+		return JsonUtils.getJsonString(getRegisteUserMap());
+	}
 
 }

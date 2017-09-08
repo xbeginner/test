@@ -8,5 +8,7 @@ import com.xx.test.Model.RegisterUser;
 public interface IRegisteUserService {
 	
   public void saveRegisteUser(RegisterUser registeUser);
+  
+  public List<RegisterUser> findRegisteUserByOrgId(Long orgId);
 
 }

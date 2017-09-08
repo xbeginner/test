@@ -4,8 +4,8 @@ function initWaitForRegistUserInfo(){
 		  var orgBodyInfo = "";
 	        $.each(data, function(i, item) {
 	        	orgBodyInfo += "<tr>";
-	        	orgBodyInfo += "<td><span>"+item.username+"</span></td>";
-	        	orgBodyInfo += "<td><span>"+item.org+"</span></td>";
+	        	orgBodyInfo += "<td><span>"+item.userName+"</span></td>";
+	        	orgBodyInfo += "<td><span>"+item.orgName+"</span></td>";
 	        	orgBodyInfo += "<td><span>"+item.tel+"</span></td>";
 	        	orgBodyInfo += "<td><a class='btn_success' onclick='#'>通过</a>&nbsp;&nbsp;&nbsp;<a class='btn_danger' onclick='#'>拒绝</a></td>";
 	        	orgBodyInfo += "</tr>";

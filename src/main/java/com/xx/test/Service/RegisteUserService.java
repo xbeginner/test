@@ -17,9 +17,14 @@ import com.xx.test.Model.RegisterUser;
 public class RegisteUserService implements IRegisteUserService{
 	
 	@Autowired
-    RegisteUserDao registeUSerDao;
+    RegisteUserDao registeUserDao;
 	
 	 public void saveRegisteUser(RegisterUser registeUser){
-		 registeUSerDao.save(registeUser);
+		 registeUserDao.save(registeUser);
+	 }
+	 
+	 
+	 public List<RegisterUser> findRegisteUserByOrgId(Long orgId){
+		   return registeUserDao.findByManageOrgId(orgId); 
 	 }
 }
