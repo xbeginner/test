@@ -112,6 +112,7 @@ public class RegisterUser implements Serializable {
 	
 	public String getRegisteUserJson(){
 		return JsonUtils.getJsonString(getRegisteUserMap());
+		
 	}
 
 }

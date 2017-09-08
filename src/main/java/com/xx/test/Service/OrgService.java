@@ -30,7 +30,6 @@ public class OrgService implements IOrgService{
 
 	@Override
 	public Org findOrgById(Long id) {
-		// TODO Auto-generated method stub
 		return orgDao.findOne(id);
 	}
 	
