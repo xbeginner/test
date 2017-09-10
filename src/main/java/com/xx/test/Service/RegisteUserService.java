@@ -27,4 +27,12 @@ public class RegisteUserService implements IRegisteUserService{
 	 public List<RegisterUser> findRegisteUserByOrgId(Long orgId){
 		   return registeUserDao.findByManageOrgId(orgId); 
 	 }
+	 
+	 public void deleteRegisteUser(Long id){
+		  registeUserDao.delete(id);
+	 }
+	 
+	 public RegisterUser findRegisteUserById(Long id){
+		 return registeUserDao.findOne(id);
+	 }
 }

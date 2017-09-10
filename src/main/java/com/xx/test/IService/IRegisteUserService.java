@@ -10,5 +10,9 @@ public interface IRegisteUserService {
   public void saveRegisteUser(RegisterUser registeUser);
   
   public List<RegisterUser> findRegisteUserByOrgId(Long orgId);
+  
+  public void deleteRegisteUser(Long id);
+  
+  public RegisterUser findRegisteUserById(Long id);
 
 }

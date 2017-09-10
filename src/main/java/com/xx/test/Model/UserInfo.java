@@ -1,6 +1,8 @@
 package com.xx.test.Model;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -11,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
+
+import com.xx.test.Utils.JsonUtils;
 
 @Entity
 @Table(name="t_userinfo")
@@ -30,6 +34,9 @@ public class UserInfo implements Serializable {
 	private String password;
 	
 	private String idcard;
+	
+	private String tel;
+	
 	
 	@ManyToOne(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
 	private Org org;
@@ -87,6 +94,30 @@ public class UserInfo implements Serializable {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	
+	
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+ 
+	private Map<String,String> getUserMap(){
+		   Map<String,String> map = new HashMap<String, String>();
+		   map.put("id", String.valueOf(id));
+		   map.put("userName", userName);
+		   map.put("tel", tel);
+		   map.put("idcard", idcard);
+		   map.put("orgName", org.getOrgName());
+		   return  map;
+	}
+	
+	
+	public String getUserJson(){
+		return JsonUtils.getJsonString(getUserMap());
 	}
 	
 	

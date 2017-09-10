@@ -1,6 +1,9 @@
 package com.xx.test.IService;
 
+import java.util.List;
+
 import com.xx.test.Model.Org;
+import com.xx.test.Model.RegisterUser;
 import com.xx.test.Model.UserInfo;
 
 public interface IUserInfoService {
@@ -22,5 +25,11 @@ public interface IUserInfoService {
 	UserInfo findById(Long userId);
 	
 	int alterUserInfoOrg(Org org, Long userId);
+	
+	public List<UserInfo> findUserInfoByParentOrgId(Long orgId);
+	
+	public UserInfo saveUserInfo(UserInfo userInfo);
+	
+	public void alterUserInfo(UserInfo userInfo);
 	
 }

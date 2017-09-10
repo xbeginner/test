@@ -1,5 +1,7 @@
 package com.xx.test.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,5 +54,19 @@ public class UserInfoService implements IUserInfoService{
 		   return userInfoDao.update(org, userId);
 	}
 	
+	
+	public List<UserInfo> findUserInfoByParentOrgId(Long orgId){
+		return userInfoDao.findByParentOrgId(orgId);
+	}
+	
+	
+	public UserInfo saveUserInfo(UserInfo userInfo){
+		return userInfoDao.save(userInfo);
+	}
+	
+	
+	public void alterUserInfo(UserInfo userInfo){
+		userInfoDao.updateUserInfo(userInfo.getUserName(), userInfo.getTel(), userInfo.getIdcard(), userInfo.getId());
+	}
 
 }

@@ -18,39 +18,42 @@
                 <h4 class="modal-title" id="myModalLabel">人员注册</h4>
             </div>
             <div class="modal-body">
-				          	  <table>
-				                <tr  class="tr_padding">
-				                    <td>姓名:</td>
-				                    <td><input type="text" th:field="*{userName}" /></td>
-				                    <td th:if="${#fields.hasErrors('userName')}"><span th:errors="*{userName}" style="color: red;">Name Error</span></td> 
-				                </tr>
-				                <tr  class="tr_padding">
-				                    <td>联系电话:</td>
-				                    <td><input type="text" th:field="*{tel}" /></td>
-				                    <td th:if="${#fields.hasErrors('tel')}" ><span th:errors="*{tel}" style="color: red;">Tel Error</span></td>
-				                </tr>
-				                <tr>
-				              <tr  class="tr_padding">
-				                    <td>身份证号:</td>
-				                    <td><input type="text" th:field="*{idcard}" /></td>
-				                     <td th:if="${#fields.hasErrors('idcard')}"  ><span th:errors="*{idcard}" style="color: red;">Address Error</span></td>
-				                </tr>
-				                <tr>
-				              <tr  class="tr_padding">
-				                    <td>选择机构:</td>
-				                    <td><div class="field_select">
-									    <select class="select_styled" id="org_select" name="org">
-									        
-									    </select>
-									</div></td>
-				                </tr>
-				            </table>					
-          
+            
+              <div class="form-group">
+			    <label>姓名</label>
+			    <input type="text" th:field="*{userName}" />
+			    <a th:if="${#fields.hasErrors('userName')}"><span th:errors="*{userName}" style="color: red;">Name Error</span></a>
+			  </div>
+			  
+			 <div class="form-group">
+			    <label>联系电话</label>
+			    <input type="text" th:field="*{tel}" />
+			    <a th:if="${#fields.hasErrors('tel')}" ><span th:errors="*{tel}" style="color: red;">Tel Error</span></a>
+			  </div>
+			  
+			 <div class="form-group">
+			    <label>身份证号</label>
+			    <input type="text" th:field="*{idcard}" />
+			     <a th:if="${#fields.hasErrors('idcard')}"  ><span th:errors="*{idcard}" style="color: red;">Address Error</span></a>
+			  </div>
+			  
+			 <div class="form-group">
+			    <label>选择机构</label>
+			   <div class="field_select">
+				    <select class="select_styled" id="org_select" name="org">
+				        
+				    </select>
+				</div>
+			  </div>
+			  
+			  
+			            
+             
                    
 
 		            </div>
 		            <div class="modal-footer">
-		                <a  class="btn btn-default modal_button" data-dismiss="modal">关闭</a>
+		                <a  class="btn btn-default modal_button" data-dismiss="modal" onclick="window.close();">关闭</a>
 		                <button  class="btn btn-default modal_button" type="submit">提交</button>
 		            </div>
                 </form>

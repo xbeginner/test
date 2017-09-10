@@ -267,6 +267,9 @@ public class MainController extends BaseController {
 		    	UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
 		    	Long orgId = userInfo.getOrg().getId();
 		    	List<RegisterUser> registUsers = this.registeUserService.findRegisteUserByOrgId(orgId);
+		    	if(registUsers.size()==0){
+		    		return "[]";
+		    	}
 		    	for(RegisterUser user:registUsers){
 		    		   json += user.getRegisteUserJson();
 		    		   json += ",";
@@ -276,5 +279,71 @@ public class MainController extends BaseController {
 		        return json;
 		    }
 		    
+		    
+		    @GetMapping("/index/showOwnUserInfo")
+		    @ResponseBody
+		    public String showOwnUserInfo(HttpServletRequest request , HttpServletResponse response) {
+		    	String json = "[";
+		    	UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+		    	Long orgId = userInfo.getOrg().getId();
+		    	List<UserInfo> userInfoList = this.userInfoService.findUserInfoByParentOrgId(orgId);
+		    	for(UserInfo user:userInfoList){
+		    		   json += user.getUserJson();
+		    		   json += ",";
+		    	}
+		    	json = json.substring(0, json.length()-1);
+		    	json += "]";
+		        return json;
+		    }
+		    
+		    
+		    
+		    @GetMapping("/index/passRegister")
+		    @ResponseBody
+		    public String passRegister(HttpServletRequest request , HttpServletResponse response) {
+		    	Long userId = Long.valueOf(request.getParameter("id"));
+		    	RegisterUser reUser = registeUserService.findRegisteUserById(userId);
+		    	UserInfo userInfo = new UserInfo();
+		    	userInfo.setIdcard(reUser.getIdcard());
+		    	userInfo.setOrg(reUser.getOrg());
+		    	userInfo.setPassword("123456");
+		    	userInfo.setTel(reUser.getTel());
+		    	userInfo.setUserName(reUser.getUserName());
+		    	this.userInfoService.saveUserInfo(userInfo);
+		    	registeUserService.deleteRegisteUser(userId);
+		    	return SUCCESS;
+		    }
+		    
+		    
+		    @GetMapping("/index/noPassRegister")
+		    @ResponseBody
+		    public String noPassRegister(HttpServletRequest request , HttpServletResponse response) {
+		    	Long userId = Long.valueOf(request.getParameter("id"));
+		    	registeUserService.deleteRegisteUser(userId);
+		        return SUCCESS;
+		    }
+		    
+		    
+		    @GetMapping("/index/showUserInfo")
+		    @ResponseBody
+		    public String showUserInfo(HttpServletRequest request , HttpServletResponse response) {
+		    	Long userId = Long.valueOf(request.getParameter("userId"));
+		    	UserInfo user = userInfoService.findById(userId);
+		    	String json = user.getUserJson();
+		        return json;
+		    }
+		    
+		    
+		    @PostMapping(value="/index/alterUserInfo")
+		    @ResponseBody
+		    public String alterUserInfo(HttpServletRequest request , HttpServletResponse response) {
+		    	     Long id = Long.valueOf(request.getParameter("userId"));
+			         UserInfo user = userInfoService.findById(id);
+			         user.setIdcard(request.getParameter("idcard"));
+			         user.setTel(request.getParameter("tel"));
+			         user.setUserName(request.getParameter("userName"));
+			         userInfoService.alterUserInfo(user);
+		             return SUCCESS;
+		    }
 		    
 }

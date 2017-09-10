@@ -14,7 +14,7 @@
                     data:$('#loginForm').serialize(), 
 					async: false,
 					error: function(request) {
-						 alert("发送请求失败！");
+						 alert("输入错误，请重新输入！");
 					},
 					success: function(data) {
 				         if(data=='username'){

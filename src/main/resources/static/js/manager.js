@@ -1,13 +1,13 @@
 function initWaitForRegistUserInfo(){
 	$.getJSON("/index/showNoRegistUserInfo", function(data) {
-		  $("#org_tbody").html("");//清空info内容
+		  $("#not_regist_tbody").html("");//清空info内容
 		  var orgBodyInfo = "";
 	        $.each(data, function(i, item) {
 	        	orgBodyInfo += "<tr>";
 	        	orgBodyInfo += "<td><span>"+item.userName+"</span></td>";
 	        	orgBodyInfo += "<td><span>"+item.orgName+"</span></td>";
 	        	orgBodyInfo += "<td><span>"+item.tel+"</span></td>";
-	        	orgBodyInfo += "<td><a class='btn_success' onclick='#'>通过</a>&nbsp;&nbsp;&nbsp;<a class='btn_danger' onclick='#'>拒绝</a></td>";
+	        	orgBodyInfo += "<td><a class='btn_success' onclick='passRegister("+item.id+");'>通过</a>&nbsp;&nbsp;&nbsp;<a class='btn_danger' onclick='noPassRegister("+item.id+");'>拒绝</a></td>";
 	        	orgBodyInfo += "</tr>";
 	        });
 	    
@@ -17,7 +17,20 @@ function initWaitForRegistUserInfo(){
 
 
 function initRegistedUserInfo(){
-	 
+	$.getJSON("/index/showOwnUserInfo", function(data) {
+		  $("#has_regist_tbody").html("");//清空info内容
+		  var orgBodyInfo = "";
+	        $.each(data, function(i, item) {
+	        	orgBodyInfo += "<tr>";
+	        	orgBodyInfo += "<td><span>"+item.userName+"</span></td>";
+	        	orgBodyInfo += "<td><span>"+item.orgName+"</span></td>";
+	        	orgBodyInfo += "<td><span>"+item.tel+"</span></td>";
+	        	orgBodyInfo += "<td><a class='btn_success' onclick='toAlterUserInfo("+item.id+")'>修改</a>&nbsp;&nbsp;&nbsp;<a class='btn_danger' onclick='deleteUserInfo("+item.id+")'>删除</a></td>";
+	        	orgBodyInfo += "</tr>";
+	        });
+	    
+	        $("#has_regist_tbody").html(orgBodyInfo );
+});
 }
 
 /**
@@ -33,11 +46,10 @@ function initOrg(parentId){
 	        	orgBodyInfo += "<td><span>"+item.orgName+"</span></td>";
 	        	orgBodyInfo += "<td><span>"+item.tel+"</span></td>";
 	        	orgBodyInfo += "<td><span>"+item.master+"</span></td>";
- 
 	        	if(item.childCount=="0"){
-	        		orgBodyInfo += "<td><a onclick='toAlterOrg("+item.id+");'>修改</a></td>";
+	        		orgBodyInfo += "<td><a onclick='alterOrg("+item.id+");'>修改</a></td>";
 	        	}else{
-	        		orgBodyInfo += "<td><a onclick='toAlterOrg("+item.id+");'>修改</a>&nbsp;&nbsp;&nbsp;<a onclick='showOwnOrg("+item.id+");'>查看辖区机构</a></td>";
+	        		orgBodyInfo += "<td><a onclick='alterOrg("+item.id+");'>修改</a>&nbsp;&nbsp;&nbsp;<a onclick='showOwnOrg("+item.id+");'>查看辖区机构</a></td>";
 	        	}
 	        	
 	        	orgBodyInfo += "</tr>";
@@ -80,13 +92,12 @@ function initOrg(parentId){
 	 window.open("/manage/toAddOrg","","top="+top+"px,left="+left+"px,width=700,height=500");
  }
  
- /**
-  * 修改org
-  * @param orgId
-  * @returns
-  */
- function toAlterOrg(orgId){
-	    $("#addOwnOrgModal").modal('show');
+
+ 
+ 
+ function alterOrg(orgId){
+	 
+       $("#addOwnOrgModal").modal('show');
 	    
 	    $.getJSON("/index/showOrgInfo?orgId="+orgId, function(data) {
 	    	  $('#orgId').val(data.id);
@@ -96,25 +107,51 @@ function initOrg(parentId){
 	          $('#master').val(data.master);
 	          $('#masterTel').val(data.masterTel);
 	     });
-		 
-
 	    
- };
+	    
+	    $("#orgForm").validate({
+	    	rules:{
+	    		orgName:{
+	    			required:true
+	    		},
+	    		tel:{
+	    			required:true
+	    		},
+	    		address:{
+	    			required:true
+	    		},
+	    		master:{
+	    			required:true
+	    		}
+	    	},
+	    	messages:{
+	    		orgName:{
+	    			required:'请输入名称'
+	    		},
+	    		tel:{
+	    			required:'请输入电话号码'
+	    		},
+	    		address:{
+	    			required:'请输入地址'
+	    		},
+	    		master:{
+	    			required:'请输入联系人'
+	    		}
+	    	},
+	    	submitHandler:function(form){
+		    	 $('#orgForm').ajaxSubmit({
+			   			url:'/index/alterOrg',
+			   			dataType:'text',
+			   			success:function(data){
+			   				$("#addOwnOrgModal").modal('hide');
+			   				$('#orgForm')[0].reset();
+			                alert(data);
+			                initOrg(0);
+			   		    }
+			   	     });
+	             }    
+	        });
  
- 
- function alterOrg(){
-	 
-	 $('#orgForm').ajaxSubmit({
-  			url:'/index/alterOrg',
-  			dataType:'text',
-  			success:function(data){
-  				$("#addOwnOrgModal").modal('hide');
-  				$('#orgForm')[0].reset();
-               alert(data);
-               initOrg(0);
-  		    }
-  	     });
-	 return false;
  };
  
  
@@ -127,7 +164,7 @@ function initOrg(parentId){
 		        	orgBodyInfo += "<td><span>"+item.orgName+"</span></td>";
 		        	orgBodyInfo += "<td><span>"+item.tel+"</span></td>";
 		        	orgBodyInfo += "<td><span>"+item.master+"</span></td>";
-	                orgBodyInfo += "<td><a onclick='toAlterOrg("+item.id+");'>修改</a>&nbsp;&nbsp;&nbsp;<a onclick='delOrg("+item.id+","+orgId+");'>删除</a></td>";
+	                orgBodyInfo += "<td><a onclick='alterOrg("+item.id+");'>修改</a>&nbsp;&nbsp;&nbsp;<a onclick='delOrg("+item.id+","+orgId+");'>删除</a></td>";
 		        	orgBodyInfo += "</tr>";
 		        });
 		    
@@ -137,22 +174,51 @@ function initOrg(parentId){
  }
  
  function addOwnOrg(){
-	 $("#addOwnOrgModal").modal('show');
-	 
-	    $('#orgForm').submit(function() { 
-			 $('#orgForm').ajaxSubmit({
-		  			url:'/index/addOwnOrg',
-		  			dataType:'text',
-		  			success:function(data){
-		  				$("#addOwnOrgModal").modal('hide');
-		  				$('#orgForm')[0].reset();
-                    alert(data);
-                    initOrg(0);
-		  		    }
-		  	     });
-			 return false;
-	    }); 
-	
+	   $("#addOwnOrgModal").modal('show');
+	   $('#orgForm')[0].reset();
+	   
+	   $("#orgForm").validate({
+	    	rules:{
+	    		orgName:{
+	    			required:true
+	    		},
+	    		tel:{
+	    			required:true
+	    		},
+	    		address:{
+	    			required:true
+	    		},
+	    		master:{
+	    			required:true
+	    		}
+	    	},
+	    	messages:{
+	    		orgName:{
+	    			required:'请输入名称'
+	    		},
+	    		tel:{
+	    			required:'请输入电话号码'
+	    		},
+	    		address:{
+	    			required:'请输入地址'
+	    		},
+	    		master:{
+	    			required:'请输入联系人'
+	    		}
+	    	},
+	    	submitHandler:function(form){
+	    		 $('#orgForm').ajaxSubmit({
+			  			url:'/index/addOwnOrg',
+			  			dataType:'text',
+			  			success:function(data){
+			  				$("#addOwnOrgModal").modal('hide');
+		                    alert(data);
+		                    initOrg(0);
+			  		    }
+			  	     });
+	    	   }    
+	        });
+ 
  };
  
  
@@ -179,5 +245,90 @@ function initOrg(parentId){
 	    
 	        $("#org_select").html(orgBodyInfo );
    });
- }
+ };
  
+ 
+ 
+ function passRegister(userId){
+	  var pass_register_options = {
+				url:"/index/passRegister?id="+userId,
+				dataType:'text',	
+				success:function(data){
+					initWaitForRegistUserInfo();
+					initRegistedUserInfo();
+					alert(data);
+				}
+			 }
+			  $.ajax(pass_register_options);
+ };
+ 
+ 
+ function noPassRegister(userId){
+	 var nopass_register_options = {
+				url:"/index/noPassRegister?id="+userId,
+				dataType:'text',	
+				success:function(data){
+					initWaitForRegistUserInfo();
+					initRegistedUserInfo();
+					alert(data);
+				}
+			 }
+			  $.ajax(nopass_register_options);
+ };
+ 
+ 
+ 
+ function alterUserInfo(userId){
+	 
+	 $("#alterUserInfoModal").modal('show');
+	    
+	    $.getJSON("/index/showUserInfo?id="+userId, function(data) {
+	    	  $('#userId').val(data.id);
+	          $('#userName').val(data.userName);
+	          $('#userTel').val(data.tel);
+	          $('#idcar').val(data.idcard);
+	     });
+	    
+	 
+	 $("#alterUserInfoForm").validate({
+			rules:{
+				userName:{
+					required:true
+				},
+				tel:{
+					required:true
+				},
+				idcard:{
+					required:true
+				}
+			},
+			messages:{
+				userName:{
+					required:'请输入姓名'
+				},
+				tel:{
+					required:'请输入电话号码'
+				},
+				idcard:{
+					required:'请输入身份证号'
+				}
+			},
+	    	submitHandler:function(form){
+	    		 $('#alterUserInfoForm').ajaxSubmit({
+			  			url:'/index/alterUserInfo',
+			  			dataType:'text',
+			  			success:function(data){
+			  				$("#alterUserInfoModal").modal('hide');
+							initRegistedUserInfo();
+							alert(data);
+			  		    }
+			  	     });
+	    	   }    
+	        });
+	 
+ };
+ 
+ 
+ function deleteUserInfo(userId){
+	 
+ }

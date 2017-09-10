@@ -34,7 +34,7 @@ public class RegisterUser implements Serializable {
 	
 	private String idcard;
 	
-	@ManyToOne(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
+	@ManyToOne
 	private Org org;
 	
 	private String tel;
@@ -112,7 +112,6 @@ public class RegisterUser implements Serializable {
 	
 	public String getRegisteUserJson(){
 		return JsonUtils.getJsonString(getRegisteUserMap());
-		
 	}
 
 }
