@@ -23,6 +23,30 @@ public class RoleService implements IRoleService{
 	public List<Role> findAllRole() {
 		return (List<Role>) roleDao.findAll();
 	}
+
+	@Override
+	public Role saveRole(Role role) {
+		return roleDao.save(role);
+	}
+
+	@Override
+	public Role findRoleById(Long id) {
+		// TODO Auto-generated method stub
+		return roleDao.findOne(id);
+	}
+	
+	
+	public void alterRole(Role role){
+		roleDao.updateRole(role.getName(),role.getInfo(),role.getId());
+	}
+
+	@Override
+	public void deleteRole(Long id) {
+		roleDao.delete(id);
+	}
+	
+	
+	
 	
 	 
 }

@@ -20,13 +20,12 @@
 
 </div>
 
-
+ <div class="container" id="role_container">
  <div class="panel panel-success">
 			 <div class="panel-heading">
 			 <span>权限管理</span>
 			 </div>
 			 <div class="panel-body">
-			 
 					 <table class="table">
 						  <thead>
 						    <tr>
@@ -42,10 +41,10 @@
 			 
 			  </div>
 	       	<div class="panel-footer import_button_div" >
-	       	        <a onclick="#" class="btn btn-red "><span>添加角色</span></a>
+	       	        <a onclick="addRole()" class="btn btn-red "><span>添加角色</span></a>
 			  </div>
 		 </div>
- 
+ </div>
  <div th:insert="footer :: copy" class="footer"></div>
 </body>
 

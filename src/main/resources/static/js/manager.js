@@ -339,7 +339,7 @@ function initOrg(parentId){
 				}
 			 }
 			  $.ajax(delete_userInfo_options);
- }
+ };
  
  
  
@@ -351,11 +351,103 @@ function initOrg(parentId){
 		        	roleBodyInfo += "<tr>";
 		        	roleBodyInfo += "<td><span>"+item.name+"</span></td>";
 		        	roleBodyInfo += "<td><span>"+item.info+"</span></td>";
-		        	roleBodyInfo += "<td><a onclick='alterOrg("+item.id+");'>修改</a>" +
-		        			"&nbsp;&nbsp;&nbsp;<a onclick='delOrg("+item.id+","+orgId+");'>删除</a>" +
-		        			"&nbsp;&nbsp;&nbsp;<a onclick='#'>设置菜单权限</a></td>";
+		        	roleBodyInfo += "<td><a onclick='alterRole("+item.id+");'>修改</a>" +
+		        			"&nbsp;&nbsp;&nbsp;<a onclick='deleteRole("+item.id+");'>删除</a>";
+		        			if(item.manageLog=="1"){
+		        				roleBodyInfo+="&nbsp;&nbsp;&nbsp;<a onclick='setRoleMenu("+item.id+")'>设置菜单权限</a></td>";
+		        			}
 		        	roleBodyInfo += "</tr>";
 		        });
-		        $("#role_tbody").html(roleBodyInfo );
+		        $("#role_tbody").html(roleBodyInfo);
 	    });
-	}
+	};
+	
+	
+	function addRole(){
+		 $("#roleManageModal").modal('show');
+		   $('#roleForm')[0].reset();
+		   
+		   $("#roleForm").validate({
+		    	rules:{
+		    		name:{
+		    			required:true
+		    		}
+		    	},
+		    	messages:{
+		    		name:{
+		    			required:'请输入名称'
+		    		}
+		    	},
+		    	submitHandler:function(form){
+		    		 $('#roleForm').ajaxSubmit({
+				  			url:'/index/addRole',
+				  			dataType:'text',
+				  			success:function(data){
+				  				$("#roleManageModal").modal('hide');
+			                    alert(data);
+			                    initRole();
+				  		    }
+				  	     });
+		    	     }    
+		        });
+	};
+	
+	
+	
+	
+	
+	function alterRole(roleId){
+		 
+		 $("#roleManageModal").modal('show');
+		 $("#manage_log_div").hide();
+		    
+		    $.getJSON("/index/showRoleInfo?id="+roleId, function(data) {
+		    	  $('#roleId').val(data.id);
+		          $('#name').val(data.name);
+		          $('#info').val(data.info);
+		     });
+		    
+		 
+		 $("#roleForm").validate({
+				rules:{
+					name:{
+						required:true
+					},
+					userTel:{
+						required:true
+					}
+				},
+				messages:{
+					name:{
+						required:'请输入名称'
+					}
+				},
+		    	submitHandler:function(form){
+		    		 $('#roleForm').ajaxSubmit({
+				  			url:'/index/alterRole',
+				  			dataType:'text',
+				  			success:function(data){
+				  				$("#roleManageModal").modal('hide');
+								initRole();
+								alert(data);
+				  		    }
+				  	     });
+		    	    }    
+		        });
+		 
+	 };
+	 
+	 
+	 
+	 function deleteRole(roleId){
+		  var delete_role_options = {
+					url:"/index/deleteRole?id="+roleId,
+					dataType:'text',	
+					success:function(data){
+						initRole();
+						alert(data);
+					}
+				 }
+				  $.ajax(delete_role_options);
+	 }
+	

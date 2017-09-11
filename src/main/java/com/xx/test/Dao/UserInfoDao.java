@@ -31,10 +31,10 @@ public interface UserInfoDao extends PagingAndSortingRepository<UserInfo, Long>{
 	 public List<UserInfo> findByParentOrgId(Long id) ;
 	 
 	 
-		@Transactional
-		@Modifying 
-		@Query("update UserInfo u set u.userName = ?1,u.tel=?2,u.idcard=?3 where u.id = ?4")
-		public int updateUserInfo(String userName, String tel,String idcard,Long id);
+	@Transactional
+	@Modifying 
+	@Query("update UserInfo u set u.userName = ?1,u.tel=?2,u.idcard=?3 where u.id = ?4")
+	public int updateUserInfo(String userName, String tel,String idcard,Long id);
 		
 		
 		

@@ -105,6 +105,7 @@ public class Role implements Serializable{
 		   map.put("id", String.valueOf(id));
 		   map.put("name", name);
 		   map.put("info", info);
+		   map.put("manageLog", String.valueOf(manageLog));
 		   return  map;
 	}
 	

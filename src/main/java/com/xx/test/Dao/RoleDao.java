@@ -14,5 +14,9 @@ import com.xx.test.Model.Role;
 
 public interface RoleDao extends CrudRepository<Role, Long>{
     
-	 
+    @Modifying
+    @Transactional  
+    @Query("update Role r set r.name = ?1,r.info=?2 where r.id = ?3")
+    int updateRole(String name,String info,long id);
+    
 }

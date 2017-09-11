@@ -360,7 +360,9 @@ public class MainController extends BaseController {
 		    
 			  @RequestMapping(value="/index/manageRole",method=RequestMethod.GET)
 			  public ModelAndView manageRole(HttpServletRequest request , HttpServletResponse response){
+				  UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
 				  ModelAndView modelAndView = new ModelAndView("manageRole");
+				  modelAndView.addObject("userInfo",userInfo);
 				  return modelAndView;
 			  }
 			  
@@ -378,8 +380,51 @@ public class MainController extends BaseController {
 				      }
 				      json.deleteCharAt(json.length()-1);
 				      json.append( "]" );
-				      System.out.println(json.toString());
 				      return json.toString();
 			  }
+			  
+			  
+			  @PostMapping(value="/index/addRole")
+			    @ResponseBody
+			    public String addRole(HttpServletRequest request , HttpServletResponse response) {
+				         Role role = new Role();
+				         role.setInfo(request.getParameter("info"));
+				         role.setManageLog(Integer.valueOf(request.getParameter("managelog")));
+				         role.setName(request.getParameter("name"));
+				         this.roleService.saveRole(role);
+			             return SUCCESS;
+			    }
+			  
+			  
+			  @GetMapping("/index/showRoleInfo")
+			    @ResponseBody
+			    public String showRoleInfo(HttpServletRequest request , HttpServletResponse response) {
+			    	Long id = Long.valueOf(request.getParameter("id"));
+			    	Role role = roleService.findRoleById(id);
+			    	String json = role.getRoleJson();
+			        return json;
+			    }
+			  
+			  
+			  
+			  @PostMapping(value="/index/alterRole")
+			    @ResponseBody
+			    public String alterRole(HttpServletRequest request , HttpServletResponse response) {
+			    	     Long id = Long.valueOf(request.getParameter("roleId"));
+				         Role role = roleService.findRoleById(id);
+				         role.setInfo(request.getParameter("info"));
+				         role.setName(request.getParameter("name"));
+				         roleService.alterRole(role);
+			             return SUCCESS;
+			    }
 		    
+			  
+			  
+			  @GetMapping(value="/index/deleteRole")
+			    @ResponseBody
+			    public String deleteRole(HttpServletRequest request , HttpServletResponse response) {
+			    	     Long id = Long.valueOf(request.getParameter("id"));
+				         roleService.deleteRole(id);
+			             return SUCCESS;
+			    }
 }
