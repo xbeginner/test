@@ -68,5 +68,10 @@ public class UserInfoService implements IUserInfoService{
 	public void alterUserInfo(UserInfo userInfo){
 		userInfoDao.updateUserInfo(userInfo.getUserName(), userInfo.getTel(), userInfo.getIdcard(), userInfo.getId());
 	}
+	
+	
+	public void deleteUserInfo(Long id){
+		  userInfoDao.delete(id);
+	}
 
 }

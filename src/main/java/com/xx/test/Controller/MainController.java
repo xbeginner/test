@@ -327,9 +327,10 @@ public class MainController extends BaseController {
 		    @GetMapping("/index/showUserInfo")
 		    @ResponseBody
 		    public String showUserInfo(HttpServletRequest request , HttpServletResponse response) {
-		    	Long userId = Long.valueOf(request.getParameter("userId"));
+		    	Long userId = Long.valueOf(request.getParameter("id"));
 		    	UserInfo user = userInfoService.findById(userId);
 		    	String json = user.getUserJson();
+		    	System.out.println(json);
 		        return json;
 		    }
 		    
@@ -340,10 +341,45 @@ public class MainController extends BaseController {
 		    	     Long id = Long.valueOf(request.getParameter("userId"));
 			         UserInfo user = userInfoService.findById(id);
 			         user.setIdcard(request.getParameter("idcard"));
-			         user.setTel(request.getParameter("tel"));
+			         user.setTel(request.getParameter("userTel"));
 			         user.setUserName(request.getParameter("userName"));
 			         userInfoService.alterUserInfo(user);
 		             return SUCCESS;
 		    }
+		    
+		    
+		    @GetMapping(value="/index/deleteUserInfo")
+		    @ResponseBody
+		    public String deleteUserInfo(HttpServletRequest request , HttpServletResponse response) {
+		    	     Long id = Long.valueOf(request.getParameter("id"));
+			         userInfoService.deleteUserInfo(id);
+		             return SUCCESS;
+		    }
+		    
+		    
+		    
+			  @RequestMapping(value="/index/manageRole",method=RequestMethod.GET)
+			  public ModelAndView manageRole(HttpServletRequest request , HttpServletResponse response){
+				  ModelAndView modelAndView = new ModelAndView("manageRole");
+				  return modelAndView;
+			  }
+			  
+			  
+			  @RequestMapping(value="/index/initRole",method=RequestMethod.GET)
+			  @ResponseBody
+			  public String initRole(HttpServletRequest request , HttpServletResponse response){
+		  
+				      StringBuffer json = new StringBuffer();
+				      json.append("[");
+				      List<Role> roleList = this.roleService.findAllRole();
+				      for(Role r:roleList){
+				    	    json.append(r.getRoleJson());
+				    	    json.append(",");
+				      }
+				      json.deleteCharAt(json.length()-1);
+				      json.append( "]" );
+				      System.out.println(json.toString());
+				      return json.toString();
+			  }
 		    
 }

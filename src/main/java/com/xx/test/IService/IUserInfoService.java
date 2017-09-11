@@ -32,4 +32,6 @@ public interface IUserInfoService {
 	
 	public void alterUserInfo(UserInfo userInfo);
 	
+	public void deleteUserInfo(Long id);
+	
 }

@@ -25,7 +25,7 @@ function initRegistedUserInfo(){
 	        	orgBodyInfo += "<td><span>"+item.userName+"</span></td>";
 	        	orgBodyInfo += "<td><span>"+item.orgName+"</span></td>";
 	        	orgBodyInfo += "<td><span>"+item.tel+"</span></td>";
-	        	orgBodyInfo += "<td><a class='btn_success' onclick='toAlterUserInfo("+item.id+")'>修改</a>&nbsp;&nbsp;&nbsp;<a class='btn_danger' onclick='deleteUserInfo("+item.id+")'>删除</a></td>";
+	        	orgBodyInfo += "<td><a class='btn_success' onclick='alterUserInfo("+item.id+")'>修改</a>&nbsp;&nbsp;&nbsp;<a class='btn_danger' onclick='deleteUserInfo("+item.id+");'>删除</a></td>";
 	        	orgBodyInfo += "</tr>";
 	        });
 	    
@@ -286,7 +286,7 @@ function initOrg(parentId){
 	    	  $('#userId').val(data.id);
 	          $('#userName').val(data.userName);
 	          $('#userTel').val(data.tel);
-	          $('#idcar').val(data.idcard);
+	          $('#idcard').val(data.idcard);
 	     });
 	    
 	 
@@ -295,7 +295,7 @@ function initOrg(parentId){
 				userName:{
 					required:true
 				},
-				tel:{
+				userTel:{
 					required:true
 				},
 				idcard:{
@@ -306,7 +306,7 @@ function initOrg(parentId){
 				userName:{
 					required:'请输入姓名'
 				},
-				tel:{
+				userTel:{
 					required:'请输入电话号码'
 				},
 				idcard:{
@@ -330,5 +330,32 @@ function initOrg(parentId){
  
  
  function deleteUserInfo(userId){
-	 
+	  var delete_userInfo_options = {
+				url:"/index/deleteUserInfo?id="+userId,
+				dataType:'text',	
+				success:function(data){
+					initRegistedUserInfo();
+					alert(data);
+				}
+			 }
+			  $.ajax(delete_userInfo_options);
  }
+ 
+ 
+ 
+ function initRole(){
+		$.getJSON("/index/initRole", function(data) {
+			  $("#role_tbody").html("");//清空info内容
+			  var roleBodyInfo = "";
+		        $.each(data, function(i, item) {
+		        	roleBodyInfo += "<tr>";
+		        	roleBodyInfo += "<td><span>"+item.name+"</span></td>";
+		        	roleBodyInfo += "<td><span>"+item.info+"</span></td>";
+		        	roleBodyInfo += "<td><a onclick='alterOrg("+item.id+");'>修改</a>" +
+		        			"&nbsp;&nbsp;&nbsp;<a onclick='delOrg("+item.id+","+orgId+");'>删除</a>" +
+		        			"&nbsp;&nbsp;&nbsp;<a onclick='#'>设置菜单权限</a></td>";
+		        	roleBodyInfo += "</tr>";
+		        });
+		        $("#role_tbody").html(roleBodyInfo );
+	    });
+	}

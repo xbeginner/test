@@ -1,6 +1,9 @@
 package com.xx.test.Model;
 
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,13 +12,17 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.xx.test.Utils.JsonUtils;
+
 @Entity
 @Table(name="t_role")
-public class Role {
+public class Role implements Serializable{
+	
+	private static final long serialVersionUID = 4L;
 	
 	  @Id
 	  @GeneratedValue
-	  private int id;
+	  private Long id;
 	  
 	  private String name;
 	  
@@ -35,11 +42,13 @@ public class Role {
 	  @OneToMany(mappedBy="role",fetch=FetchType.EAGER)
 	  private List<Menu> menuList;
 
-	public int getId() {
+    
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -91,7 +100,18 @@ public class Role {
 		this.manageLog = manageLog;
 	}
 
-    
+	private Map<String,String> getRoleMap(){
+		   Map<String,String> map = new HashMap<String, String>();
+		   map.put("id", String.valueOf(id));
+		   map.put("name", name);
+		   map.put("info", info);
+		   return  map;
+	}
+	
+	
+	public String getRoleJson(){
+		return JsonUtils.getJsonString(getRoleMap());
+	}
 
 	  
 

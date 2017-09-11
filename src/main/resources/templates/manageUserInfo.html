@@ -28,7 +28,7 @@
 						  <thead>
 						    <tr>
 							      <th><span>姓名</span></th>
-							      <th><span>机构</span></th>
+							     <th><span>机构</span></th>
 							      <th><span>联系电话</span></th>
 							       <th><span>操作</span></th>
 						    </tr>
@@ -73,4 +73,5 @@
  
  <div th:insert="footer :: copy" class="footer"></div>
 </body>
+ <div th:include="hidden:: hiddenUserInfo"></div>
 </html>

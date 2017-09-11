@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.xx.test.IService.IOrgService;
 import com.xx.test.IService.IRegisteUserService;
+import com.xx.test.IService.IRoleService;
 import com.xx.test.IService.IUserInfoService;
 
 public abstract class BaseController {
@@ -18,5 +19,8 @@ public abstract class BaseController {
 	  
 	  @Autowired
 	  protected IRegisteUserService registeUserService;
+	  
+	  @Autowired
+	  protected IRoleService roleService;
 
 }
