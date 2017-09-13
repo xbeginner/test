@@ -449,5 +449,42 @@ function initOrg(parentId){
 					}
 				 }
 				  $.ajax(delete_role_options);
-	 }
+	 };
+	 
+	 
+	 
+	 function setRoleMenu(roleId){
+ 
+		 $("#roleMenuManageModal").modal('show');
+		 
+		    
+	     $.getJSON("/index/showRoleMenuInfo?roleId="+roleId, function(data) {
+	    	  $("#role_menu_div").html("");//清空info内容
+			  var divbody = "";
+		        $.each(data, function(i, item) {
+		        	 divbody += "<div class='rowCheckbox'>";
+		        	divbody += "<input name='menus' type='checkbox' id='checkbox"+item.id+"'  value='"+item.id+"' checked="+item.checklog+">";
+		        	divbody += "<label for='checkbox"+item.id+"'>"+item.name+"</label>";
+		        	 divbody += "</div>";
+		        });
+		        alert(divbody);
+		        $("#role_menu_div").html(divbody );
+	     });
+	     
+		    
+		 
+		 $("#roleMenuForm").validate({
+		    	submitHandler:function(form){
+		    		 $('#roleMenuForm').ajaxSubmit({
+				  			url:'/index/setRoleMenu?roleId='+roleId,
+				  			dataType:'text',
+				  			success:function(data){
+				  				$("#roleMenuManageModal").modal('hide');
+				  				$("#role_menu_div").html("");
+								alert(data);
+				  		    }
+				  	     });
+		    	   }    
+		        });
+	 };
 	

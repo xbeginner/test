@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -33,13 +34,13 @@ public class Role implements Serializable{
 	   */
 	  private int manageLog;
 	  
-	  @OneToMany(mappedBy="role")
+	  @OneToMany
 	  private List<UserInfo> userinfoList;
 	  
-	  @OneToMany(mappedBy="role")
+	  @ManyToMany
 	  private List<Action> actionList;
 	  
-	  @OneToMany(mappedBy="role",fetch=FetchType.EAGER)
+	  @ManyToMany(fetch=FetchType.EAGER)
 	  private List<Menu> menuList;
 
     
@@ -112,6 +113,7 @@ public class Role implements Serializable{
 	
 	public String getRoleJson(){
 		return JsonUtils.getJsonString(getRoleMap());
+		
 	}
 
 	  

@@ -1,5 +1,6 @@
 package com.xx.test.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,17 +12,22 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.xx.test.Utils.JsonUtils;
+
 @Entity
 @Table(name="t_menu")
-public class Menu {
+public class Menu implements Serializable{
+	
+	private static final long serialVersionUID = 6L;
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 	
 	private String name;
 	
@@ -29,28 +35,10 @@ public class Menu {
 	
 	private String url;
 	
-	@ManyToOne
-	private Role role;
+	@ManyToMany
+	private List<Role> roleList;
 	
-//	@ManyToOne(cascade={CascadeType.REFRESH,CascadeType.MERGE},fetch=FetchType.LAZY ,optional = true)
-//    @JoinColumn(name = "parentMenu")     
-//    private Menu parentMenu;
-//	
-//	@OneToMany(
-//			   cascade=CascadeType.ALL,
-//			   fetch=FetchType.EAGER,
-//			   mappedBy="parentMenu"
-//	)
-//	private List<Menu> childMenuList = new ArrayList<Menu>();	
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
+ 
 	public String getName() {
 		return name;
 	}
@@ -67,16 +55,18 @@ public class Menu {
 		this.info = info;
 	}
 
-	public Role getRole() {
-		return role;
+    
+	
+	
+	
+	public List<Role> getRoleList() {
+		return roleList;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setRoleList(List<Role> roleList) {
+		this.roleList = roleList;
 	}
-	
-	
-	
+
 	public String getUrl() {
 		return url;
 	}
@@ -86,34 +76,28 @@ public class Menu {
 	}
 	
 	
+	
+	public Long getId() {
+		return id;
+	}
 
-//	public Menu getParentMenu() {
-//		return parentMenu;
-//	}
-//
-//	public void setParentMenu(Menu parentMenu) {
-//		this.parentMenu = parentMenu;
-//	}
-//	
-//	
-//
-//	public List<Menu> getChildMenuList() {
-//		return childMenuList;
-//	}
-//
-//	public void setChildMenuList(List<Menu> childMenuList) {
-//		this.childMenuList = childMenuList;
-//	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-	public Map<String,String> getMap(){
+	public String getMenuJson(){
+		return JsonUtils.getJsonString(getMenuMap());
+	}
+	
+
+ 
+
+	public Map<String,String> getMenuMap(){
 		   Map<String,String> map = new HashMap<String, String>();
-		   
 		   map.put("id", String.valueOf(id));
 		   map.put("name", name);
 		   map.put("info", info);
 		   map.put("url", url==null?"#":"/"+url);
-		   
-		   
 		   return  map;
 	}
 	

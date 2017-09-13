@@ -153,13 +153,13 @@
 							</div>
 						</div>
 					</div>
-
+                </div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-					<button type="submit" class="btn btn-default">提交</a>
+					<button type="submit" class="btn btn-default">提交</button>
 				</div>
 			</div>
-		</div>
+			</div>
 		</form>
 	 <style>
 		#roleForm label.error 
@@ -169,9 +169,45 @@
 		margin-left:5px; 
 		padding-left:16px; 
 	} 
-					</style>
-			 </div>
+	 </style>
+  </div>
+ </div>
+   
+ 
+			 
+ 
+ 
+ 
+ <div th:fragment="hiddenRoleMenu">	 
+	<!-- 设置角色菜单 -->		 
+ <div class="modal fade" id="roleMenuManageModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		data-backdrop="static">
+		<form  id="roleMenuForm" method="post" >
+		 <div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="panel panel-default">
+						<div class="panel-body" id="role_menu_div">
+							 
+						</div>
+					</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="submit" class="btn btn-default">提交</button>
+				</div>
+			</div>
+		  </div>
+		 </div>
+		</form>
+     </div>
    </div>
+   
 
    
  </body>

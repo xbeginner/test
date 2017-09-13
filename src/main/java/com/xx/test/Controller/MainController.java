@@ -1,5 +1,6 @@
 package com.xx.test.Controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,7 +51,7 @@ public class MainController extends BaseController {
 		    	    if(menuList.size()>0){
 			    	    Map<String,String> map = new HashMap<String,String>();
 			    	    for(Menu m:menuList){
-			    	    	map  =  m.getMap();
+			    	    	map  =  m.getMenuMap();
 			    	    	json.append("{");
 			    	    	json.append(JsonUtils.getAddableJsonString(map));
 			    	    	json.append("},");
@@ -426,5 +427,55 @@ public class MainController extends BaseController {
 			    	     Long id = Long.valueOf(request.getParameter("id"));
 				         roleService.deleteRole(id);
 			             return SUCCESS;
+			    }
+			  
+			  
+			  
+			  @RequestMapping(value="/index/showRoleMenuInfo",method=RequestMethod.GET)
+			  @ResponseBody
+			  public String showRoleMenuInfo(HttpServletRequest request , HttpServletResponse response){
+		              Long roleId = Long.valueOf(request.getParameter("roleId"));
+		              Role role = roleService.findRoleById(roleId);
+		              List<Long> ids = new ArrayList<Long>();
+		              if(!role.getMenuList().isEmpty()){
+		            	    for(int i = 0;i<role.getMenuList().size();i++){
+		            	    	ids.add(role.getMenuList().get(i).getId());
+		            	    }
+		              }
+		              List<Menu> menuList = menuService.findAllMenuList();
+				      StringBuffer json = new StringBuffer();
+				      json.append("[");
+				      for(Menu m:menuList){
+				    	    json.append(m.getMenuJson());
+				    	    if(ids.contains(m.getId())){
+				    	    		json.deleteCharAt(json.length()-1);
+				    	    		json.append(",\"checklog\":true}");
+				    	    }else{
+				    	    	json.deleteCharAt(json.length()-1);
+			    	    		json.append(",\"checklog\":false}");
+				    	    }
+				    	    json.append(",");
+				      }
+				      json.deleteCharAt(json.length()-1);
+				      json.append( "]" );
+				      return json.toString();
+			  }
+			  
+			  
+			  
+			  @PostMapping(value="/index/setRoleMenu")
+			    @ResponseBody
+			    public String setRoleMenu(HttpServletRequest request , HttpServletResponse response) {
+				         Long roleId = Long.valueOf(request.getParameter("roleId"));
+				         Role role = roleService.findRoleById(roleId);
+			    	     String[] ids =  request.getParameterValues("menus");
+			    	     List<Menu> menuList = new ArrayList<Menu>();
+			    	     for(String s:ids){
+			    	    	 Menu menu = menuService.findMenuById(Long.valueOf(s));
+			    	    	 menuList.add(menu);
+			    	     }
+			    	     role.setMenuList(menuList);
+			    	     roleService.alterRole(role);
+			             return SUCCESS ;
 			    }
 }

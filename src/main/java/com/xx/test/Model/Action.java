@@ -1,8 +1,11 @@
 package com.xx.test.Model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -18,8 +21,8 @@ public class Action {
 	
 	private String info;
 	
-	@ManyToOne
-	private Role role;
+	@ManyToMany
+	private List<Role> roleList;
 
 	public int getId() {
 		return id;
@@ -45,14 +48,15 @@ public class Action {
 		this.info = info;
 	}
 
-	public Role getRole() {
-		return role;
+	public List<Role> getRoleList() {
+		return roleList;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setRoleList(List<Role> roleList) {
+		this.roleList = roleList;
 	}
-	
+
+    
 	
 
 }
