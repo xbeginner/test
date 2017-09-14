@@ -3,8 +3,10 @@ package com.xx.test.Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -12,6 +14,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -35,8 +38,8 @@ public class Menu implements Serializable{
 	
 	private String url;
 	
-	@ManyToMany
-	private List<Role> roleList;
+	@ManyToMany(mappedBy="menus")
+	private Set<Role> roles=new HashSet<Role>(0);
 	
  
 	public String getName() {
@@ -56,15 +59,14 @@ public class Menu implements Serializable{
 	}
 
     
-	
-	
-	
-	public List<Role> getRoleList() {
-		return roleList;
+   
+
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
-	public void setRoleList(List<Role> roleList) {
-		this.roleList = roleList;
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 	public String getUrl() {

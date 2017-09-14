@@ -2,13 +2,17 @@ package com.xx.test.Model;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -34,14 +38,20 @@ public class Role implements Serializable{
 	   */
 	  private int manageLog;
 	  
-	  @OneToMany
+	  @OneToMany(mappedBy="role")
 	  private List<UserInfo> userinfoList;
 	  
-	  @ManyToMany
-	  private List<Action> actionList;
+//     @ManyToMany
+//	 @JoinTable(name="t_roleaction",
+//		  joinColumns = { @JoinColumn(name = "role_Id") },
+//		  inverseJoinColumns = { @JoinColumn(name = "action_Id") })
+//     private Set<Action> actions = new HashSet<Action>(0);
 	  
 	  @ManyToMany(fetch=FetchType.EAGER)
-	  private List<Menu> menuList;
+	  @JoinTable(name="t_rolemenu" ,
+	          joinColumns = { @JoinColumn(name = "role_Id") },
+			  inverseJoinColumns = { @JoinColumn(name = "menu_Id") })
+	    private Set<Menu> menus = new HashSet<Menu>(0);
 
     
 
@@ -77,20 +87,22 @@ public class Role implements Serializable{
 		this.userinfoList = userinfoList;
 	}
 
-	public List<Action> getActionList() {
-		return actionList;
+    
+
+//	public Set<Action> getActions() {
+//		return actions;
+//	}
+//
+//	public void setActions(Set<Action> actions) {
+//		this.actions = actions;
+//	}
+
+	public Set<Menu> getMenus() {
+		return menus;
 	}
 
-	public void setActionList(List<Action> actionList) {
-		this.actionList = actionList;
-	}
-
-	public List<Menu> getMenuList() {
-		return menuList;
-	}
-
-	public void setMenuList(List<Menu> menuList) {
-		this.menuList = menuList;
+	public void setMenus(Set<Menu> menus) {
+		this.menus = menus;
 	}
 
 	public int getManageLog() {

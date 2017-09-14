@@ -379,10 +379,11 @@ function initOrg(parentId){
 		    		}
 		    	},
 		    	submitHandler:function(form){
-		    		 $('#roleForm').ajaxSubmit({
+		    		$(form).ajaxSubmit({
 				  			url:'/index/addRole',
 				  			dataType:'text',
 				  			success:function(data){
+				  				$('#roleForm')[0].reset();
 				  				$("#roleManageModal").modal('hide');
 			                    alert(data);
 			                    initRole();
@@ -399,6 +400,7 @@ function initOrg(parentId){
 	function alterRole(roleId){
 		 
 		 $("#roleManageModal").modal('show');
+		 $('#roleForm')[0].reset();
 		 $("#manage_log_div").hide();
 		    
 		    $.getJSON("/index/showRoleInfo?id="+roleId, function(data) {
@@ -412,9 +414,6 @@ function initOrg(parentId){
 				rules:{
 					name:{
 						required:true
-					},
-					userTel:{
-						required:true
 					}
 				},
 				messages:{
@@ -423,10 +422,11 @@ function initOrg(parentId){
 					}
 				},
 		    	submitHandler:function(form){
-		    		 $('#roleForm').ajaxSubmit({
+		    		$(form).ajaxSubmit({
 				  			url:'/index/alterRole',
 				  			dataType:'text',
 				  			success:function(data){
+				  				$('#roleForm')[0].reset();
 				  				$("#roleManageModal").modal('hide');
 								initRole();
 								alert(data);
@@ -463,11 +463,15 @@ function initOrg(parentId){
 			  var divbody = "";
 		        $.each(data, function(i, item) {
 		        	 divbody += "<div class='rowCheckbox'>";
-		        	divbody += "<input name='menus' type='checkbox' id='checkbox"+item.id+"'  value='"+item.id+"' checked="+item.checklog+">";
+		        	divbody += "<input name='menus' type='checkbox' id='checkbox"+item.id+"'  value='"+item.id+"' " ;
+		        	if(item.checklog==true){
+		        		divbody += "checked>";
+		        	}else{
+		        		divbody += ">"
+		        	}
 		        	divbody += "<label for='checkbox"+item.id+"'>"+item.name+"</label>";
 		        	 divbody += "</div>";
 		        });
-		        alert(divbody);
 		        $("#role_menu_div").html(divbody );
 	     });
 	     

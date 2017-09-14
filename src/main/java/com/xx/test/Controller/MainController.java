@@ -2,8 +2,10 @@ package com.xx.test.Controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -47,10 +49,10 @@ public class MainController extends BaseController {
 		      UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
 		      Role role = userInfo.getRole();
 		      if(role!=null){
-		    	    List<Menu> menuList = role.getMenuList();
-		    	    if(menuList.size()>0){
+		    	    Set<Menu> menus = role.getMenus();
+		    	    if(menus.size()>0){
 			    	    Map<String,String> map = new HashMap<String,String>();
-			    	    for(Menu m:menuList){
+			    	    for(Menu m:menus){
 			    	    	map  =  m.getMenuMap();
 			    	    	json.append("{");
 			    	    	json.append(JsonUtils.getAddableJsonString(map));
@@ -437,10 +439,10 @@ public class MainController extends BaseController {
 		              Long roleId = Long.valueOf(request.getParameter("roleId"));
 		              Role role = roleService.findRoleById(roleId);
 		              List<Long> ids = new ArrayList<Long>();
-		              if(!role.getMenuList().isEmpty()){
-		            	    for(int i = 0;i<role.getMenuList().size();i++){
-		            	    	ids.add(role.getMenuList().get(i).getId());
-		            	    }
+		              if(!role.getMenus().isEmpty()){
+		            	   for(Menu m: role.getMenus()){
+		            		    ids.add(m.getId());
+		            	   }
 		              }
 		              List<Menu> menuList = menuService.findAllMenuList();
 				      StringBuffer json = new StringBuffer();
@@ -469,12 +471,12 @@ public class MainController extends BaseController {
 				         Long roleId = Long.valueOf(request.getParameter("roleId"));
 				         Role role = roleService.findRoleById(roleId);
 			    	     String[] ids =  request.getParameterValues("menus");
-			    	     List<Menu> menuList = new ArrayList<Menu>();
+			    	     Set<Menu> menus = new HashSet<Menu>();
 			    	     for(String s:ids){
 			    	    	 Menu menu = menuService.findMenuById(Long.valueOf(s));
-			    	    	 menuList.add(menu);
+			    	    	 menus.add(menu);
 			    	     }
-			    	     role.setMenuList(menuList);
+			    	     role.setMenus(menus);
 			    	     roleService.alterRole(role);
 			             return SUCCESS ;
 			    }

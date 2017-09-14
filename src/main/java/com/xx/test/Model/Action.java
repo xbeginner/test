@@ -1,10 +1,13 @@
 package com.xx.test.Model;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -21,8 +24,8 @@ public class Action {
 	
 	private String info;
 	
-	@ManyToMany
-	private List<Role> roleList;
+//	@ManyToMany(mappedBy="actions")
+//	private Set<Role> roles = new HashSet<Role>(0);
 
 	public int getId() {
 		return id;
@@ -48,14 +51,15 @@ public class Action {
 		this.info = info;
 	}
 
-	public List<Role> getRoleList() {
-		return roleList;
-	}
+//	public Set<Role> getRoles() {
+//		return roles;
+//	}
+//
+//	public void setRoles(Set<Role> roles) {
+//		this.roles = roles;
+//	}
 
-	public void setRoleList(List<Role> roleList) {
-		this.roleList = roleList;
-	}
-
+    
     
 	
 
