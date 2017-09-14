@@ -3,6 +3,7 @@ package com.xx.test.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.xx.test.IService.IMenuService;
+import com.xx.test.IService.IMessageService;
 import com.xx.test.IService.IOrgService;
 import com.xx.test.IService.IRegisteUserService;
 import com.xx.test.IService.IRoleService;
@@ -26,6 +27,9 @@ public abstract class BaseController {
 	  
 	  @Autowired
 	  protected IMenuService menuService;
+	  
+	  @Autowired
+	  protected IMessageService messageService;
 	  
 
 }

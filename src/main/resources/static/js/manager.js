@@ -146,7 +146,7 @@ function initOrg(parentId){
 			   				$("#addOwnOrgModal").modal('hide');
 			   				$('#orgForm')[0].reset();
 			                alert(data);
-			                initOrg(0);
+			                window.location.reload();//刷新当前页面.
 			   		    }
 			   	     });
 	             }    
@@ -213,7 +213,7 @@ function initOrg(parentId){
 			  			success:function(data){
 			  				$("#addOwnOrgModal").modal('hide');
 		                    alert(data);
-		                    initOrg(0);
+		                    window.location.reload();//刷新当前页面.
 			  		    }
 			  	     });
 	    	   }    
@@ -386,7 +386,7 @@ function initOrg(parentId){
 				  				$('#roleForm')[0].reset();
 				  				$("#roleManageModal").modal('hide');
 			                    alert(data);
-			                    initRole();
+			                    window.location.reload();//刷新当前页面.
 				  		    }
 				  	     });
 		    	     }    
@@ -428,7 +428,7 @@ function initOrg(parentId){
 				  			success:function(data){
 				  				$('#roleForm')[0].reset();
 				  				$("#roleManageModal").modal('hide');
-								initRole();
+				  				window.location.reload();//刷新当前页面.
 								alert(data);
 				  		    }
 				  	     });
