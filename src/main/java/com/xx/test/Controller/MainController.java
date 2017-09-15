@@ -29,6 +29,7 @@ import com.xx.test.Form.OrgAddForm;
 import com.xx.test.Form.PersonForm;
 import com.xx.test.Form.RegisteUserForm;
 import com.xx.test.Model.Menu;
+import com.xx.test.Model.Message;
 import com.xx.test.Model.Org;
 import com.xx.test.Model.RegisterUser;
 import com.xx.test.Model.Role;
@@ -480,4 +481,37 @@ public class MainController extends BaseController {
 			    	     roleService.alterRole(role);
 			             return SUCCESS ;
 			    }
+			  
+			  
+			  
+			  
+			  @RequestMapping(value="/index/initMessage",method=RequestMethod.GET)
+			  @ResponseBody
+			  public String initMessage(HttpServletRequest request , HttpServletResponse response){
+				      StringBuffer json = new StringBuffer();
+				      json.append("[");
+				      UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+				      Long orgId = userInfo.getOrg().getId();
+				      List<Message> messages = this.messageService.findAllMessagesByOrg(orgId);
+				      if(messages.size()==0){
+				    	  return "[]";
+				      }
+				      for(Message m:messages){
+				    	    json.append(m.getMessageJson());
+				    	    json.append(",");
+				      }
+				      json.deleteCharAt(json.length()-1);
+				      json.append( "]" );
+				      return json.toString();
+			  }
+			  
+			  
+			  @RequestMapping(value="/index/manageMessage",method=RequestMethod.GET)
+			  public ModelAndView manageMessage(HttpServletRequest request , HttpServletResponse response){
+				  UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+				  ModelAndView modelAndView = new ModelAndView("manageMessage");
+				  modelAndView.addObject("userInfo",userInfo);
+				  return modelAndView;
+			  }
+			  
 }

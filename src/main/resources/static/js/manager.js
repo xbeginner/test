@@ -444,8 +444,8 @@ function initOrg(parentId){
 					url:"/index/deleteRole?id="+roleId,
 					dataType:'text',	
 					success:function(data){
-						initRole();
-						alert(data);
+							initRole();
+							alert(data);
 					}
 				 }
 				  $.ajax(delete_role_options);
@@ -491,4 +491,21 @@ function initOrg(parentId){
 		    	   }    
 		        });
 	 };
+	 
+	 
+	 
+	 function initMessage(){
+			$.getJSON("/index/initMessage", function(data) {
+				  $("#message_tbody").html("");//清空info内容
+				  var messageBodyInfo = "";
+			        $.each(data, function(i, item) {
+			        	messageBodyInfo += "<tr>";
+			        	messageBodyInfo += "<td><span>"+item.name+"</span></td>";
+			        	messageBodyInfo += "<td><a onclick='alterMessage("+item.id+");'>修改</a>" +
+			        			"&nbsp;&nbsp;&nbsp;<a onclick='deleteMessage("+item.id+");'>删除</a>";
+			        	messageBodyInfo += "</tr>";
+			        });
+			        $("#message_tbody").html(messageBodyInfo);
+		    });
+		};
 	

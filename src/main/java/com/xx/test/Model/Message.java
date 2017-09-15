@@ -38,7 +38,72 @@ public class Message implements Serializable {
 	private Date createTime;
 	
 	private Long creatorId;
+	
+	//管理orgId
+	private Long orgId;
+	
+	
  
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getContent() {
+		return content;
+	}
+
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+
+	public Long getCreatorId() {
+		return creatorId;
+	}
+
+
+	public void setCreatorId(Long creatorId) {
+		this.creatorId = creatorId;
+	}
+
+
+	public Long getOrgId() {
+		return orgId;
+	}
+
+
+	public void setOrgId(Long orgId) {
+		this.orgId = orgId;
+	}
+
+
 	private Map<String,String> getMessageMap(){
 		   Map<String,String> map = new HashMap<String, String>();
 		   map.put("id", String.valueOf(id));

@@ -14,5 +14,5 @@ import com.xx.test.Model.Message;
 import com.xx.test.Model.Org;
 
 public interface MessageDao extends CrudRepository<Message, Long>{
-    
+	List<Message> findByOrgId(Long orgId);
 }
