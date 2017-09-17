@@ -28,6 +28,26 @@ public class MessageService implements IMessageService{
 		return messageDao.findByOrgId(orgId);
 	}
 
+	@Override
+	public void deleteMessage(Long id) {
+		 messageDao.delete(id);
+	}
+
+	@Override
+	public void alterMessage(Message message) {
+		 messageDao.updateMessage(message.getName(),message.getContent(),message.getId());
+	}
+
+	@Override
+	public Message findMessageById(Long id) {
+		return messageDao.findOne(id);
+	}
+
+	@Override
+	public void saveMessage(Message message) {
+         messageDao.save(message);		
+	}
+
 	 
 	
 	 

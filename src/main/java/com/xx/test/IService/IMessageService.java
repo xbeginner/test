@@ -8,4 +8,12 @@ import com.xx.test.Model.Org;
 
 public interface IMessageService {
 	  List<Message> findAllMessagesByOrg(Long orgId);
+
+	void deleteMessage(Long id);
+
+	void alterMessage(Message message);
+
+	Message findMessageById(Long id);
+
+	void saveMessage(Message message);
 }

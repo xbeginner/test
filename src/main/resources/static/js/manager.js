@@ -366,7 +366,7 @@ function initOrg(parentId){
 	function addRole(){
 		 $("#roleManageModal").modal('show');
 		   $('#roleForm')[0].reset();
-		   
+		   $('#roleForm').attr('action','/index/addRole');
 		   $("#roleForm").validate({
 		    	rules:{
 		    		name:{
@@ -380,13 +380,12 @@ function initOrg(parentId){
 		    	},
 		    	submitHandler:function(form){
 		    		$(form).ajaxSubmit({
-				  			url:'/index/addRole',
 				  			dataType:'text',
 				  			success:function(data){
 				  				$('#roleForm')[0].reset();
 				  				$("#roleManageModal").modal('hide');
 			                    alert(data);
-			                    window.location.reload();//刷新当前页面.
+			                    initRole();
 				  		    }
 				  	     });
 		    	     }    
@@ -401,6 +400,7 @@ function initOrg(parentId){
 		 
 		 $("#roleManageModal").modal('show');
 		 $('#roleForm')[0].reset();
+		 $('#roleForm').attr('action','/index/alterRole');
 		 $("#manage_log_div").hide();
 		    
 		    $.getJSON("/index/showRoleInfo?id="+roleId, function(data) {
@@ -423,12 +423,11 @@ function initOrg(parentId){
 				},
 		    	submitHandler:function(form){
 		    		$(form).ajaxSubmit({
-				  			url:'/index/alterRole',
 				  			dataType:'text',
 				  			success:function(data){
 				  				$('#roleForm')[0].reset();
 				  				$("#roleManageModal").modal('hide');
-				  				window.location.reload();//刷新当前页面.
+				  				initRole();
 								alert(data);
 				  		    }
 				  	     });
@@ -501,6 +500,7 @@ function initOrg(parentId){
 			        $.each(data, function(i, item) {
 			        	messageBodyInfo += "<tr>";
 			        	messageBodyInfo += "<td><span>"+item.name+"</span></td>";
+			        	messageBodyInfo += "<td><span>"+item.createTime+"</span></td>";
 			        	messageBodyInfo += "<td><a onclick='alterMessage("+item.id+");'>修改</a>" +
 			        			"&nbsp;&nbsp;&nbsp;<a onclick='deleteMessage("+item.id+");'>删除</a>";
 			        	messageBodyInfo += "</tr>";
@@ -509,3 +509,102 @@ function initOrg(parentId){
 		    });
 		};
 	
+		
+		
+		function addMessage(){
+			   $("#addMessageManageModal").modal('show');
+			   $('#addMessageForm')[0].reset();
+			   
+			   $("#addMessageForm").validate({
+					rules:{
+						name:{
+							required:true
+						},
+						content:{
+							required:true
+						}
+					},
+					messages:{
+						name:{
+							required:'请输入名称'
+						},
+						content:{
+							required:'内容不能为空'
+						}
+					},
+			    	submitHandler:function(form){
+			    		$(form).ajaxSubmit({
+					  			url:'/index/addMessage',
+					  			dataType:'text',
+					  			success:function(data){
+					  				$('#addMessageForm')[0].reset();
+					  				$("#addMessageManageModal").modal('hide');
+					  				initMessage();
+				                    alert(data);
+					  		    }
+					  	     });
+			    	     }    
+			        });
+		};
+		
+		
+		
+		
+		
+		function alterMessage(id){
+			 $("#alterMessageManageModal").modal('show');
+			 $('#alterMessageForm')[0].reset();
+			 $('#alterMessageForm').attr('action','/index/alterMessage?id='+id);
+			    $.getJSON("/index/showMessageInfo?id="+id, function(data) {
+			          $('#message_name').val(data.name);
+			          $('#message_content').val(data.content);
+			     });
+			    
+			 
+			 $("#alterMessageForm").validate({
+					rules:{
+						name:{
+							required:true
+						},
+						content:{
+							required:true
+						}
+					},
+					messages:{
+						name:{
+							required:'请输入名称'
+						},
+						content:{
+							required:'内容不能为空'
+						}
+					},
+			    	submitHandler:function(form){
+			    		
+			    		$(form).ajaxSubmit({
+					  			resetForm:true,
+					  			dataType:'text',
+					  			success:function(data){
+					  				$("#alterMessageManageModal").modal('hide');
+					  				initMessage();
+									alert(data);
+					  		    }
+					  	     });
+			    	    }    
+			        });
+			 
+		 };
+		 
+		 
+		 
+		 function deleteMessage(messageId){
+			  var delete_message_options = {
+						url:"/index/deleteMessage?id="+messageId,
+						dataType:'text',	
+						success:function(data){
+								initMessage();
+								alert(data);
+						}
+					 }
+					  $.ajax(delete_message_options);
+		 };
+		 

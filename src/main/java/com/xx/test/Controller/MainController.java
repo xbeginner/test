@@ -1,6 +1,7 @@
 package com.xx.test.Controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -82,8 +83,18 @@ public class MainController extends BaseController {
 	  @RequestMapping(value="/index/initMessageInfo",method=RequestMethod.GET)
 	  @ResponseBody
 	  public String initMessageInfo(HttpServletRequest request , HttpServletResponse response){
-		      String json = "[{\"name\":\"测试1\",\"time\":\"2017-09-08\"},{\"name\":\"测试2\",\"time\":\"2017-09-09\"}]";
-		      return json;
+			     UserInfo userInfo = (UserInfo) request.getSession().getAttribute("currentUserInfo");
+			     List<Message> messages = messageService.findAllMessagesByOrg(userInfo.getOrg().getParentOrgId());
+			     String json = "[";
+			     if(messages.size()>0){
+			    	 for(Message m:messages){
+			    		 json += m.getMessageJson();
+			    		 json += ",";
+			    	 }
+			    	 json = json.substring(0, json.length()-1);
+			     }
+			     json += "]";
+		         return json;
 	  }
 	  
 	  
@@ -513,5 +524,55 @@ public class MainController extends BaseController {
 				  modelAndView.addObject("userInfo",userInfo);
 				  return modelAndView;
 			  }
+			  
+			  
+			  
+			  @PostMapping(value="/index/addMessage")
+			    @ResponseBody
+			    public String addMessage(HttpServletRequest request , HttpServletResponse response) {
+				         UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+				         Message message = new Message();
+				         message.setName(request.getParameter("name"));
+				         message.setContent(request.getParameter("content"));
+				         message.setCreateTime(new java.sql.Date(new Date().getTime()));
+				         message.setCreatorId(userInfo.getId());
+				         message.setOrgId(userInfo.getOrg().getId());
+				         this.messageService.saveMessage(message);
+			             return SUCCESS;
+			    }
+			  
+			  
+			    @GetMapping("/index/showMessageInfo")
+			    @ResponseBody
+			    public String showMessageInfo(HttpServletRequest request , HttpServletResponse response) {
+			    	Long id = Long.valueOf(request.getParameter("id"));
+			    	Message message = messageService.findMessageById(id);
+			    	String json = message.getMessageJson();
+			        return json;
+			    }
+			  
+			  
+			  
+			  @PostMapping(value="/index/alterMessage")
+			    @ResponseBody
+			    public String alterMessage(HttpServletRequest request , HttpServletResponse response) {
+				 
+			    	     Long id = Long.valueOf(request.getParameter("id"));
+				         Message message = messageService.findMessageById(id);
+				         message.setName(request.getParameter("name"));
+				         message.setContent(request.getParameter("content"));
+				         messageService.alterMessage(message);
+			             return SUCCESS;
+			    }
+		    
+			  
+			  
+			  @GetMapping(value="/index/deleteMessage")
+			    @ResponseBody
+			    public String deleteMessage(HttpServletRequest request , HttpServletResponse response) {
+			    	     Long id = Long.valueOf(request.getParameter("id"));
+				         messageService.deleteMessage(id);
+			             return SUCCESS;
+			    }
 			  
 }

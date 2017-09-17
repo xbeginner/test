@@ -53,10 +53,34 @@ function initMainMenu(){
 		        var messageInfo="" ;
 		        $.each(data, function(i, item) {
 		        	messageInfo += "<tr>";
-		        	messageInfo += "<td class='messageContent'><span>"+item.name+"</span></td>";
-		        	messageInfo += "<td class='messageTime'> <span>"+item.time+"</span></td>";
+		        	messageInfo += "<td class='messageContent'><a onclick='checkMessage("+item.id+");'>"+item.name+"</a></td>";
+		        	messageInfo += "<td class='messageTime'> <span>"+item.createTime+"</span></td>";
 		        	messageInfo += "</tr>";
 		        });
 		        $("#message_tbody").html(messageInfo);
 		     });
 	 };
+	 
+	 
+	 function checkMessage(id){
+		    $("#showMessageModal").modal('show');
+		    $("#message_info_div").html("");
+		    var messageContent = "<table>";
+		    $.getJSON("/index/showMessageInfo?id="+id, function(data) {
+		    	messageContent += "<tr align='center' ><td>"; 
+		    	messageContent += "<font size='6'>"
+		    	messageContent += data.name;
+		    	messageContent += "</font>";
+		    	messageContent += "</td>";
+		    	messageContent += "</tr>";
+		    	messageContent += "<tr><td>";
+		    	messageContent += "<font size='5'>"
+		    	messageContent += data.content;
+		    	messageContent += "</font>";
+		    	messageContent += "</td>";
+		    	messageContent += "</tr>";
+		    	messageContent += "</table>";
+			    $("#message_info_div").html(messageContent);
+		     });
+		   
+	 }
