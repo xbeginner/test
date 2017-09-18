@@ -1,7 +1,9 @@
 package com.xx.test.Model;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -9,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.xx.test.Utils.JsonUtils;
 
 @Entity
 @Table(name="t_question")
@@ -89,6 +93,17 @@ public class Question implements Serializable{
 		this.questionBanks = questionBanks;
 	}
 	
+	private Map<String,String> getQuestionMap(){
+		   Map<String,String> map = new HashMap<String, String>();
+		   map.put("id", String.valueOf(id));
+		   map.put("title", title);
+		   map.put("content", content);
+		   return  map;
+	}
 	
+	
+	public String getQuestionJson(){
+		return JsonUtils.getJsonString(getQuestionMap());
+	}
 
 }
