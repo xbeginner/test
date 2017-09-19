@@ -9,6 +9,8 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -42,7 +44,10 @@ public class Question implements Serializable{
 	
 	private  String  answer;
 	
-	@ManyToMany(mappedBy="questions")
+	 @ManyToMany
+	  @JoinTable(name="t_questionTypes" ,
+      joinColumns = { @JoinColumn(name = "question_id") },
+	  inverseJoinColumns = { @JoinColumn(name = "questionBank_Id") })
 	private Set<QuestionBank> questionBanks = new HashSet<QuestionBank>(0);
 
 	public Long getId() {
@@ -100,6 +105,7 @@ public class Question implements Serializable{
 		   map.put("id", String.valueOf(id));
 		   map.put("title", title);
 		   map.put("content", content);
+		   map.put("answer", answer);
 		   map.put("type", types[type]);
 		   if(questionBanks.size()>0){
 			    for(QuestionBank q:questionBanks){

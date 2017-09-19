@@ -8,9 +8,10 @@
 	<script src="../static/js/manager.js" th:src="@{/js/manager.js}"></script>
 	<script src="../static/js/question.js" th:src="@{/js/question.js}"></script>
 	<script type="text/javascript">
-	$(document).ready(function(){
-		 initQuestionByBank();
-   });
+	
+	window.onload = function(){ 
+		initQuestionByBank();
+    }; 
 	</script>
 </head>
 <body style="background: none">
@@ -34,6 +35,7 @@
 						    <tr>
 							      <th><span>题干</span></th>
 							      <th><span>题型</span></th>
+							       <th><span>题库标签</span></th>
 							      <th><span>操作</span></th>
 						    </tr>
 						  </thead>
@@ -51,5 +53,5 @@
  <div th:insert="footer :: copy" class="footer"></div>
 </body>
  <div th:include="hidden:: hiddenAddQuestion"></div>
-
+<div th:include="hidden:: hiddenAlterQuestion"></div>
 </html>

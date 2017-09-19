@@ -126,7 +126,8 @@ function addQuestionBank(){
 				  $("#bank_labels").html("");//清空info内容
 				  var questionLabelInfo = "";
 			        $.each(data, function(i, item) {
-			        	questionLabelInfo += "<input name='questionLabels' type='checkbox' id='checkbox"+item.id+"'  value='"+item.id+"' >"+item.name ;
+			        	questionLabelInfo += "<input name='questionLabels' type='checkbox' id='checkbox"+item.id+"'  value='"+item.id+"'>" ;
+			            questionLabelInfo += " <label for='checkbox"+item.id+"'>"+item.name+"</label>"
 			        });
 			        $("#bank_labels").html(questionLabelInfo);
 		     });
@@ -134,7 +135,7 @@ function addQuestionBank(){
 		   
 		   $("#addQuestionForm").validate({
 		    	rules:{
-		    		name:{
+		    		title:{
 		    			required:true
 		    		},
 		    		answer:{
@@ -142,7 +143,7 @@ function addQuestionBank(){
 		    		}
 		    	},
 		    	messages:{
-		    		name:{
+		    		title:{
 		    			required:'请输入题干'
 		    		},
 		    		answer:{
@@ -154,7 +155,7 @@ function addQuestionBank(){
 				  			dataType:'text',
 				  			success:function(data){
 				  				$('#addQuestionForm')[0].reset();
-				  				$("#addQuestionForm").modal('hide');
+				  				$("#addQuestionModal").modal('hide');
 			                    alert(data);
 			                    initQuestionByBank();
 				  		    }
@@ -162,6 +163,94 @@ function addQuestionBank(){
 		    	     }    
 		        });
 	 };
+	 
+	 
+	 function selectChangeFunc(){
+		 if($("#questionType_select").val()==1||$("#questionType_select").val()==2){
+			 $("#questionContent_textarea").show();
+		 }else{
+			 $("#questionContent_textarea").hide();
+		 }
+	 };
 	
+	 
+	 
+	 
+	 function  alterQuestion(id){
+		 var labels = new Array();
+		 $("#alterQuestionModal").modal('show');
+		 $('#alterQuestionForm')[0].reset();
+		 $('#alterQuestionForm').attr('action','/index/alterQuestion?id='+id);
+		 $.getJSON("/index/showQuestionInfo?id="+id, function(data) {
+	          $('#question_title').val(data.title);
+	          $('#question_answer').val(data.answer);
+	          if(data.type=='1'||data.type=='2'){
+	        	  $("#alter_questionContent_textarea").show();
+	        	  $('#question_content').val(data.content);
+	          }else{
+	        	  $("#alter_questionContent_textarea").hide();
+	          }
+	          labels = data.banks.split(",");
+	    });
+		 
+		 $.getJSON("/index/initQuestionBank", function(data) {
+			  $("#alter_bank_labels").html("");//清空info内容
+			  var questionLabelInfo = "";
+		        $.each(data, function(i, item) {
+		        	questionLabelInfo += "<input name='questionLabels' type='checkbox' id='checkbox"+item.id+"'  value='"+item.id+"'" ;
+		        	if($.inArray(item.name, labels)>-1){
+		        		questionLabelInfo += "checked >";
+		        	}else{
+		        		questionLabelInfo += ">"
+		        	}
+		            questionLabelInfo += " <label for='checkbox"+item.id+"'>"+item.name+"</label>"
+		        });
+		        $("#alter_bank_labels").html(questionLabelInfo);
+	     });
+		 
+		 $("#alterQuestionBankForm").validate({
+				rules:{
+					title:{
+						required:true
+					},
+					answer:{
+						required:true
+					}
+				},
+				messages:{
+					title:{
+						required:'请输入题干'
+					},
+					answer:{
+						required:'请输入答案'
+					}
+				},
+		    	submitHandler:function(form){
+		    		$(form).ajaxSubmit({
+				  			resetForm:true,
+				  			dataType:'text',
+				  			success:function(data){
+				  				$("#alterQuestionModal").modal('hide');
+				  				initQuestionByBank();
+								alert(data);
+				  		    }
+				  	     });
+		    	    }    
+		        });
+	};
+	
+	
+	
+	 function deleteQuestion(id){
+		  var delete_question_options = {
+					url:"/index/deleteQuestion?id="+id,
+					dataType:'text',	
+					success:function(data){
+						initQuestionByBank();
+						alert(data);
+					}
+				 }
+				  $.ajax(delete_question_options);
+	 };
 	 
 	 

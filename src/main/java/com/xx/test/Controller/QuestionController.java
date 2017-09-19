@@ -1,7 +1,9 @@
 package com.xx.test.Controller;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.xx.test.Model.Message;
+import com.xx.test.Model.Question;
 import com.xx.test.Model.QuestionBank;
 import com.xx.test.Model.UserInfo;
 
@@ -51,7 +54,7 @@ public class QuestionController extends BaseController {
 	  }
 	  
 	  
-	  @PostMapping(value="/index/addQuestionBank")
+	    @PostMapping(value="/index/addQuestionBank")
 	    @ResponseBody
 	    public String addQuestionBank(HttpServletRequest request , HttpServletResponse response) {
 		         UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
@@ -111,6 +114,98 @@ public class QuestionController extends BaseController {
 	  
 	  
 	  
+	    @PostMapping(value="/index/addQuestion")
+	    @ResponseBody
+	    public String addQuestion(HttpServletRequest request , HttpServletResponse response) {
+	    	     Question question = new Question();
+		         String title = request.getParameter("title");
+		         question.setTitle(title);
+		         String answer = request.getParameter("answer");
+		         question.setAnswer(answer);
+		         String questionType = request.getParameter("questionType");
+		         question.setType(Integer.valueOf(questionType));
+		         String[] questionLabels = request.getParameterValues("questionLabels");
+		         if(questionLabels.length>0){
+		        	 Set<QuestionBank> banks = new HashSet<QuestionBank>();
+		        	  for(String s:questionLabels){
+				        	QuestionBank bank = questionBankService.findQuestionBankById(Long.valueOf(s));
+				        	banks.add(bank);
+				         }
+		        	  question.setQuestionBanks(banks);
+		         }
+		         if(questionType.equals("1")||questionType.equals("2")){
+		        	 question.setContent(request.getParameter("content"));
+		         }
+		         questionService.saveQuestion(question);
+	             return SUCCESS;
+	    }
+	  
+	    
+	    
+	    @RequestMapping(value="/index/initQuestionByBank",method=RequestMethod.GET)
+		  @ResponseBody
+		  public String initQuestionByBank(HttpServletRequest request , HttpServletResponse response){
+			      StringBuffer json = new StringBuffer();
+			      json.append("[");
+			      Long bankId = Long.valueOf(request.getParameter("bankId"));
+			      QuestionBank questionBank = this.questionBankService.findQuestionBankById(bankId);
+			      if(questionBank.getQuestions().size()==0){
+			    	  return "[]";
+			      }
+			      for(Question q:questionBank.getQuestions()){
+			    	    json.append(q.getQuestionJson());
+			    	    json.append(",");
+			      }
+			      json.deleteCharAt(json.length()-1);
+			      json.append( "]" );
+			      return json.toString();
+		  }
+	    
+	    
+	    
+	    
+	    @PostMapping(value="/index/alterQuestion")
+	    @ResponseBody
+	    public String alterQuestion(HttpServletRequest request , HttpServletResponse response) {
+	    	 Long id = Long.valueOf(request.getParameter("id"));
+    	     Question question = questionService.findQuestionById(id);
+    	     question.setTitle(request.getParameter("title"));
+    	     question.setAnswer(request.getParameter("answer"));
+    	     if(question.getType()==1||question.getType()==2){
+    	    	 question.setContent(request.getParameter("content")); 
+    	     }
+    	     String[] questionLabels = request.getParameterValues("questionLabels");
+	         if(questionLabels.length>0){
+	        	 Set<QuestionBank> banks = new HashSet<QuestionBank>();
+	        	  for(String s:questionLabels){
+			        	QuestionBank bank = questionBankService.findQuestionBankById(Long.valueOf(s));
+			        	banks.add(bank);
+			         }
+	        	  question.setQuestionBanks(banks);
+	         }
+    	     questionService.alterQuestion(question);
+             return SUCCESS;
+	    }
+    
+	  
+	  
+	  @GetMapping(value="/index/deleteQuestion")
+	    @ResponseBody
+	    public String deleteQuestion(HttpServletRequest request , HttpServletResponse response) {
+	    	     Long id = Long.valueOf(request.getParameter("id"));
+	    	     questionService.deleteQuestion(id);
+	             return SUCCESS;
+	    }
+	  
+	    
+	  @GetMapping("/index/showQuestionInfo")
+	    @ResponseBody
+	    public String showQuestionInfo(HttpServletRequest request , HttpServletResponse response) {
+	    	Long id = Long.valueOf(request.getParameter("id"));
+	    	Question question = questionService.findQuestionById(id);
+	    	String json = question.getQuestionJson();
+	        return json;
+	    }
 	  
 
 }

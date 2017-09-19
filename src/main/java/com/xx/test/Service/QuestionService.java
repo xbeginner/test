@@ -28,34 +28,29 @@ public class QuestionService implements IQuestionService{
 	@Autowired
     QuestionDao questionDao;
 
-	@Override
-	public List<Question> findQuestionByOrg(Long orgId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+ 
 
 	@Override
 	public void deleteQuestion(Long id) {
-		// TODO Auto-generated method stub
-		
+        questionDao.delete(id);		
 	}
 
 	@Override
 	public void alterQuestion(Question question) {
 		// TODO Auto-generated method stub
-		
+		questionDao.updateQuestionLabels(question.getId());
+		questionDao.updateQuestion(question.getTitle(), question.getContent(), question.getAnswer(), question.getQuestionBanks(), question.getId());
 	}
 
 	@Override
-	public QuestionBank findQuestionById(Long id) {
+	public Question findQuestionById(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return questionDao.findOne(id);
 	}
 
 	@Override
 	public void saveQuestion(Question question) {
-		// TODO Auto-generated method stub
-		
+         questionDao.save(question);		
 	}
 
      

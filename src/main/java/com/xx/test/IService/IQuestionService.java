@@ -10,13 +10,12 @@ import com.xx.test.Model.QuestionBank;
 
 public interface IQuestionService {
 	
-	List<Question> findQuestionByOrg(Long orgId);
 
 	void deleteQuestion(Long id);
 
 	void alterQuestion(Question question);
 
-	QuestionBank findQuestionById(Long id);
+	Question findQuestionById(Long id);
 
 	void saveQuestion(Question question);
 }

@@ -1,6 +1,7 @@
 package com.xx.test.Dao;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -18,8 +19,13 @@ import com.xx.test.Model.QuestionBank;
 public interface QuestionDao extends CrudRepository<Question, Long>{
 	
 
-//    @Modifying
-//    @Transactional  
-//    @Query("update Message m set m.name = ?1,m.content=?2 where m.id = ?3")
-//	void updateMessage(String name, String content, Long id);
+    @Modifying
+    @Transactional  
+    @Query("update Question q set q.title = ?1,q.content=?2,q.answer=?3,q.questionBanks= ?4 where q.id = ?5")
+	void updateQuestion(String title, String content, String answer, Set<QuestionBank> banks,Long id);
+
+    @Modifying
+    @Transactional  
+    @Query("update Question q set q.questionBanks=null where q.id = ?1")
+	void updateQuestionLabels(Long id);
 }
