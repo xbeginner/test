@@ -42,13 +42,12 @@ public class QuestionBankService implements IQuestionBankService{
 	@Override
 	public void alterQuestionBank(QuestionBank questionBank) {
 		// TODO Auto-generated method stub
-		
+		questionBankDao.updateQuestionBank(questionBank.getName(), questionBank.getInfo(), questionBank.getId());
 	}
 
 	@Override
 	public QuestionBank findQuestionBankById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return questionBankDao.findOne(id);
 	}
 
 	@Override

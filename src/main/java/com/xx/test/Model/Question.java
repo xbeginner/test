@@ -94,10 +94,21 @@ public class Question implements Serializable{
 	}
 	
 	private Map<String,String> getQuestionMap(){
+		   String[] types = {"判断题","单选题","多选题","问答题"};
+		   String banks = "";
 		   Map<String,String> map = new HashMap<String, String>();
 		   map.put("id", String.valueOf(id));
 		   map.put("title", title);
 		   map.put("content", content);
+		   map.put("type", types[type]);
+		   if(questionBanks.size()>0){
+			    for(QuestionBank q:questionBanks){
+			    	banks += q.getName();
+			    	banks += ",";
+			    }
+			    banks = banks.substring(0, banks.length()-1);
+		   }
+		   map.put("banks", banks);
 		   return  map;
 	}
 	

@@ -304,12 +304,71 @@
 							<div class="form-group">
 								<div class="input-group">
 									<span class="input-group-addon">题库名称</span> <input type="text"
-										name="name"    class="form-control" required>
+										name="name"  id="questionBank_name"  class="form-control" required>
 								</div>
 							    <div class="input-group">
 									<span class="input-group-addon">说明</span> 
- 									<textarea name="info"   placeholder="题库说明" required></textarea>
+ 									<textarea name="info"   id="questionBank_info"  placeholder="题库说明" required></textarea>
 								</div>
+							</div>
+						</div>
+					</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="submit" class="btn btn-default">提交</button>
+				</div>
+			</div>
+		  </div>
+		 </div>
+		</form>
+     </div>
+ </div>
+ 
+ 
+ 
+ <div th:fragment="hiddenAddQuestion">	
+ <div class="modal fade" id="addQuestionModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		data-backdrop="static">
+		<form  id="addQuestionForm" method="post" >
+		 <div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="form-group">
+							    <div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>题干</span> 
+ 									<textarea name="title"  placeholder="题干" required></textarea>
+								</div>
+							   <div class="input-group" >
+									<span class="input-group-addon"><font color="red">*</font>选择类别：</span> 
+									  <select class="select_styled"  name="questionType"  id="questionType_select">
+				                          <option value="0">判断题</option>
+				                          <option value="1">单选题</option>
+				                          <option value="2">多选题</option>
+				                          <option value="3">问答题</option>
+				                      </select>
+								</div>
+							  <div class="input-group" id="questionContent_textarea">
+									<span class="input-group-addon"><font color="red">*</font>选择题备选项</span> 
+ 									<textarea name="content"  placeholder="选择题备选项,请用|(竖线)进行分割" ></textarea>
+							 </div>
+						  <div class="input-group" >
+									<span class="input-group-addon"><font color="red">*</font>答案</span> 
+ 									<textarea name="answer"  placeholder="答案" required></textarea>
+					   </div>
+					    <div class="input-group" >
+									<span class="input-group-addon"><font color="red">*</font>题库标签</span> 
+ 									<div class='rowCheckbox'  id="bank_labels">
+ 									       
+ 								  </div>
+					   </div>
 							</div>
 						</div>
 					</div>

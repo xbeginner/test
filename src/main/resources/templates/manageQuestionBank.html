@@ -8,9 +8,7 @@
 	<script src="../static/js/manager.js" th:src="@{/js/manager.js}"></script>
 	<script src="../static/js/question.js" th:src="@{/js/question.js}"></script>
 	<script type="text/javascript">
-	$(document).ready(function(){
-		 initQuestionByBank();
-   });
+	       initQuestionBank();
 	</script>
 </head>
 <body style="background: none">
@@ -18,38 +16,37 @@
 <div>
 <ol class="breadcrumb"  id="bread_nav">
     <li><a href="/openMainPage">首页</a></li>
-    <li class="active">题目管理</li>
+    <li class="active">题库管理</li>
 </ol>
-<input type="text" th:value=${questionBank.id}  id="bankid_text" hidden>
+
 </div>
 
  <div class="container" id="question_container">
  <div class="panel panel-success">
 			 <div class="panel-heading">
-			 <span>题目管理</span>
+			 <span>题库管理</span>
 			 </div>
 			 <div class="panel-body">
 					 <table class="table">
 						  <thead>
 						    <tr>
-							      <th><span>题干</span></th>
-							      <th><span>题型</span></th>
+							      <th><span>题库名称</span></th>
+							      <th><span>题库说明</span></th>
 							      <th><span>操作</span></th>
 						    </tr>
 						  </thead>
-						  <tbody id="question_tbody">
+						  <tbody id="questionbank_tbody">
 						           
 						  </tbody>
 						</table>
 			 
 			  </div>
 	       	<div class="panel-footer import_button_div" >
-	       	        <a onclick="addQuestion()" class="btn btn-red "><span>添加<font th:text=${questionBank.name}></font>题库标签题目</span></a>
+	       	        <a onclick="addQuestionBank()" class="btn btn-red "><span>添加题库</span></a>
 			  </div>
 		 </div>
  </div>
  <div th:insert="footer :: copy" class="footer"></div>
 </body>
- <div th:include="hidden:: hiddenAddQuestion"></div>
-
+ <div th:include="hidden:: hiddenAddQuestionBank"></div>
 </html>

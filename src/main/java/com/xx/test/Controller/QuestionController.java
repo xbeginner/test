@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,10 +21,10 @@ import com.xx.test.Model.UserInfo;
 @Controller
 public class QuestionController extends BaseController {
 	
-	  @RequestMapping(value="/index/manageQuestion",method=RequestMethod.GET)
-	  public ModelAndView manageQuestion(HttpServletRequest request , HttpServletResponse response){
+	  @RequestMapping(value="/index/manageQuestionBank",method=RequestMethod.GET)
+	  public ModelAndView manageQuestionBank(HttpServletRequest request , HttpServletResponse response){
 		  UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
-		  ModelAndView modelAndView = new ModelAndView("manageQuestion");
+		  ModelAndView modelAndView = new ModelAndView("manageQuestionBank");
 		  modelAndView.addObject("userInfo",userInfo);
 		  return modelAndView;
 	  }
@@ -61,5 +62,55 @@ public class QuestionController extends BaseController {
 		         this.questionBankService.saveQuestionBank(questionBank);
 	             return SUCCESS;
 	    }
+	  
+	  
+	  
+	    @GetMapping("/index/showQuestionBankInfo")
+	    @ResponseBody
+	    public String showQuestionBankInfo(HttpServletRequest request , HttpServletResponse response) {
+	    	Long id = Long.valueOf(request.getParameter("id"));
+	    	QuestionBank questionBank = questionBankService.findQuestionBankById(id);
+	    	String json = questionBank.getQuestionBankJson();
+	        return json;
+	    }
+	    
+	    
+	    
+	    @PostMapping(value="/index/alterQuestionBank")
+	    @ResponseBody
+	    public String alterQuestionBank(HttpServletRequest request , HttpServletResponse response) {
+	    	     Long id = Long.valueOf(request.getParameter("id"));
+	    	     QuestionBank questionBank = questionBankService.findQuestionBankById(id);
+	    	     questionBank.setName(request.getParameter("name"));
+	    	     questionBank.setInfo(request.getParameter("info"));
+	    	     questionBankService.alterQuestionBank(questionBank);
+	             return SUCCESS;
+	    }
+    
+	  
+	  
+	  @GetMapping(value="/index/deleteQuestionBank")
+	    @ResponseBody
+	    public String deleteQuestionBank(HttpServletRequest request , HttpServletResponse response) {
+	    	     Long id = Long.valueOf(request.getParameter("id"));
+	    	     questionBankService.deleteQuestionBank(id);
+	             return SUCCESS;
+	    }
+	  
+	  
+	  @RequestMapping(value="/index/manageQuestion",method=RequestMethod.GET)
+	  public ModelAndView manageQuestion(HttpServletRequest request , HttpServletResponse response){
+		  UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+		  ModelAndView modelAndView = new ModelAndView("manageQuestion");
+		  String bankId = request.getParameter("id");
+		  QuestionBank questionBank = questionBankService.findQuestionBankById(Long.valueOf(bankId));
+		  modelAndView.addObject("userInfo",userInfo);
+		  modelAndView.addObject("questionBank",questionBank);
+		  return modelAndView;
+	  }
+	  
+	  
+	  
+	  
 
 }

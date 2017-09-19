@@ -18,8 +18,8 @@ public interface QuestionBankDao extends CrudRepository<QuestionBank, Long>{
 	
 	List<QuestionBank> findByOrgId(Long orgId);
 
-//    @Modifying
-//    @Transactional  
-//    @Query("update Message m set m.name = ?1,m.content=?2 where m.id = ?3")
-//	void updateMessage(String name, String content, Long id);
+    @Modifying
+    @Transactional  
+    @Query("update QuestionBank q set q.name = ?1,q.info=?2 where q.id = ?3")
+	void updateQuestionBank(String name, String info, Long id);
 }
