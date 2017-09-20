@@ -182,33 +182,35 @@ function addQuestionBank(){
 		 $('#alterQuestionForm')[0].reset();
 		 $('#alterQuestionForm').attr('action','/index/alterQuestion?id='+id);
 		 $.getJSON("/index/showQuestionInfo?id="+id, function(data) {
+
 	          $('#question_title').val(data.title);
 	          $('#question_answer').val(data.answer);
-	          if(data.type=='1'||data.type=='2'){
+	          if(data.type=='单选题'||data.type=='多选题'){
 	        	  $("#alter_questionContent_textarea").show();
 	        	  $('#question_content').val(data.content);
 	          }else{
 	        	  $("#alter_questionContent_textarea").hide();
 	          }
 	          labels = data.banks.split(",");
+	 		 $.getJSON("/index/initQuestionBank", function(data) {
+				  $("#alter_bank_labels").html("");//清空info内容
+				  var questionLabelInfo = "";
+			        $.each(data, function(i, item) {
+			        	questionLabelInfo += "<input name='questionLabels' type='checkbox' id='checkbox"+item.id+"'  value='"+item.id+"'" ;
+			        	if($.inArray(item.name, labels)>=0){
+			        		questionLabelInfo += " checked >";
+			        	}else{
+			        		questionLabelInfo += ">"
+			        	}
+			            questionLabelInfo += " <label for='checkbox"+item.id+"'>"+item.name+"</label>"
+			        });
+			        $("#alter_bank_labels").html(questionLabelInfo);
+		     });
 	    });
 		 
-		 $.getJSON("/index/initQuestionBank", function(data) {
-			  $("#alter_bank_labels").html("");//清空info内容
-			  var questionLabelInfo = "";
-		        $.each(data, function(i, item) {
-		        	questionLabelInfo += "<input name='questionLabels' type='checkbox' id='checkbox"+item.id+"'  value='"+item.id+"'" ;
-		        	if($.inArray(item.name, labels)>-1){
-		        		questionLabelInfo += "checked >";
-		        	}else{
-		        		questionLabelInfo += ">"
-		        	}
-		            questionLabelInfo += " <label for='checkbox"+item.id+"'>"+item.name+"</label>"
-		        });
-		        $("#alter_bank_labels").html(questionLabelInfo);
-	     });
+
 		 
-		 $("#alterQuestionBankForm").validate({
+		 $("#alterQuestionForm").validate({
 				rules:{
 					title:{
 						required:true
@@ -231,8 +233,8 @@ function addQuestionBank(){
 				  			dataType:'text',
 				  			success:function(data){
 				  				$("#alterQuestionModal").modal('hide');
+				  				alert(data);
 				  				initQuestionByBank();
-								alert(data);
 				  		    }
 				  	     });
 		    	    }    
@@ -253,4 +255,69 @@ function addQuestionBank(){
 				  $.ajax(delete_question_options);
 	 };
 	 
+	 
+	 /**
+	  * 打开文件导入界面
+	  * @returns
+	  */
+	 function openImportQuestionFile(){
+		 $("#importQuestionModal").modal('show');
+		 $("#import_question_form")[0].reset();
+		};
+			
+		 
+		 
+
+		function setFileText(){
+			$('input[id=questionfile]').click();
+			$('input[id=questionfile]').change(function() {
+				$('#questionfiletext').val($(this).val());
+			});
+			
+			
+			 $.validator.addMethod("checkExcel",function(value,element,params){ 
+			      var checkExcel = /\.xl.{1,2}$/; 
+			      return this.optional(element)||(checkExcel.test(value)); 
+			    },"必须为excel类型文件！"); 
+			
+			 $("#import_question_form").validate({
+			 		rules:{
+			 			questionfiletext:{
+			 				required:true,
+			 				checkExcel:true
+			 			}
+			 		},
+			 		messages:{
+			 			questionfiletext:{
+								required:'不能为空'
+							}
+					},
+					 submitHandler:function() {
+						 var modalOpts = {
+								 modal:true,
+								 closeOnEscape:false,
+								 draggable:false,
+								 resizable:false
+						 };
+ 
+					    	var import_question_option={
+					    			url:'questionImport.do',
+					    			dataType:'text',
+					    			async: true,
+					    			beforeSend: function(){
+					    				$('#warning').text('正在处理，请稍等!').dialog(modalOpts);
+					    			},
+					    			success:function(data){
+					      				$('#import_question_form')[0].reset();
+					      				$("#import_question_div").empty();
+						    			alert(data);
+					      				$("#import_question_div").dialog('close');
+					      				initQuestionBank();
+					    		    }
+					    	};
+					  	    $('#import_question_form').ajaxSubmit(import_question_option);
+					 }
+			   });
+		};
+
 	 

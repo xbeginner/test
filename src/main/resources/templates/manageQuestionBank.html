@@ -41,7 +41,8 @@
 						</table>
 			 
 			  </div>
-	       	<div class="panel-footer import_button_div" >
+	     	<div class="panel-footer import_button_div" >
+	     	        <a onclick="openImportQuestionFile()" class="btn btn-green "><span>导入题目</span></a>
 	       	        <a onclick="addQuestionBank()" class="btn btn-red "><span>添加题库</span></a>
 			  </div>
 		 </div>
@@ -49,4 +50,5 @@
  <div th:insert="footer :: copy" class="footer"></div>
 </body>
  <div th:include="hidden:: hiddenAddQuestionBank"></div>
+ <div th:include="hidden:: hiddenImportQuestion"></div>
 </html>

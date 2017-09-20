@@ -38,8 +38,9 @@ public class QuestionService implements IQuestionService{
 	@Override
 	public void alterQuestion(Question question) {
 		// TODO Auto-generated method stub
-		questionDao.updateQuestionLabels(question.getId());
-		questionDao.updateQuestion(question.getTitle(), question.getContent(), question.getAnswer(), question.getQuestionBanks(), question.getId());
+//		questionDao.updateQuestionLabels(question.getId());
+//		questionDao.updateQuestion(question.getTitle(), question.getContent(), question.getAnswer(), question.getQuestionBanks(), question.getId());
+	       questionDao.save(question);
 	}
 
 	@Override

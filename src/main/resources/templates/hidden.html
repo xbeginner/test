@@ -437,6 +437,39 @@
 		</form>
      </div>
  </div>
+ 
+ 
+   <div th:fragment="hiddenImportQuestion">	
+ <div class="modal fade" id="importQuestionModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		data-backdrop="static">
+		<form id='import_question_form' method='post' enctype='multipart/form-data'>
+		 <div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">
+					      <div id='import_question_div' title='导入题库文件'>
+		                        
+			                   <div class='input-group form-group'>
+				                    <span class='input-group-addon'>题库excel格式文件：</span>
+				                     <input id='questionfile' type='file' style='display:none' name='uploadFile'> 
+				                    <input type='text' class='form-control' id='questionfiletext' name='questionfiletext'>
+				                     <a onclick="setFileText()" class="btn btn-green pull-right"><span>选择文件</span></a>
+			                    </div>
+				    </div>
+			</div>
+		  	<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="submit" class="btn btn-default">提交</button>
+				</div>
+		  </div>
+		 </div>
+		 	</form>
+     </div>
+ </div>
    
  </body>
 </html>

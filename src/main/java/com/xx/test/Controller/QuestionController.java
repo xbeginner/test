@@ -8,12 +8,16 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.xx.test.Model.Message;
@@ -175,7 +179,7 @@ public class QuestionController extends BaseController {
     	    	 question.setContent(request.getParameter("content")); 
     	     }
     	     String[] questionLabels = request.getParameterValues("questionLabels");
-	         if(questionLabels.length>0){
+	         if(questionLabels!=null&&questionLabels.length>0){
 	        	 Set<QuestionBank> banks = new HashSet<QuestionBank>();
 	        	  for(String s:questionLabels){
 			        	QuestionBank bank = questionBankService.findQuestionBankById(Long.valueOf(s));
@@ -207,5 +211,65 @@ public class QuestionController extends BaseController {
 	        return json;
 	    }
 	  
+	  @RequestMapping(value="/index/importQuestion.do")
+		@ResponseBody
+		public String importQuestion(HttpServletRequest request , HttpServletResponse response,@RequestParam(value = "uploadFile", required = false) MultipartFile questionFile) throws Exception {  
+		     UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+		     String msg = dealWithTheQuestionFile(questionFile,userInfo);
+		     return msg;
+	  } 
+	  
+	  
+	  
+	  private String dealWithTheQuestionFile(MultipartFile file,UserInfo userInfo) {
+			try {
+				    HSSFWorkbook workbook = new HSSFWorkbook(file.getInputStream());	
+					HSSFSheet aSheet = workbook.getSheetAt(0);
+					String result = "";
+					 for (int rowNumOfSheet = 1; rowNumOfSheet <= aSheet
+			    		       .getLastRowNum(); rowNumOfSheet++) {
+						 if(aSheet.getRow(rowNumOfSheet)!=null&&aSheet.getRow(rowNumOfSheet).getCell(0)!=null){
+							 HSSFRow row = aSheet.getRow(rowNumOfSheet);
+							 if(row.getCell(0)!=null&&!row.getCell(0).getStringCellValue().equals("")
+									 &&row.getCell(1)!=null&&!row.getCell(1).getStringCellValue().equals("")
+									 &&row.getCell(2)!=null&&!row.getCell(2).getStringCellValue().equals("")){
+								     String idCard = row.getCell(1).getStringCellValue();
+								     UserInfo user = this.userService.find("from UserInfo where orgId="+currentUser.getOrgId()+" and  idCard='"+idCard+"'");
+								     if(user==null){
+								    	 notExist += idCard + ",";
+								     }else{
+								    	  //保存信息
+								    	 AnonyCommentTarget target = new AnonyCommentTarget();
+								         target.setAnonyComment(anonyComment);
+								         target.setTargetId(user.getId());
+								         target.setTargetName(user.getName());
+								    	 this.anonyCommentTargetService.save(target);
+								     }
+							 }else{
+								 result += rowNumOfSheet+",";
+							 }
+						 }
+					 }
+					 if(result.equals("")&&notExist.equals("")){
+				         return JSONSUCCESS;
+					 }else{
+						 String message = "";
+						 if(!result.equals("")){
+							   result = result.substring(0, result.length()-1);
+							   message+="第"+result+"行有空数据，没有导入;";
+						 }
+						 if(!notExist.equals("")){
+							 notExist = notExist.substring(0, notExist.length()-1);
+							 message+="系统不存在身份证号"+notExist+"用户信息";
+						 }
+						 return "{success:true,msg:'"+message;
+					 }
+				
+			} catch (Exception e) {
+				this.anonyCommentService.delete(anonyComment);
+				e.printStackTrace();
+				return null;
+			}
+		}
 
 }
