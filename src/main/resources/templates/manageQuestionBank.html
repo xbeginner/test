@@ -12,6 +12,7 @@
 	</script>
 </head>
 <body style="background: none">
+
 <div th:insert="header:: header" ></div>
 <div>
 <ol class="breadcrumb"  id="bread_nav">
@@ -20,7 +21,13 @@
 </ol>
 
 </div>
-
+ <div id="warning" hidden>
+    <div class="panel panel-success">
+              <div class="panel-body">
+                  正在处理，请稍后！
+              </div>
+    </div>
+ </div>
  <div class="container" id="question_container">
  <div class="panel panel-success">
 			 <div class="panel-heading">
@@ -51,4 +58,5 @@
 </body>
  <div th:include="hidden:: hiddenAddQuestionBank"></div>
  <div th:include="hidden:: hiddenImportQuestion"></div>
+
 </html>

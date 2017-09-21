@@ -18,4 +18,6 @@ public interface IOrgService {
 	
 	public List<Org> findByParentOrgIdNotNull();
 
+	public Org findOrgByName(String depName);
+
 }

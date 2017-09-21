@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +25,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -32,6 +38,8 @@ import com.xx.test.Form.RegisteUserForm;
 import com.xx.test.Model.Menu;
 import com.xx.test.Model.Message;
 import com.xx.test.Model.Org;
+import com.xx.test.Model.Question;
+import com.xx.test.Model.QuestionBank;
 import com.xx.test.Model.RegisterUser;
 import com.xx.test.Model.Role;
 import com.xx.test.Model.UserInfo;
@@ -575,4 +583,54 @@ public class MainController extends BaseController {
 			             return SUCCESS;
 			    }
 			  
+			  
+			  
+			   @RequestMapping(value="/index/importUserInfo")
+				@ResponseBody
+				public String importQuestion(HttpServletRequest request , HttpServletResponse response,@RequestParam(value = "uploadFile", required = false) MultipartFile userInfoFile) throws Exception {  
+				     UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+				     String msg = dealWithTheUserInfoFile(userInfoFile,userInfo);
+				     return msg;
+			  } 
+			  
+			  
+			  
+			  private String dealWithTheUserInfoFile(MultipartFile file,UserInfo userInfo) {
+					try {
+						    HSSFWorkbook workbook = new HSSFWorkbook(file.getInputStream());	
+							HSSFSheet aSheet = workbook.getSheetAt(0);
+							 for (int rowNumOfSheet = 1; rowNumOfSheet <= aSheet
+					    		       .getLastRowNum(); rowNumOfSheet++) {
+								 if(aSheet.getRow(rowNumOfSheet)!=null&&aSheet.getRow(rowNumOfSheet).getCell(0)!=null){
+									 HSSFRow row = aSheet.getRow(rowNumOfSheet);
+									 if(row.getCell(0)!=null&&!row.getCell(0).getStringCellValue().equals("") ){
+										      row.getCell(1).setCellType(HSSFCell.CELL_TYPE_STRING);
+										      row.getCell(2).setCellType(HSSFCell.CELL_TYPE_STRING);
+										     String name = row.getCell(0).getStringCellValue().trim();
+										     String idcard= row.getCell(1).getStringCellValue().trim();
+										     String tel = row.getCell(2).getStringCellValue().trim();
+										     String depName = row.getCell(3).getStringCellValue().trim();
+										     UserInfo user = new UserInfo();
+										     user.setUserName(name);
+										     user.setIdcard(idcard);
+										     user.setPassword("123456");
+										     Role role = roleService.findRoleById(Long.valueOf(2));
+										     user.setRole(role);
+										     user.setTel(tel);
+										     Org org = orgService.findOrgByName(depName);
+										     if(org!=null&&userInfo.getOrg().getId()==org.getParentOrgId()){
+											     user.setOrg(org);
+											     userInfoService.saveUserInfo(user);
+										     }
+									 }
+								 }
+							 }
+						 return "操作成功";
+					} catch (Exception e) {
+						
+						e.printStackTrace();
+						return "操作失败，请重新检查题库模板";
+					}
+				}
+
 }

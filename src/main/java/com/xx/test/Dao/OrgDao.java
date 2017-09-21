@@ -22,4 +22,6 @@ public interface OrgDao extends PagingAndSortingRepository<Org, Long>{
 	
     
     List<Org> findByParentOrgIdNotNull();
+    
+    Org findByOrgName(String orgName);
 }

@@ -608,3 +608,57 @@ function initOrg(parentId){
 					  $.ajax(delete_message_options);
 		 };
 		 
+		 
+		 
+		 
+		 /**
+		  * 打开文件导入界面
+		  * @returns
+		  */
+		 function toImportUserInfo(){
+			 $("#importUserInfoModal").modal('show');
+			 $("#import_userInfo_form")[0].reset();
+			};
+				
+ 
+			function setUserInfoFileText(){
+				$('input[id=userInfofile]').click();
+				$('input[id=userInfofile]').change(function() {
+					$('#userInfofiletext').val($(this).val());
+				});
+				
+				
+				 $.validator.addMethod("checkExcel",function(value,element,params){ 
+				      var checkExcel = /\.xl.{1,2}$/; 
+				      return this.optional(element)||(checkExcel.test(value)); 
+				    },"必须为excel类型文件！"); 
+				
+				 $("#import_userInfo_form").validate({
+				 		rules:{
+				 			userInfofiletext:{
+				 				required:true,
+				 				checkExcel:true
+				 			}
+				 		},
+				 		messages:{
+				 			userInfofiletext:{
+									required:'不能为空'
+								}
+						},
+						 submitHandler:function() {
+ 
+						    	var import_userInfo_option={
+						    			url:'/index/importUserInfo',
+						    			dataType:'text',
+						    			async: true,
+						    			success:function(data){
+						      				$('#import_userInfo_form')[0].reset();
+							    			alert(data);
+						      				$("#importUserInfoModal").modal('hide');
+						      				initRegistedUserInfo();
+						    		    }
+						    	};
+						  	    $('#import_userInfo_form').ajaxSubmit(import_userInfo_option);
+						 }
+				   });
+			};

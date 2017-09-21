@@ -293,25 +293,15 @@ function addQuestionBank(){
 							}
 					},
 					 submitHandler:function() {
-						 var modalOpts = {
-								 modal:true,
-								 closeOnEscape:false,
-								 draggable:false,
-								 resizable:false
-						 };
  
 					    	var import_question_option={
-					    			url:'questionImport.do',
+					    			url:'/index/importQuestion',
 					    			dataType:'text',
 					    			async: true,
-					    			beforeSend: function(){
-					    				$('#warning').text('正在处理，请稍等!').dialog(modalOpts);
-					    			},
 					    			success:function(data){
 					      				$('#import_question_form')[0].reset();
-					      				$("#import_question_div").empty();
 						    			alert(data);
-					      				$("#import_question_div").dialog('close');
+					      				$("#importQuestionModal").modal('hide');
 					      				initQuestionBank();
 					    		    }
 					    	};

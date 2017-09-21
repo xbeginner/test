@@ -55,6 +55,12 @@ public class QuestionBankService implements IQuestionBankService{
          questionBankDao.save(questionBank);
 	}
 
+	@Override
+	public QuestionBank findQuestionBankByName(String name) {
+		// TODO Auto-generated method stub
+		return questionBankDao.findByName(name);
+	}
+
 	 
  
 	

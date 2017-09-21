@@ -18,4 +18,6 @@ public interface IQuestionBankService {
 	QuestionBank findQuestionBankById(Long id);
 
 	void saveQuestionBank(QuestionBank questionBank);
+
+	QuestionBank findQuestionBankByName(String name);
 }

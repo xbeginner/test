@@ -43,4 +43,10 @@ public class OrgService implements IOrgService{
 		  return orgDao.findByParentOrgIdNotNull();
 	}
 
+	@Override
+	public Org findOrgByName(String depName) {
+		// TODO Auto-generated method stub
+		return orgDao.findByOrgName(depName);
+	}
+
 }

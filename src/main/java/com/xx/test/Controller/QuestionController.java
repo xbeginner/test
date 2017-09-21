@@ -1,13 +1,16 @@
 package com.xx.test.Controller;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.stereotype.Controller;
@@ -21,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.xx.test.Model.Message;
+import com.xx.test.Model.PaperSchema;
 import com.xx.test.Model.Question;
 import com.xx.test.Model.QuestionBank;
 import com.xx.test.Model.UserInfo;
@@ -211,7 +215,7 @@ public class QuestionController extends BaseController {
 	        return json;
 	    }
 	  
-	  @RequestMapping(value="/index/importQuestion.do")
+	    @RequestMapping(value="/index/importQuestion")
 		@ResponseBody
 		public String importQuestion(HttpServletRequest request , HttpServletResponse response,@RequestParam(value = "uploadFile", required = false) MultipartFile questionFile) throws Exception {  
 		     UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
@@ -223,6 +227,13 @@ public class QuestionController extends BaseController {
 	  
 	  private String dealWithTheQuestionFile(MultipartFile file,UserInfo userInfo) {
 			try {
+				    Map<String,Integer> maps = new HashMap<String,Integer>(){{
+				    	     put("判断题", 0);
+				    	     put("单选题", 1);
+				    	     put("多选题", 2);
+				    	     put("问答题", 3);
+				    	};
+				    };
 				    HSSFWorkbook workbook = new HSSFWorkbook(file.getInputStream());	
 					HSSFSheet aSheet = workbook.getSheetAt(0);
 					String result = "";
@@ -230,46 +241,78 @@ public class QuestionController extends BaseController {
 			    		       .getLastRowNum(); rowNumOfSheet++) {
 						 if(aSheet.getRow(rowNumOfSheet)!=null&&aSheet.getRow(rowNumOfSheet).getCell(0)!=null){
 							 HSSFRow row = aSheet.getRow(rowNumOfSheet);
-							 if(row.getCell(0)!=null&&!row.getCell(0).getStringCellValue().equals("")
-									 &&row.getCell(1)!=null&&!row.getCell(1).getStringCellValue().equals("")
-									 &&row.getCell(2)!=null&&!row.getCell(2).getStringCellValue().equals("")){
-								     String idCard = row.getCell(1).getStringCellValue();
-								     UserInfo user = this.userService.find("from UserInfo where orgId="+currentUser.getOrgId()+" and  idCard='"+idCard+"'");
-								     if(user==null){
-								    	 notExist += idCard + ",";
-								     }else{
-								    	  //保存信息
-								    	 AnonyCommentTarget target = new AnonyCommentTarget();
-								         target.setAnonyComment(anonyComment);
-								         target.setTargetId(user.getId());
-								         target.setTargetName(user.getName());
-								    	 this.anonyCommentTargetService.save(target);
+							 if(row.getCell(0)!=null&&!row.getCell(0).getStringCellValue().equals("") ){
+								     String title = row.getCell(0).getStringCellValue().trim();
+								     String type= row.getCell(3).getStringCellValue().trim();
+								   
+								     String answer = row.getCell(2).getStringCellValue().trim();
+								     String lableStr = row.getCell(4).getStringCellValue().trim();
+								     Question question = new Question();
+								     question.setAnswer(answer);
+								     question.setTitle(title);
+								     question.setType(maps.get(type));
+								     if(type.equals("单选题")||type.equals("多选题")){
+								    	  String content = row.getCell(1).getStringCellValue().trim();
+								    	    question.setContent(content);
 								     }
-							 }else{
-								 result += rowNumOfSheet+",";
+								     Set<QuestionBank> banks = new HashSet<QuestionBank>();
+								     if(lableStr.contains("#")){
+								    	  String[] labels = lableStr.split("#");
+								    	  for(String s:labels){
+								    		    QuestionBank bank = questionBankService.findQuestionBankByName(s);
+								    		    if(bank!=null&&bank.getOrgId()==userInfo.getOrg().getId()){
+								    		    	  banks.add(bank);
+								    		    }
+								    	  }
+								     }else{
+								    	    QuestionBank bank = questionBankService.findQuestionBankByName(lableStr);
+								    	    if(bank!=null&&bank.getOrgId()==userInfo.getOrg().getId()){
+							    		    	  banks.add(bank);
+							    		    }
+								     }
+								     question.setQuestionBanks(banks);
+								     questionService.saveQuestion(question);
 							 }
 						 }
 					 }
-					 if(result.equals("")&&notExist.equals("")){
-				         return JSONSUCCESS;
-					 }else{
-						 String message = "";
-						 if(!result.equals("")){
-							   result = result.substring(0, result.length()-1);
-							   message+="第"+result+"行有空数据，没有导入;";
-						 }
-						 if(!notExist.equals("")){
-							 notExist = notExist.substring(0, notExist.length()-1);
-							 message+="系统不存在身份证号"+notExist+"用户信息";
-						 }
-						 return "{success:true,msg:'"+message;
-					 }
-				
+				 return "操作成功";
 			} catch (Exception e) {
-				this.anonyCommentService.delete(anonyComment);
+				
 				e.printStackTrace();
-				return null;
+				return "操作失败，请重新检查题库模板";
 			}
 		}
+	  
+	  
+	  
+	  @RequestMapping(value="/index/managePaper",method=RequestMethod.GET)
+	  public ModelAndView managePaper(HttpServletRequest request , HttpServletResponse response){
+		  UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+		  ModelAndView modelAndView = new ModelAndView("managePaperSchema");
+		  modelAndView.addObject("userInfo",userInfo);
+		  return modelAndView;
+	  }
 
+	  
+	  
+	  @RequestMapping(value="/index/initPaperSchema",method=RequestMethod.GET)
+	  @ResponseBody
+	  public String initPaperSchema(HttpServletRequest request , HttpServletResponse response){
+		      StringBuffer json = new StringBuffer();
+		      json.append("[");
+		      UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+		      Long orgId = userInfo.getOrg().getId();
+		      List<PaperSchema> paperSchemas = this.paperSchemaService.findPaperSchemaByOrg(orgId);
+		      if(paperSchemas.size()==0){
+		    	  return "[]";
+		      }
+		      for(PaperSchema p:paperSchemas){
+		    	    json.append(p.getPaperSchemaJson());
+		    	    json.append(",");
+		      }
+		      json.deleteCharAt(json.length()-1);
+		      json.append( "]" );
+		      return json.toString();
+	  }
+	  
 }

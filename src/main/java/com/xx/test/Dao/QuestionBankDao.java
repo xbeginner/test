@@ -17,6 +17,8 @@ import com.xx.test.Model.QuestionBank;
 public interface QuestionBankDao extends CrudRepository<QuestionBank, Long>{
 	
 	List<QuestionBank> findByOrgId(Long orgId);
+	
+	QuestionBank findByName(String name);
 
     @Modifying
     @Transactional  
