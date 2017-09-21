@@ -36,6 +36,9 @@ public class PaperSchema implements Serializable{
 	  //考试时长
 	  private Integer doTime;
 	  
+	  //0初建，1参数，2选题
+	  private int step;
+	  
 	  @OneToMany(mappedBy="paperSchema")
 	  private List<UserPaper> userPapers;
 	  
@@ -107,6 +110,14 @@ public class PaperSchema implements Serializable{
 	
 
 	
+	public int getStep() {
+		return step;
+	}
+
+	public void setStep(int step) {
+		this.step = step;
+	}
+
 	public Long getOrgId() {
 		return orgId;
 	}
@@ -138,8 +149,8 @@ public class PaperSchema implements Serializable{
 		   map.put("id", String.valueOf(id));
 		   map.put("paperName", paperName);
 		   SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		   map.put("startTime", format.format(startTime));
-		   map.put("endTime", format.format(endTime));
+//		   map.put("startTime", format.format(startTime));
+//		   map.put("endTime", format.format(endTime));
 		   map.put("type", types[type]);
 		   map.put("doTime", String.valueOf(doTime));
 		   map.put("log", String.valueOf(log));

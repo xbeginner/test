@@ -473,7 +473,7 @@
    
    
    
-   <div th:fragment="hiddenImportUserInfo">	
+ <div th:fragment="hiddenImportUserInfo">	
  <div class="modal fade" id="importUserInfoModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true"
 		data-backdrop="static">
@@ -504,6 +504,65 @@
 		 	</form>
      </div>
  </div>
+ 
+ 
+ 
+ <div th:fragment="hiddenAddPaperSchema">	
+ <div class="modal fade" id="addPaperSchemaModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		data-backdrop="static">
+		<form  id="addPaperSchemaForm" method="post" >
+		 <div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="form-group">
+								<div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>方案名称</span> 
+									<input type="text" name="paperName"  class="form-control" required>
+								</div>
+								 <div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>考试时长(分钟)</span> 
+									<input type="text" name="doTime"  class="form-control" required>
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>试卷类型</span> 
+									<div class="field_select">
+									    <select class="select_styled" name="type" style="font-size:large;">
+									        <option value="0">机试</option>
+									        <option value="1">笔试</option>
+									    </select>
+									</div>
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>出题类型</span> 
+									<div class="field_select">
+									    <select class="select_styled" name="log" style="font-size:large;">
+									        <option value="0">随机出题</option>
+									        <option value="1">选择试题</option>
+									    </select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="submit" class="btn btn-default">提交</button>
+				</div>
+			</div>
+		  </div>
+		 </div>
+		</form>
+     </div>
+ </div>
+ 
    
  </body>
 </html>

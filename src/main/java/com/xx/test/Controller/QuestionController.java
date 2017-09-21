@@ -315,4 +315,19 @@ public class QuestionController extends BaseController {
 		      return json.toString();
 	  }
 	  
+	  
+	   @PostMapping(value="/index/addPaperSchema")
+	    @ResponseBody
+	    public String addPaperSchema(HttpServletRequest request , HttpServletResponse response) {
+	    	     PaperSchema paperSchema = new PaperSchema();
+	    	     UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+	    	     paperSchema.setCreatorId(userInfo.getId());
+	    	     paperSchema.setDoTime(Integer.valueOf(request.getParameter("doTime")));
+	    	     paperSchema.setLog(Integer.valueOf(request.getParameter("log")));
+	    	     paperSchema.setOrgId(userInfo.getOrg().getId());
+	    	     paperSchema.setPaperName(request.getParameter("paperName"));
+	    	     paperSchema.setType(Integer.valueOf(request.getParameter("type")));
+		         paperSchemaService.savePaperSchema(paperSchema);
+	             return SUCCESS;
+	    }
 }

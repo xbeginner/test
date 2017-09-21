@@ -10,5 +10,7 @@ import com.xx.test.Model.PaperSchema;
 public interface IPaperSchemaService {
 
 	List<PaperSchema> findPaperSchemaByOrg(Long orgId);
+
+	void savePaperSchema(PaperSchema paperSchema);
 	  
 }
