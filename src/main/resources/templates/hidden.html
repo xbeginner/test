@@ -348,7 +348,7 @@
 								</div>
 							   <div class="input-group" >
 									<span class="input-group-addon"><font color="red">*</font>选择类别：</span> 
-									  <select class="select_styled"  name="questionType"  id="questionType_select"  onchange="selectChangeFunc()">
+									  <select class="select_styled"  name="questionType"  id="questionType_select"  onchange="selectChangeFunc()" style="font-size:large;">
 				                          <option value="0">判断题</option>
 				                          <option value="1">单选题</option>
 				                          <option value="2">多选题</option>
@@ -371,6 +371,23 @@
 	 								    </div>
  								   </div>
 					        </div>
+					        <div class="input-group" >
+									<span class="input-group-addon"><font color="red">*</font>选择适用机构：</span> 
+									  <select class="select_styled"  name="fitOrgLog"  style="font-size:large;">
+				                          <option value="0">人行机构</option>
+				                          <option value="1">金融机构</option>
+				                          <option value="2">征信机构</option>
+				                          <option value="3">评级机构</option>
+				                      </select>
+								</div>
+								<div class="input-group" >
+									<span class="input-group-addon"><font color="red">*</font>选择适用岗位：</span> 
+									  <select class="select_styled"  name="fitUserLog" style="font-size:large;">
+				                          <option value="0">个人</option>
+				                          <option value="1">企业</option>
+				                          <option value="2">通用</option>
+				                      </select>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -540,7 +557,7 @@
 									</div>
 								</div>
 								<div class="input-group">
-									<span class="input-group-addon"><font color="red">*</font>出题类型</span> 
+							    	<span class="input-group-addon"><font color="red">*</font>出题类型</span> 
 									<div class="field_select">
 									    <select class="select_styled" name="log" style="font-size:large;">
 									        <option value="0">随机出题</option>
@@ -548,6 +565,106 @@
 									    </select>
 									</div>
 								</div>
+							   <div class="input-group">
+							    	<span class="input-group-addon"><font color="red">*</font>适用机构</span> 
+									<div class="field_select">
+									    <select class="select_styled" name="fitOrgLog" style="font-size:large;">
+									        <option value="0">人行机构</option>
+									        <option value="1">金融机构</option>
+									        <option value="2">征信机构</option>
+									        <option value="3">评级机构</option>
+									    </select>
+									</div>
+								</div>
+							   <div class="input-group">
+							    	<span class="input-group-addon"><font color="red">*</font>适用岗位</span> 
+									<div class="field_select">
+									    <select class="select_styled" name="fitUserLog" style="font-size:large;">
+									        <option value="0">个人</option>
+									        <option value="1">企业</option>
+									        <option value="2">通用</option>
+									    </select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="submit" class="btn btn-default">提交</button>
+				</div>
+			</div>
+		  </div>
+		 </div>
+		</form>
+     </div>
+ </div>
+ 
+ 
+ 
+ <div th:fragment="hiddenSetPaperQuestionInfo">	
+ <div class="modal fade" id="setPaperQuestionInfoModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		data-backdrop="static">
+		<form  id="setPaperQuestionInfoForm" method="post" >
+		 <div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="form-group">
+							
+								<div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>判断题数量</span> 
+									<input type="text" name="panduanNum"  class="form-control" required>
+								</div>
+								 <div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>判断题分数</span> 
+									<input type="text" name="panduanGrade"  class="form-control" required>
+								</div>
+								
+								 <div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>单选题数量</span> 
+									<input type="text" name="danxuanNum"  class="form-control" required>
+								</div>
+								 <div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>单选题分数</span> 
+									<input type="text" name="danxuanGrade"  class="form-control" required>
+								</div>
+								
+								 <div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>多选题数量</span> 
+									<input type="text" name="duoxuanNum"  class="form-control" required>
+								</div>
+								 <div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>多选题分数</span> 
+									<input type="text" name="duoxuanGrade"  class="form-control" required>
+								</div>
+								
+							   <div class="input-group" id="wenda_num_div">
+									<span class="input-group-addon"><font color="red">*</font>问答题数量</span> 
+									<input type="text" name="wendaNum"  class="form-control" required>
+								</div>
+								 <div class="input-group" id="wenda_grade_div">
+									<span class="input-group-addon"><font color="red">*</font>问答题分数</span> 
+									<input type="text" name="wendaGrade"  class="form-control" required>
+								</div>
+								
+							   <div class="input-group" >
+									<span class="input-group-addon"><font color="red">*</font>选择题库</span> 
+									<div class='input_styled checklist'>
+	 									<div class='rowCheckbox checkbox-large'  id="paper_bank_labels">
+	 									       
+	 								    </div>
+ 								   </div>
+					        </div>
+								
+								
 							</div>
 						</div>
 					</div>

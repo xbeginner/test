@@ -51,6 +51,30 @@ public class PaperSchema implements Serializable{
 	  private Long orgId;
 	  
 	  private Long creatorId;
+	  
+		//0个人,1企业,2通用
+		private int fitUserLog;
+		
+		//企业类别，0人行机构，1金融机构，2征信机构，3评级机构
+		private int fitOrgLog;
+		
+		private Integer panduanNum;
+		
+		private Float panduanGrade;
+		
+		private Integer danxuanNum;
+		
+		private Float danxuanGrade;
+		
+		private Integer duoxuanNum;
+		
+		private Float duoxuanGrade;
+		
+		private Integer wendaNum;
+		
+		private Float wendaGrade;
+		
+		private Float grade;
 
 	public Long getId() {
 		return id;
@@ -143,14 +167,34 @@ public class PaperSchema implements Serializable{
 		this.log = log;
 	}
 
+	
+	
+	public int getFitUserLog() {
+		return fitUserLog;
+	}
+
+	public void setFitUserLog(int fitUserLog) {
+		this.fitUserLog = fitUserLog;
+	}
+
+	public int getFitOrgLog() {
+		return fitOrgLog;
+	}
+
+	public void setFitOrgLog(int fitOrgLog) {
+		this.fitOrgLog = fitOrgLog;
+	}
+
 	private Map<String,String> getPaperSchemaMap(){
 		   String[] types = {"机考","卷考"};
+		   String[] fitUserLogs = {"个人","企业","通用"};
+		   String[] fitOrgLogs = {"人行机构","金融机构","征信机构","评级机构"};
 		   Map<String,String> map = new HashMap<String, String>();
 		   map.put("id", String.valueOf(id));
 		   map.put("paperName", paperName);
 		   SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//		   map.put("startTime", format.format(startTime));
-//		   map.put("endTime", format.format(endTime));
+		   map.put("fitUserLog", fitUserLogs[fitUserLog]);
+		   map.put("fitOrgLog", fitOrgLogs[fitOrgLog]);
 		   map.put("type", types[type]);
 		   map.put("doTime", String.valueOf(doTime));
 		   map.put("log", String.valueOf(log));
@@ -162,5 +206,79 @@ public class PaperSchema implements Serializable{
 	public String getPaperSchemaJson(){
 		return JsonUtils.getJsonString(getPaperSchemaMap());
 	}
+
+	public Integer getPanduanNum() {
+		return panduanNum;
+	}
+
+	public void setPanduanNum(Integer panduanNum) {
+		this.panduanNum = panduanNum;
+	}
+
+	public Float getPanduanGrade() {
+		return panduanGrade;
+	}
+
+	public void setPanduanGrade(Float panduanGrade) {
+		this.panduanGrade = panduanGrade;
+	}
+
+	public Integer getDanxuanNum() {
+		return danxuanNum;
+	}
+
+	public void setDanxuanNum(Integer danxuanNum) {
+		this.danxuanNum = danxuanNum;
+	}
+
+	public Float getDanxuanGrade() {
+		return danxuanGrade;
+	}
+
+	public void setDanxuanGrade(Float danxuanGrade) {
+		this.danxuanGrade = danxuanGrade;
+	}
+
+	public Integer getDuoxuanNum() {
+		return duoxuanNum;
+	}
+
+	public void setDuoxuanNum(Integer duoxuanNum) {
+		this.duoxuanNum = duoxuanNum;
+	}
+
+	public Float getDuoxuanGrade() {
+		return duoxuanGrade;
+	}
+
+	public void setDuoxuanGrade(Float duoxuanGrade) {
+		this.duoxuanGrade = duoxuanGrade;
+	}
+
+	public Integer getWendaNum() {
+		return wendaNum;
+	}
+
+	public void setWendaNum(Integer wendaNum) {
+		this.wendaNum = wendaNum;
+	}
+
+	public Float getWendaGrade() {
+		return wendaGrade;
+	}
+
+	public void setWendaGrade(Float wendaGrade) {
+		this.wendaGrade = wendaGrade;
+	}
+
+	public Float getGrade() {
+		return grade;
+	}
+
+	public void setGrade(Float grade) {
+		this.grade = grade;
+	}
+	
+	
 
 }

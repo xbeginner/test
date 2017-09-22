@@ -132,6 +132,10 @@ public class QuestionController extends BaseController {
 		         question.setAnswer(answer);
 		         String questionType = request.getParameter("questionType");
 		         question.setType(Integer.valueOf(questionType));
+		         String fitUserLog = request.getParameter("fitUserLog");
+		         question.setFitUserLog(Integer.valueOf(fitUserLog));
+		         String fitOrgLog = request.getParameter("fitOrgLog");
+		         question.setFitOrgLog(Integer.valueOf(fitOrgLog));
 		         String[] questionLabels = request.getParameterValues("questionLabels");
 		         if(questionLabels.length>0){
 		        	 Set<QuestionBank> banks = new HashSet<QuestionBank>();
@@ -234,6 +238,19 @@ public class QuestionController extends BaseController {
 				    	     put("问答题", 3);
 				    	};
 				    };
+				    Map<String,Integer> fitUserMaps = new HashMap<String,Integer>(){{
+			    	     put("个人", 0);
+			    	     put("企业", 1);
+			    	     put("通用", 2);
+			    	};
+			    };
+			    Map<String,Integer> fitOrgMaps = new HashMap<String,Integer>(){{
+		    	     put("人行机构", 0);
+		    	     put("金融机构", 1);
+		    	     put("征信机构", 2);
+		    	     put("评级机构", 3);
+		    	};
+		    };
 				    HSSFWorkbook workbook = new HSSFWorkbook(file.getInputStream());	
 					HSSFSheet aSheet = workbook.getSheetAt(0);
 					String result = "";
@@ -247,10 +264,14 @@ public class QuestionController extends BaseController {
 								   
 								     String answer = row.getCell(2).getStringCellValue().trim();
 								     String lableStr = row.getCell(4).getStringCellValue().trim();
+								     String fitUserLog= row.getCell(6).getStringCellValue().trim();
+								     String fitOrgLog= row.getCell(5).getStringCellValue().trim();
 								     Question question = new Question();
 								     question.setAnswer(answer);
 								     question.setTitle(title);
 								     question.setType(maps.get(type));
+								     question.setFitOrgLog(fitOrgMaps.get(fitOrgLog));
+								     question.setFitUserLog(fitUserMaps.get(fitUserLog));
 								     if(type.equals("单选题")||type.equals("多选题")){
 								    	  String content = row.getCell(1).getStringCellValue().trim();
 								    	    question.setContent(content);
@@ -327,6 +348,8 @@ public class QuestionController extends BaseController {
 	    	     paperSchema.setOrgId(userInfo.getOrg().getId());
 	    	     paperSchema.setPaperName(request.getParameter("paperName"));
 	    	     paperSchema.setType(Integer.valueOf(request.getParameter("type")));
+	    	     paperSchema.setFitOrgLog(Integer.valueOf(request.getParameter("fitOrgLog")));
+	    	     paperSchema.setFitUserLog(Integer.valueOf(request.getParameter("fitUserLog")));
 		         paperSchemaService.savePaperSchema(paperSchema);
 	             return SUCCESS;
 	    }

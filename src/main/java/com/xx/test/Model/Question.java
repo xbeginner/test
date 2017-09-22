@@ -44,6 +44,12 @@ public class Question implements Serializable{
 	
 	private  String  answer;
 	
+	//0个人,1企业,2通用
+	private int fitUserLog;
+	
+	//企业类别，0人行机构，1金融机构，2征信机构，3评级机构
+	private int fitOrgLog;
+	
 	 @ManyToMany
 	  @JoinTable(name="t_questionTypes" ,
       joinColumns = { @JoinColumn(name = "question_id") },
@@ -98,8 +104,30 @@ public class Question implements Serializable{
 		this.questionBanks = questionBanks;
 	}
 	
+	
+	
+    
+
+	public int getFitUserLog() {
+		return fitUserLog;
+	}
+
+	public void setFitUserLog(int fitUserLog) {
+		this.fitUserLog = fitUserLog;
+	}
+
+	public int getFitOrgLog() {
+		return fitOrgLog;
+	}
+
+	public void setFitOrgLog(int fitOrgLog) {
+		this.fitOrgLog = fitOrgLog;
+	}
+
 	private Map<String,String> getQuestionMap(){
 		   String[] types = {"判断题","单选题","多选题","问答题"};
+		   String[] fitUserLogs = {"个人","企业","通用"};
+		   String[] fitOrgLogs = {"人行机构","金融机构","征信机构","评级机构"};
 		   String banks = "";
 		   Map<String,String> map = new HashMap<String, String>();
 		   map.put("id", String.valueOf(id));
@@ -107,6 +135,8 @@ public class Question implements Serializable{
 		   map.put("content", content);
 		   map.put("answer", answer);
 		   map.put("type", types[type]);
+		   map.put("fitUserLog", fitUserLogs[fitUserLog]);
+		   map.put("fitOrgLog", fitOrgLogs[fitOrgLog]);
 		   if(questionBanks.size()>0){
 			    for(QuestionBank q:questionBanks){
 			    	banks += q.getName();
