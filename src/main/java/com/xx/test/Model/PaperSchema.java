@@ -48,6 +48,7 @@ public class PaperSchema implements Serializable{
 	  //0为随机，1为选择题目
 	  private int log;
 	  
+	  
 	  private Long orgId;
 	  
 	  private Long creatorId;
@@ -196,7 +197,9 @@ public class PaperSchema implements Serializable{
 		   map.put("fitUserLog", fitUserLogs[fitUserLog]);
 		   map.put("fitOrgLog", fitOrgLogs[fitOrgLog]);
 		   map.put("type", types[type]);
+		   map.put("typeLog", String.valueOf(type));
 		   map.put("doTime", String.valueOf(doTime));
+		   map.put("step", String.valueOf(step));
 		   map.put("log", String.valueOf(log));
 		   return  map;
 	}

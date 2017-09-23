@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.xx.test.Model.Message;
+import com.xx.test.Model.Org;
 import com.xx.test.Model.PaperSchema;
 import com.xx.test.Model.Question;
 import com.xx.test.Model.QuestionBank;
@@ -350,7 +351,40 @@ public class QuestionController extends BaseController {
 	    	     paperSchema.setType(Integer.valueOf(request.getParameter("type")));
 	    	     paperSchema.setFitOrgLog(Integer.valueOf(request.getParameter("fitOrgLog")));
 	    	     paperSchema.setFitUserLog(Integer.valueOf(request.getParameter("fitUserLog")));
+	    	     paperSchema.setStep(0);
 		         paperSchemaService.savePaperSchema(paperSchema);
 	             return SUCCESS;
 	    }
+	   
+	   
+	   
+	   
+	      @RequestMapping(value="/index/getOrgUsers",method=RequestMethod.GET)
+		  @ResponseBody
+		  public String getOrgUsers(HttpServletRequest request , HttpServletResponse response){
+			      StringBuffer json = new StringBuffer();
+			      json.append("[");
+			      UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+			      List<Org> orgList = orgService.findOrgListByParentId(userInfo.getOrg().getId());
+			      if(orgList.size()>0){
+//			    	  json.append("\"orgs\":[" );
+			    	   for(Org o:orgList){
+			    		       json.append(o.getOrgJson());
+			    			   json.deleteCharAt(json.length()-1);
+					    	   json.append(",\"users\":[");
+					    	   if(o.getUserInfoList().size()>0){
+					    		      for(UserInfo u:o.getUserInfoList()){
+					    		    	  json.append(u.getUserJson());
+					    		    	  json.append(",");
+					    		      }
+					    	   }
+					    	   json.deleteCharAt(json.length()-1);
+					    	   json.append("]}");
+			    	   }
+			    	  
+			      }
+			           json.append("]");
+//			      json.append("}");
+			      return json.toString();
+		  }
 }
