@@ -30,7 +30,13 @@ public class UserPaper implements Serializable{
 	
 	private Long paperId;
 	
-	private String questionIds;
+	private String questionPanduanIds;
+	
+	private String questionDanxuanIds;
+	
+	private String questionDuoxuanIds;
+	
+	private String questionWendaIds;
 	
 	  //开始时间
 	  private Date startTime;
@@ -73,12 +79,38 @@ public class UserPaper implements Serializable{
 		this.paperId = paperId;
 	}
 
-	public String getQuestionIds() {
-		return questionIds;
+   
+	
+	public String getQuestionPanduanIds() {
+		return questionPanduanIds;
 	}
 
-	public void setQuestionIds(String questionIds) {
-		this.questionIds = questionIds;
+	public void setQuestionPanduanIds(String questionPanduanIds) {
+		this.questionPanduanIds = questionPanduanIds;
+	}
+
+	public String getQuestionDanxuanIds() {
+		return questionDanxuanIds;
+	}
+
+	public void setQuestionDanxuanIds(String questionDanxuanIds) {
+		this.questionDanxuanIds = questionDanxuanIds;
+	}
+
+	public String getQuestionDuoxuanIds() {
+		return questionDuoxuanIds;
+	}
+
+	public void setQuestionDuoxuanIds(String questionDuoxuanIds) {
+		this.questionDuoxuanIds = questionDuoxuanIds;
+	}
+
+	public String getQuestionWendaIds() {
+		return questionWendaIds;
+	}
+
+	public void setQuestionWendaIds(String questionWendaIds) {
+		this.questionWendaIds = questionWendaIds;
 	}
 
 	public int getDoLog() {

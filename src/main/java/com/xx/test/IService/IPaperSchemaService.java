@@ -12,5 +12,7 @@ public interface IPaperSchemaService {
 	List<PaperSchema> findPaperSchemaByOrg(Long orgId);
 
 	void savePaperSchema(PaperSchema paperSchema);
+	
+	PaperSchema findPaperSchemaById(Long paperSchemaId);
 	  
 }

@@ -67,7 +67,7 @@ function addPaperSchema(){
 function setPaperQuestionInfo(schemaId,type){
 	  $("#setPaperQuestionInfoModal").modal('show');
 	   $('#setPaperQuestionInfoForm')[0].reset();
-	   $('#setPaperQuestionInfoForm').attr('action','/index/setPaperQuestionInfo');
+	   $('#setPaperQuestionInfoForm').attr('action','/index/setPaperQuestionInfo?paperId='+schemaId);
 	   $("#paper_id_text").val(schemaId);
 	   
 		if(type=='1'){

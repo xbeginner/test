@@ -1,5 +1,6 @@
 package com.xx.test.Controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -29,6 +30,7 @@ import com.xx.test.Model.PaperSchema;
 import com.xx.test.Model.Question;
 import com.xx.test.Model.QuestionBank;
 import com.xx.test.Model.UserInfo;
+import com.xx.test.Model.UserPaper;
 
 @Controller
 public class QuestionController extends BaseController {
@@ -387,4 +389,73 @@ public class QuestionController extends BaseController {
 //			      json.append("}");
 			      return json.toString();
 		  }
+	      
+	      
+	      
+	      
+	        @PostMapping(value="/index/setPaperQuestionInfo")
+		    @ResponseBody
+		    public String setPaperQuestionInfo(HttpServletRequest request , HttpServletResponse response) {
+			         Long paperId = Long.valueOf(request.getParameter("paperId"));
+			         PaperSchema paperSchema = paperSchemaService.findPaperSchemaById(paperId);
+	        	     String questionPanduanIds = "";
+	        	     String questionDanxuanIds = "";
+	        	     String questionDuoxuanIds = "";
+	        	     String questionWendaIds = "";
+	        	     String[] bankIds = request.getParameterValues("questionLabels");
+			         String panduanNum = request.getParameter("panduanNum");
+	        	     paperSchema.setPanduanNum(Integer.valueOf(panduanNum));
+			         String panduanGrade = request.getParameter("panduanGrade");
+			         paperSchema.setPanduanGrade(Float.valueOf(panduanGrade));
+			         String danxuanNum = request.getParameter("danxuanNum");
+			         paperSchema.setDanxuanNum(Integer.valueOf(danxuanNum));
+			         String danxuanGrade = request.getParameter("danxuanGrade");
+			         paperSchema.setDanxuanGrade(Float.valueOf(danxuanGrade));
+			         String duoxuanNum = request.getParameter("duoxuanNum");
+			         paperSchema.setDuoxuanNum(Integer.valueOf(duoxuanNum));
+			         String duoxuanGrade = request.getParameter("duoxuanGrade");
+			         paperSchema.setDuoxuanGrade(Float.valueOf(duoxuanGrade));
+			         if(paperSchema.getType()==1){
+				         String wendaNum = request.getParameter("wendaNum");
+				         paperSchema.setWendaNum(Integer.valueOf(wendaNum));
+				         String wendaGrade = request.getParameter("wendaGrade");
+				         paperSchema.setWendaGrade(Float.valueOf(wendaGrade));
+			         }
+			         if(paperSchema.getLog()==0){
+			        	 	questionPanduanIds = getRandomQuestionsByLabel(bankIds,Integer.valueOf(panduanNum),paperSchema.getFitOrgLog(),paperSchema.getFitUserLog(),0);
+			        		questionDanxuanIds = getRandomQuestionsByLabel(bankIds,Integer.valueOf(danxuanNum),paperSchema.getFitOrgLog(),paperSchema.getFitUserLog(),1);
+			        		questionDuoxuanIds = getRandomQuestionsByLabel(bankIds,Integer.valueOf(duoxuanNum),paperSchema.getFitOrgLog(),paperSchema.getFitUserLog(),2);
+			         }
+			         paperSchema.setStep(1);
+			         String userIds = request.getParameter("chooseUserIds");
+			         if(!userIds.equals("")&&userIds!=null){
+			             String[] ids = userIds.split(",");
+				         List<UserPaper>  userPaperList = new ArrayList<UserPaper>();
+				         for(String userId:ids){
+				        	  UserPaper userPaper = new UserPaper();
+				        	  userPaper.setDoLog(0);
+				        	  userPaper.setPaperId(paperId);
+				        	  userPaper.setPaperSchema(paperSchema);
+				        	  userPaper.setUserId(Long.valueOf(userId));
+				        	  userPaperList.add(userPaper);
+				         }
+			         }
+			  
+			         
+			        
+			        
+		             return SUCCESS;
+		    }
+
+            /**
+             * 
+             * @param bankIds
+             * @param fitOrgLog
+             * @param fitUserLog
+             * @param type  0判断，1单选，2多选，3问答
+             *   * @return
+             */
+			private String getRandomQuestionsByLabel(String[] bankIds,int questionNum, int fitOrgLog, int fitUserLog, int type) {
+				return null;
+			}
 }

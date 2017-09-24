@@ -36,5 +36,10 @@ public class PaperSchemaService implements IPaperSchemaService{
 		// TODO Auto-generated method stub
 		 paperSchemaDao.save(paperSchema);
 	}
+
+	@Override
+	public PaperSchema findPaperSchemaById(Long paperSchemaId) {
+		return paperSchemaDao.findOne(paperSchemaId);
+	}
  
 }
