@@ -76,6 +76,8 @@ public class PaperSchema implements Serializable{
 		private Float wendaGrade;
 		
 		private Float grade;
+		
+		private String questionBankIds;
 
 	public Long getId() {
 		return id;
@@ -280,6 +282,14 @@ public class PaperSchema implements Serializable{
 
 	public void setGrade(Float grade) {
 		this.grade = grade;
+	}
+
+	public String getQuestionBankIds() {
+		return questionBankIds;
+	}
+
+	public void setQuestionBankIds(String questionBankIds) {
+		this.questionBankIds = questionBankIds;
 	}
 	
 	

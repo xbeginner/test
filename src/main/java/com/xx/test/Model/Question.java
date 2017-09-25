@@ -23,7 +23,6 @@ public class Question implements Serializable{
 	/**
 	 * 
 	 */
-
 	private static final long serialVersionUID =9L;
 	
 	
@@ -54,7 +53,7 @@ public class Question implements Serializable{
 	  @JoinTable(name="t_questionTypes" ,
       joinColumns = { @JoinColumn(name = "question_id") },
 	  inverseJoinColumns = { @JoinColumn(name = "questionBank_Id") })
-	private Set<QuestionBank> questionBanks = new HashSet<QuestionBank>(0);
+	  private Set<QuestionBank> questionBanks = new HashSet<QuestionBank>(0);
 
 	public Long getId() {
 		return id;
@@ -103,11 +102,7 @@ public class Question implements Serializable{
 	public void setQuestionBanks(Set<QuestionBank> questionBanks) {
 		this.questionBanks = questionBanks;
 	}
-	
-	
-	
-    
-
+ 
 	public int getFitUserLog() {
 		return fitUserLog;
 	}
@@ -133,7 +128,7 @@ public class Question implements Serializable{
 		   map.put("id", String.valueOf(id));
 		   map.put("title", title);
 		   map.put("content", content);
-		   map.put("answer", answer);
+		   //map.put("answer", answer);
 		   map.put("type", types[type]);
 		   map.put("fitUserLog", fitUserLogs[fitUserLog]);
 		   map.put("fitOrgLog", fitOrgLogs[fitOrgLog]);

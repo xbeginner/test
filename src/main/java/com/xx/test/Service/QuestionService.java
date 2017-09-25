@@ -54,6 +54,18 @@ public class QuestionService implements IQuestionService{
          questionDao.save(question);		
 	}
 
+	@Override
+	public List<Long> findByBankNative(List<Long> bankIds) {
+		// TODO Auto-generated method stub
+		return questionDao.findByBankNative(bankIds);
+	}
+
+	@Override
+	public List<Long> findByQuestionByInfo(int fitOrgLog, int fitUserLog, int type, List<Long> ids) {
+		// TODO Auto-generated method stub
+		return questionDao.getQuestionsByInfos(fitOrgLog, fitUserLog, type, ids);
+	}
+
      
 
 	 

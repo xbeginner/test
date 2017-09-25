@@ -18,6 +18,7 @@ import com.xx.test.IService.IUserPaperService;
 import com.xx.test.Model.Menu;
 import com.xx.test.Model.Message;
 import com.xx.test.Model.Org;
+import com.xx.test.Model.UserPaper;
 
 
 @Service
@@ -25,5 +26,10 @@ public class UserPaperService implements IUserPaperService{
 	
 	@Autowired
     UserPaperDao userPaperDao;
+
+	@Override
+	public void saveUserPaper(UserPaper userPaper) {
+			userPaperDao.save(userPaper);
+	}
  
 }

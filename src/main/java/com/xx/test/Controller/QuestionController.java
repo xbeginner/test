@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.xx.test.Dao.QuestionDao;
 import com.xx.test.Model.Message;
 import com.xx.test.Model.Org;
 import com.xx.test.Model.PaperSchema;
@@ -402,48 +404,69 @@ public class QuestionController extends BaseController {
 	        	     String questionDanxuanIds = "";
 	        	     String questionDuoxuanIds = "";
 	        	     String questionWendaIds = "";
+	        	     Float paperGrade = 0.0f;
+	        	     String paperQuestionBankIds = "";
 	        	     String[] bankIds = request.getParameterValues("questionLabels");
 			         String panduanNum = request.getParameter("panduanNum");
 	        	     paperSchema.setPanduanNum(Integer.valueOf(panduanNum));
 			         String panduanGrade = request.getParameter("panduanGrade");
 			         paperSchema.setPanduanGrade(Float.valueOf(panduanGrade));
+			         paperGrade += Float.valueOf(panduanGrade);
 			         String danxuanNum = request.getParameter("danxuanNum");
 			         paperSchema.setDanxuanNum(Integer.valueOf(danxuanNum));
 			         String danxuanGrade = request.getParameter("danxuanGrade");
+			         paperGrade += Float.valueOf(danxuanGrade);
 			         paperSchema.setDanxuanGrade(Float.valueOf(danxuanGrade));
 			         String duoxuanNum = request.getParameter("duoxuanNum");
 			         paperSchema.setDuoxuanNum(Integer.valueOf(duoxuanNum));
 			         String duoxuanGrade = request.getParameter("duoxuanGrade");
 			         paperSchema.setDuoxuanGrade(Float.valueOf(duoxuanGrade));
+			         paperGrade += Float.valueOf(duoxuanGrade);
 			         if(paperSchema.getType()==1){
 				         String wendaNum = request.getParameter("wendaNum");
 				         paperSchema.setWendaNum(Integer.valueOf(wendaNum));
 				         String wendaGrade = request.getParameter("wendaGrade");
 				         paperSchema.setWendaGrade(Float.valueOf(wendaGrade));
+				         paperGrade += Float.valueOf(wendaGrade);
 			         }
 			         if(paperSchema.getLog()==0){
-			        	 	questionPanduanIds = getRandomQuestionsByLabel(bankIds,Integer.valueOf(panduanNum),paperSchema.getFitOrgLog(),paperSchema.getFitUserLog(),0);
-			        		questionDanxuanIds = getRandomQuestionsByLabel(bankIds,Integer.valueOf(danxuanNum),paperSchema.getFitOrgLog(),paperSchema.getFitUserLog(),1);
-			        		questionDuoxuanIds = getRandomQuestionsByLabel(bankIds,Integer.valueOf(duoxuanNum),paperSchema.getFitOrgLog(),paperSchema.getFitUserLog(),2);
+				        	 List<Long> labels = new ArrayList<Long>();
+								for(String s:bankIds){
+									labels.add(Long.valueOf(s));
+									paperQuestionBankIds += s+",";
+								}
+							List<Long> questionIds = questionService.findByBankNative(labels);
+			        	 	questionPanduanIds = getRandomQuestionsByLabel(questionIds,Integer.valueOf(panduanNum),paperSchema.getFitOrgLog(),paperSchema.getFitUserLog(),0);
+			        		questionDanxuanIds = getRandomQuestionsByLabel(questionIds,Integer.valueOf(danxuanNum),paperSchema.getFitOrgLog(),paperSchema.getFitUserLog(),1);
+			        		questionDuoxuanIds = getRandomQuestionsByLabel(questionIds,Integer.valueOf(duoxuanNum),paperSchema.getFitOrgLog(),paperSchema.getFitUserLog(),2);
+			        	    if(paperSchema.getType()==1){
+						         String wendaNum = request.getParameter("wendaNum");
+						         paperSchema.setWendaNum(Integer.valueOf(wendaNum));
+						         questionWendaIds = getRandomQuestionsByLabel(questionIds,Integer.valueOf(wendaNum),paperSchema.getFitOrgLog(),paperSchema.getFitUserLog(),3);
+					         }
+			        	      String userIds = request.getParameter("chooseUserIds"); 
+			        		if(!userIds.equals("")&&userIds!=null){
+					             String[] ids = userIds.split(",");
+						         for(String userId:ids){
+						        	  UserPaper userPaper = new UserPaper();
+						        	  userPaper.setDoLog(0);
+						        	  userPaper.setPaperId(paperId);
+						        	  userPaper.setPaperSchema(paperSchema);
+						        	  userPaper.setUserId(Long.valueOf(userId));
+						        	  userPaper.setQuestionPanduanIds(questionPanduanIds);
+						        	  userPaper.setQuestionDanxuanIds(questionDanxuanIds);
+						        	  userPaper.setQuestionDuoxuanIds(questionDuoxuanIds);
+						        	  userPaperService.saveUserPaper(userPaper);
+						         }
+					         }
 			         }
 			         paperSchema.setStep(1);
-			         String userIds = request.getParameter("chooseUserIds");
-			         if(!userIds.equals("")&&userIds!=null){
-			             String[] ids = userIds.split(",");
-				         List<UserPaper>  userPaperList = new ArrayList<UserPaper>();
-				         for(String userId:ids){
-				        	  UserPaper userPaper = new UserPaper();
-				        	  userPaper.setDoLog(0);
-				        	  userPaper.setPaperId(paperId);
-				        	  userPaper.setPaperSchema(paperSchema);
-				        	  userPaper.setUserId(Long.valueOf(userId));
-				        	  userPaperList.add(userPaper);
-				         }
+			         paperSchema.setGrade(paperGrade);
+			         if(!paperQuestionBankIds.equals("")){
+			        	 paperQuestionBankIds  = paperQuestionBankIds.substring(0, paperQuestionBankIds.length()-1);
 			         }
-			  
-			         
-			        
-			        
+			         paperSchema.setQuestionBankIds(paperQuestionBankIds);
+			         paperSchemaService.savePaperSchema(paperSchema);
 		             return SUCCESS;
 		    }
 
@@ -453,9 +476,58 @@ public class QuestionController extends BaseController {
              * @param fitOrgLog
              * @param fitUserLog
              * @param type  0判断，1单选，2多选，3问答
-             *   * @return
+             * @return
              */
-			private String getRandomQuestionsByLabel(String[] bankIds,int questionNum, int fitOrgLog, int fitUserLog, int type) {
-				return null;
+			private String getRandomQuestionsByLabel(List<Long> questionIds,int questionNum, int fitOrgLog, int fitUserLog, int type) {
+				String result = "";
+				List<Long> questions = questionService.findByQuestionByInfo(fitOrgLog, fitUserLog, type, questionIds);
+				int num = questions.size()<questionNum?questions.size():questionNum;
+				Set<Long> idSet = new HashSet<Long>(num);
+				for(int i=0;i<num;i++){
+					Random random = new Random();
+					int index = random.nextInt(questions.size());
+					Long id = questions.get(index);
+					if(idSet.contains(id)){
+						i = i-1;
+						continue;
+					}else{
+						idSet.add(id);
+					}
+				}
+				for(Long l:idSet){
+					result += l;
+					result += ",";
+				}
+				result = result.substring(0, result.length()-1);
+				return result;
 			}
+			
+			
+			
+			
+			
+			@RequestMapping(value="/index/getPaperFitQuestions",method=RequestMethod.GET)
+			 @ResponseBody
+			  public String getPaperFitQuestions(HttpServletRequest request , HttpServletResponse response){
+				      StringBuffer json = new StringBuffer();
+				      json.append("[");
+				      Long paperSchemaId = Long.valueOf(request.getParameter("paperId"));
+				      PaperSchema paperSchema = paperSchemaService.findPaperSchemaById(paperSchemaId);
+				      List<Long> labelIds = new ArrayList<Long>();
+				      for(String s:paperSchema.getQuestionBankIds().split(",")){
+				    	  labelIds.add(Long.valueOf(s));
+				      }
+				      List<Long> questionIds = questionService.findByBankNative(labelIds);
+				      for(Long id:questionIds){
+				    	     Question question = questionService.findQuestionById(id);
+				    	     json.append(question.getQuestionJson());
+				    	     json.append(",");
+				      }
+				      if(!questionIds.isEmpty()){
+				    	  json.deleteCharAt(json.length()-1);
+				      }
+				      json.append("]");
+				      System.out.println(json.toString());
+				      return json.toString();
+			  }
 }

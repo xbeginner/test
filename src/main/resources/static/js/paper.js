@@ -13,9 +13,8 @@ function initPaperSchema(){
 	        		paperBodyInfo+="&nbsp;&nbsp;&nbsp;<a  onclick='setPaperQuestionInfo("+item.id+","+item.typeLog+")' >设定试题参数</a></td>";
 	        	}
 	        	if(item.step=='1'&&item.log=='1'){
-	        		paperBodyInfo+="&nbsp;&nbsp;&nbsp;<a  onclick='setPaperQuestionInfo("+item.id+","+item.type+")' >抽取题目</a></td>";
+	        		paperBodyInfo+="&nbsp;&nbsp;&nbsp;<a  onclick='choosePaperQuestion("+item.id+")' >抽取题目</a></td>";
 	        	}
-	        	
 	        	paperBodyInfo += "</tr>";
 	        });
 	        $("#paperSchema_tbody").html(paperBodyInfo);
@@ -190,4 +189,29 @@ function setPaperUserText(){
 	   $("#choose_user_name").val(names);
 	   $('#choosePaperUserForm')[0].reset();
 	   $("#choosePaperUserModal").modal('hide');
-}
+};
+
+
+
+/**
+ * 抽取题目
+ * @param paperId
+ * @param paperType
+ * @returns
+ */
+function choosePaperQuestion(paperId){
+	    $("#choosePaperQuestionModal").modal('show');
+	  
+		$.getJSON("/index/getPaperFitQuestions?paperId="+paperId, function(data) {
+			  $("#choose_paper_question_tbody").html("");//清空info内容
+			    var orgQuestionInfo = "";
+		        $.each(data, function(i, item) {
+		        	orgQuestionInfo += "<tr>";
+		        	orgQuestionInfo += "<td> <input type='checkbox'   value='"+item.id+"' ></td>";
+		        	orgQuestionInfo +="<td>"+ item.title+"</td>";
+		        	orgQuestionInfo +="<td>"+ item.type+"</td>";
+		        	orgQuestionInfo += "</tr>";
+		        });
+		        $("#choose_paper_question_tbody").html(orgQuestionInfo);
+	     });
+};

@@ -5,7 +5,10 @@ import java.util.List;
 import com.xx.test.Model.Menu;
 import com.xx.test.Model.Message;
 import com.xx.test.Model.Org;
+import com.xx.test.Model.UserPaper;
 
 public interface IUserPaperService {
-	  
+	
+	  public void saveUserPaper(UserPaper userPaper);
+	
 }
