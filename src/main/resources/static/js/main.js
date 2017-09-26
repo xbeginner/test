@@ -22,7 +22,7 @@ function initMainMenu(){
 	        	examBodyInfo += "<tr>";
 	        	examBodyInfo += "<td><span>"+item.paperName+"</span></td>";
 	        	examBodyInfo += "<td><span>"+item.doTime+"</span></td>";
-	        	examBodyInfo += "<td><a onclick='takePartInExam("+item.id+")'>参加</a></td>";
+	        	examBodyInfo += "<td><a href='/openExamPage?paperId="+item.id+"'>参加</a></td>";
 	        	examBodyInfo += "</tr>";
 	        });
 	        $("#exam_tbody").html(examBodyInfo );
@@ -86,6 +86,4 @@ function initMainMenu(){
 	 };
 	 
 	 
-	 function takePartInExam(userPaperId){
-		 alert(userPaperId);
-	 };
+ 

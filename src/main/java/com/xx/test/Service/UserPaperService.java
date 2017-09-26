@@ -37,5 +37,11 @@ public class UserPaperService implements IUserPaperService{
 		// TODO Auto-generated method stub
 		return userPaperDao.findByUserId(id);
 	}
+
+	@Override
+	public UserPaper findUserPaperById(Long id) {
+		// TODO Auto-generated method stub
+		return userPaperDao.findOne(id);
+	}
  
 }

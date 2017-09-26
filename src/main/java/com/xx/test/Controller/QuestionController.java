@@ -606,4 +606,36 @@ public class QuestionController extends BaseController {
 		         paperSchemaService.savePaperSchema(paperSchema);
 				return SUCCESS;
 			}
+			
+			
+			
+			
+			  @RequestMapping(value="/openExamPage",method=RequestMethod.GET)
+			  public ModelAndView openExamPage(HttpServletRequest request , HttpServletResponse response){
+				  ModelAndView modelAndView = new ModelAndView("examPage");
+				  String userPaperId = request.getParameter("paperId");
+				  UserPaper userPaper = userPaperService.findUserPaperById(Long.valueOf(userPaperId));
+				  if(userPaper.getQuestionPanduanIds()!=null&&!"".equals(userPaper.getQuestionPanduanIds())){
+					  modelAndView.addObject("panduan","1");
+				  }else{
+					  modelAndView.addObject("panduan","0");
+				  }
+				  if(userPaper.getQuestionDanxuanIds()!=null&&!"".equals(userPaper.getQuestionDanxuanIds())){
+					  modelAndView.addObject("danxuan","1");
+				  }else{
+					  modelAndView.addObject("danxuan","0");
+				  }
+				  if(userPaper.getQuestionDuoxuanIds()!=null&&!"".equals(userPaper.getQuestionDuoxuanIds())){
+					  modelAndView.addObject("duoxuan","1");
+				  }else{
+					  modelAndView.addObject("duoxuan","0");
+				  }
+				  if(userPaper.getQuestionWendaIds()!=null&&!"".equals(userPaper.getQuestionWendaIds())){
+					  modelAndView.addObject("wenda","1");
+				  }else{
+					  modelAndView.addObject("wenda","0");
+				  }
+				  modelAndView.addObject("userPaperId",userPaperId);
+				  return modelAndView;
+			  }
 }

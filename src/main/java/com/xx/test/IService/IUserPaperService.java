@@ -13,4 +13,6 @@ public interface IUserPaperService {
 
 	public List<UserPaper> findUserPaperByUserId(Long id);
 	
+	public UserPaper findUserPaperById(Long id);
+	
 }

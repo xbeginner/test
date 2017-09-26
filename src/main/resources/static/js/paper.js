@@ -230,3 +230,12 @@ function choosePaperQuestion(paperId){
 				}
 		 });
 };
+
+/**
+ * 生成答题试卷
+ * @param userPaperId
+ * @returns
+ */
+function  initQuestions(userPaperId){
+	alert(userPaperId);
+};
