@@ -31,5 +31,11 @@ public class UserPaperService implements IUserPaperService{
 	public void saveUserPaper(UserPaper userPaper) {
 			userPaperDao.save(userPaper);
 	}
+
+	@Override
+	public List<UserPaper> findUserPaperByUserId(Long id) {
+		// TODO Auto-generated method stub
+		return userPaperDao.findByUserId(id);
+	}
  
 }

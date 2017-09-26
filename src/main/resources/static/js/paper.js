@@ -207,11 +207,26 @@ function choosePaperQuestion(paperId){
 			    var orgQuestionInfo = "";
 		        $.each(data, function(i, item) {
 		        	orgQuestionInfo += "<tr>";
-		        	orgQuestionInfo += "<td> <input type='checkbox'   value='"+item.id+"' ></td>";
-		        	orgQuestionInfo +="<td>"+ item.title+"</td>";
+		        	orgQuestionInfo += "<td> <input type='checkbox'  name='targetQuestions'  value='"+item.id+"'>";
+		        	orgQuestionInfo += item.title+"</td>";
 		        	orgQuestionInfo +="<td>"+ item.type+"</td>";
 		        	orgQuestionInfo += "</tr>";
 		        });
 		        $("#choose_paper_question_tbody").html(orgQuestionInfo);
 	     });
+		
+		 $('#choosePaperQuestionForm').attr('action','/index/setPaperQuestionsByChoose?paperId='+paperId);
+		 $("#choosePaperQuestionForm").validate({
+				submitHandler:function(form){
+				    		$(form).ajaxSubmit({
+					  			dataType:'text',
+					  			success:function(data){
+					  				$('#choosePaperQuestionForm')[0].reset();
+					  				$("#choosePaperQuestionModal").modal('hide');
+				                    alert(data);
+				                    initPaperSchema();
+					  		    }
+					  	     });
+				}
+		 });
 };

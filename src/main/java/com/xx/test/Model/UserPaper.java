@@ -188,4 +188,19 @@ public class UserPaper implements Serializable{
 		return JsonUtils.getJsonString(getUserPaperMap());
 	}
 
+	
+	private Map<String,String> getUserMainPaperSchemaMap(){
+		   Map<String,String> map = new HashMap<String, String>();
+		   map.put("id", String.valueOf(id));
+		   map.put("paperName", paperSchema.getPaperName());
+		   map.put("doTime", String.valueOf(paperSchema.getDoTime()));
+		   return  map;
+	}
+	
+	
+	
+	public String getUserMainPaperSchemaJson(){
+		return JsonUtils.getJsonString(getUserMainPaperSchemaMap());
+	}
+	
 }

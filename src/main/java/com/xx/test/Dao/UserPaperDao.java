@@ -17,5 +17,5 @@ import com.xx.test.Model.UserPaper;
 
 public interface UserPaperDao extends CrudRepository<UserPaper, Long>{
 
-
+   List<UserPaper> findByUserId(Long userId);
 }

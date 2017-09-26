@@ -422,6 +422,7 @@ public class QuestionController extends BaseController {
 			         String duoxuanGrade = request.getParameter("duoxuanGrade");
 			         paperSchema.setDuoxuanGrade(Float.valueOf(duoxuanGrade));
 			         paperGrade += Float.valueOf(duoxuanGrade);
+			         String userIds = request.getParameter("chooseUserIds"); 
 			         if(paperSchema.getType()==1){
 				         String wendaNum = request.getParameter("wendaNum");
 				         paperSchema.setWendaNum(Integer.valueOf(wendaNum));
@@ -444,7 +445,7 @@ public class QuestionController extends BaseController {
 						         paperSchema.setWendaNum(Integer.valueOf(wendaNum));
 						         questionWendaIds = getRandomQuestionsByLabel(questionIds,Integer.valueOf(wendaNum),paperSchema.getFitOrgLog(),paperSchema.getFitUserLog(),3);
 					         }
-			        	      String userIds = request.getParameter("chooseUserIds"); 
+			        	    
 			        		if(!userIds.equals("")&&userIds!=null){
 					             String[] ids = userIds.split(",");
 						         for(String userId:ids){
@@ -460,6 +461,7 @@ public class QuestionController extends BaseController {
 						         }
 					         }
 			         }
+			         paperSchema.setUserIds(userIds);
 			         paperSchema.setStep(1);
 			         paperSchema.setGrade(paperGrade);
 			         if(!paperQuestionBankIds.equals("")){
@@ -520,14 +522,88 @@ public class QuestionController extends BaseController {
 				      List<Long> questionIds = questionService.findByBankNative(labelIds);
 				      for(Long id:questionIds){
 				    	     Question question = questionService.findQuestionById(id);
-				    	     json.append(question.getQuestionJson());
+				    	     json.append(question.getSimpleQuestionJson());
 				    	     json.append(",");
 				      }
 				      if(!questionIds.isEmpty()){
 				    	  json.deleteCharAt(json.length()-1);
 				      }
 				      json.append("]");
-				      System.out.println(json.toString());
 				      return json.toString();
 			  }
+			
+			
+			
+			@PostMapping(value="/index/setPaperQuestionsByChoose")
+		    @ResponseBody
+		    public String setPaperQuestionsByChoose(HttpServletRequest request , HttpServletResponse response) {
+				Long paperId = Long.valueOf(request.getParameter("paperId"));
+				PaperSchema paperSchema = paperSchemaService.findPaperSchemaById(paperId);
+				String[] questionIds = request.getParameterValues("targetQuestions");
+
+				int panduanNum = 0;
+				int danxuanNum = 0;
+				int duoxuanNum = 0;
+				int wendaNum = 0;
+				
+				String panduanIds = "";
+				String danxuanIds = "";
+				String duoxuanIds = "";
+				String wendaIds = "";
+						
+				
+				for(String s:questionIds){
+					  Long id = Long.valueOf(s);
+					  Question question = questionService.findQuestionById(id);
+					  switch (question.getType()) {
+							 case 0:
+								panduanNum += 1;
+								panduanIds += s+",";
+								break;
+							case 1:
+								danxuanNum += 1;
+								danxuanIds += s+",";
+								break;
+							case 2:
+								duoxuanNum += 1;
+								duoxuanIds += s+",";
+								break;
+							case 3:
+								wendaNum += 1;
+								wendaIds += s+",";
+								break;
+							default:
+								break;
+					}
+				}
+				if(panduanIds.contains(",")){
+					panduanIds = panduanIds.substring(0, panduanIds.length()-1);
+				}
+				if(danxuanIds.contains(",")){
+					danxuanIds = danxuanIds.substring(0, danxuanIds.length()-1);
+				}
+				if(duoxuanIds.contains(",")){
+					duoxuanIds = duoxuanIds.substring(0, duoxuanIds.length()-1);
+				}
+				if(wendaIds.contains(",")){
+					wendaIds = wendaIds.substring(0, wendaIds.length()-1);
+				}
+				String userIds = paperSchema.getUserIds();
+	             String[] ids = userIds.split(",");
+		         for(String userId:ids){
+		        	  UserPaper userPaper = new UserPaper();
+		        	  userPaper.setDoLog(0);
+		        	  userPaper.setPaperId(paperId);
+		        	  userPaper.setPaperSchema(paperSchema);
+		        	  userPaper.setUserId(Long.valueOf(userId));
+		        	  userPaper.setQuestionPanduanIds(panduanIds);
+		        	  userPaper.setQuestionDanxuanIds(danxuanIds);
+		        	  userPaper.setQuestionDuoxuanIds(duoxuanIds);
+		        	  userPaper.setQuestionWendaIds(wendaIds);
+		        	  userPaperService.saveUserPaper(userPaper);
+		         }
+		         paperSchema.setStep(2);
+		         paperSchemaService.savePaperSchema(paperSchema);
+				return SUCCESS;
+			}
 }

@@ -38,11 +38,13 @@ import com.xx.test.Form.RegisteUserForm;
 import com.xx.test.Model.Menu;
 import com.xx.test.Model.Message;
 import com.xx.test.Model.Org;
+import com.xx.test.Model.PaperSchema;
 import com.xx.test.Model.Question;
 import com.xx.test.Model.QuestionBank;
 import com.xx.test.Model.RegisterUser;
 import com.xx.test.Model.Role;
 import com.xx.test.Model.UserInfo;
+import com.xx.test.Model.UserPaper;
 import com.xx.test.Utils.JsonUtils;
 
 import redis.clients.jedis.Jedis;
@@ -81,8 +83,16 @@ public class MainController extends BaseController {
 	  @RequestMapping(value="/index/initExamInfo",method=RequestMethod.GET)
 	  @ResponseBody
 	  public String initExamInfo(HttpServletRequest request , HttpServletResponse response){
-  
-		       String json = "{\"info\":[{\"name\":\"测试1\",\"time\":\"2017-09-08\"},{\"name\":\"测试2\",\"time\":\"2017-09-09\"}],\"page\":1}";
+               UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
+               List<UserPaper> userPapers = userPaperService.findUserPaperByUserId(userInfo.getId());
+		       String json = "{\"info\":[";
+		       if(userPapers.size()>0){
+		    	     for(UserPaper userPaper:userPapers){
+		    	    	   json += userPaper.getUserMainPaperSchemaJson()+",";
+		    	     }
+		    	     json = json.substring(0, json.length()-1);
+		       }
+		       json += "]}";
 		      return json;
 	  }
 	

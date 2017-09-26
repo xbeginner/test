@@ -128,7 +128,7 @@ public class Question implements Serializable{
 		   map.put("id", String.valueOf(id));
 		   map.put("title", title);
 		   map.put("content", content);
-		   //map.put("answer", answer);
+		   map.put("answer", answer);
 		   map.put("type", types[type]);
 		   map.put("fitUserLog", fitUserLogs[fitUserLog]);
 		   map.put("fitOrgLog", fitOrgLogs[fitOrgLog]);
@@ -140,6 +140,27 @@ public class Question implements Serializable{
 			    banks = banks.substring(0, banks.length()-1);
 		   }
 		   map.put("banks", banks);
+		   return  map;
+	}
+	
+	
+	public String getSimpleQuestionJson(){
+		return JsonUtils.getJsonString(getSimpleQuestionMap());
+	}
+	
+	
+
+	private Map<String,String> getSimpleQuestionMap(){
+		   String[] types = {"判断题","单选题","多选题","问答题"};
+		   String[] fitUserLogs = {"个人","企业","通用"};
+		   String[] fitOrgLogs = {"人行机构","金融机构","征信机构","评级机构"};
+		   String banks = "";
+		   Map<String,String> map = new HashMap<String, String>();
+		   map.put("id", String.valueOf(id));
+		   map.put("title", title);
+		   map.put("type", types[type]);
+		   map.put("fitUserLog", fitUserLogs[fitUserLog]);
+		   map.put("fitOrgLog", fitOrgLogs[fitOrgLog]);
 		   return  map;
 	}
 	

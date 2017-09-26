@@ -20,9 +20,9 @@ function initMainMenu(){
 	        var examPageInfo = "";
 	        $.each(data.info, function(i, item) {
 	        	examBodyInfo += "<tr>";
-	        	examBodyInfo += "<td><span>"+item.name+"</span></td>";
-	        	examBodyInfo += "<td><span>"+item.time+"</span></td>";
-	        	examBodyInfo += "<td><a>参加</a></td>";
+	        	examBodyInfo += "<td><span>"+item.paperName+"</span></td>";
+	        	examBodyInfo += "<td><span>"+item.doTime+"</span></td>";
+	        	examBodyInfo += "<td><a onclick='takePartInExam("+item.id+")'>参加</a></td>";
 	        	examBodyInfo += "</tr>";
 	        });
 	        $("#exam_tbody").html(examBodyInfo );
@@ -83,4 +83,9 @@ function initMainMenu(){
 			    $("#message_info_div").html(messageContent);
 		     });
 		   
-	 }
+	 };
+	 
+	 
+	 function takePartInExam(userPaperId){
+		 alert(userPaperId);
+	 };

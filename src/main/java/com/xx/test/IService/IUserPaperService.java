@@ -10,5 +10,7 @@ import com.xx.test.Model.UserPaper;
 public interface IUserPaperService {
 	
 	  public void saveUserPaper(UserPaper userPaper);
+
+	public List<UserPaper> findUserPaperByUserId(Long id);
 	
 }
