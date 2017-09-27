@@ -237,5 +237,41 @@ function choosePaperQuestion(paperId){
  * @returns
  */
 function  initQuestions(userPaperId){
-	alert(userPaperId);
+	$.getJSON("/index/showPaperQuestions?userPaperId="+userPaperId, function(data) {
+		  $("#panduan_question_div").html(""); 
+		  $("#danxuan_question_div").html(""); 
+		  $("#duoxuan_question_div").html(""); 
+		  $("#wenda_question_div").html(""); 
+		  var panduanInfo = "";
+		  var danxuanInfo = "";
+		  var duoxuanInfo = "";
+		  var wendaInfo = "";
+		  
+		  if(data.panduan.length>0){
+			    panduanInfo+="<table>";
+		        $.each(data.panduan, function(i, item) {
+		        	panduanInfo += "<tr><td>"+item.title+"</td></tr>";
+		        	panduanInfo += "<tr><td>";
+	        		panduanInfo +=  "<input  type='checkbox' name='panduan"+item.id+"'  value='0'>对";
+		        	panduanInfo += "</td></tr>";
+		        	panduanInfo += "<tr><td>";
+	        		panduanInfo +=  "<input  type='checkbox' name='panduan"+item.id+"'  value='1'>错";
+	        		panduanInfo += "</td></tr>";
+		        });
+		        panduanInfo+="</table>";
+		        $("#panduan_question_div").html(panduanInfo);
+		  }
+		  if(data.danxuan.length>0){
+			    
+		  }
+		  if(data.duoxuan.length>0){
+			    
+		  }
+		  if(data.wenda.length>0){
+			    
+		  }
+		  
+//		   var paperBodyInfo = "";
+
+});
 };

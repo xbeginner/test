@@ -301,7 +301,5 @@ public class PaperSchema implements Serializable{
 	public void setUserIds(String userIds) {
 		this.userIds = userIds;
 	}
-	
-
-
+	 
 }

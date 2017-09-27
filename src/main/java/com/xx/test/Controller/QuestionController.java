@@ -638,4 +638,75 @@ public class QuestionController extends BaseController {
 				  modelAndView.addObject("userPaperId",userPaperId);
 				  return modelAndView;
 			  }
+			  
+			  
+			  
+			  
+			  
+			  
+			  @RequestMapping(value="/index/showPaperQuestions",method=RequestMethod.GET)
+			  @ResponseBody
+			  public String showPaperQuestions(HttpServletRequest request , HttpServletResponse response){
+				      StringBuffer json = new StringBuffer();
+				      Long userPaperId = Long.valueOf(request.getParameter("userPaperId"));
+				      UserPaper userPaper = userPaperService.findUserPaperById(userPaperId);
+				      String panduanQuestionIds = userPaper.getQuestionPanduanIds();
+				      String danxuanQuestionIds = userPaper.getQuestionDanxuanIds();
+				      String duoxuanQuestionIds = userPaper.getQuestionDuoxuanIds();
+				      String wendaQuestionIds = userPaper.getQuestionWendaIds();
+				      json.append("{");
+				      json.append("\"panduan\":[");
+				      if(panduanQuestionIds!=null&&!"".equals(panduanQuestionIds)){
+				    	     String[] panduanIds = panduanQuestionIds.split(",");
+				    	     for(String s:panduanIds){
+				    	    	   Long id = Long.valueOf(s);
+				    	    	   Question question = questionService.findQuestionById(id);
+				    	    	   json.append(question.getExamQuestionJson());
+				    	    	   json.append(",");
+				    	     }
+				    	     json.deleteCharAt(json.length()-1);
+				      }
+				      json.append("],");
+				      
+				      json.append("\"danxuan\":[");
+				      if(danxuanQuestionIds!=null&&!"".equals(danxuanQuestionIds)){
+				    	     String[] danxuanIds = danxuanQuestionIds.split(",");
+				    	     for(String s:danxuanIds){
+				    	    	   Long id = Long.valueOf(s);
+				    	    	   Question question = questionService.findQuestionById(id);
+				    	    	   json.append(question.getExamQuestionJson());
+				    	    	   json.append(",");
+				    	     }
+				    	     json.deleteCharAt(json.length()-1);
+				      }
+				      json.append("],");
+				      
+				      json.append("\"duoxuan\":[");
+				      if(duoxuanQuestionIds!=null&&!"".equals(duoxuanQuestionIds)){
+				    	     String[] duoxuanIds = duoxuanQuestionIds.split(",");
+				    	     for(String s:duoxuanIds){
+				    	    	   Long id = Long.valueOf(s);
+				    	    	   Question question = questionService.findQuestionById(id);
+				    	    	   json.append(question.getExamQuestionJson());
+				    	    	   json.append(",");
+				    	     }
+				    	     json.deleteCharAt(json.length()-1);
+				      }
+				      json.append("],");
+				      
+				      json.append("\"wenda\":[");
+				      if(wendaQuestionIds!=null&&!"".equals(wendaQuestionIds)){
+				    	     String[] wendaIds = wendaQuestionIds.split(",");
+				    	     for(String s:wendaIds){
+				    	    	   Long id = Long.valueOf(s);
+				    	    	   Question question = questionService.findQuestionById(id);
+				    	    	   json.append(question.getExamQuestionJson());
+				    	    	   json.append(",");
+				    	     }
+				    	     json.deleteCharAt(json.length()-1);
+				      }
+				      json.append("]");
+				      json.append( "}" );
+				      return json.toString();
+			  }
 }

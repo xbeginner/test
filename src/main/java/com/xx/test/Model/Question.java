@@ -168,5 +168,19 @@ public class Question implements Serializable{
 	public String getQuestionJson(){
 		return JsonUtils.getJsonString(getQuestionMap());
 	}
+	
+	
+	private Map<String,String> getExamQuestionMap(){
+		   Map<String,String> map = new HashMap<String, String>();
+		   map.put("id", String.valueOf(id));
+		   map.put("title", title);
+		   map.put("content",content);
+		   return  map;
+	}
+	
+	
+	public String getExamQuestionJson(){
+		return JsonUtils.getJsonString(getExamQuestionMap());
+	}
 
 }
