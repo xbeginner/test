@@ -47,8 +47,10 @@ public class UserPaper implements Serializable{
 	//0为未开始，1为做过了，2为正在做
 	private int doLog;
 	
-	@OneToMany(mappedBy="userPaper")
-	private List<QuestionAnswer> questionAnswers;
+//	@OneToMany(mappedBy="userPaper")
+//	private List<QuestionAnswer> questionAnswers;
+	
+	private String questionAnswers;
 	
 	@ManyToOne
 	private PaperSchema paperSchema;
@@ -121,16 +123,26 @@ public class UserPaper implements Serializable{
 		this.doLog = doLog;
 	}
 
-	public List<QuestionAnswer> getQuestionAnswers() {
-		return questionAnswers;
-	}
-
-	public void setQuestionAnswers(List<QuestionAnswer> questionAnswers) {
-		this.questionAnswers = questionAnswers;
-	}
+//	public List<QuestionAnswer> getQuestionAnswers() {
+//		return questionAnswers;
+//	}
+//
+//	public void setQuestionAnswers(List<QuestionAnswer> questionAnswers) {
+//		this.questionAnswers = questionAnswers;
+//	}
+	
+	
 
 	public PaperSchema getPaperSchema() {
 		return paperSchema;
+	}
+
+	public String getQuestionAnswers() {
+		return questionAnswers;
+	}
+
+	public void setQuestionAnswers(String questionAnswers) {
+		this.questionAnswers = questionAnswers;
 	}
 
 	public void setPaperSchema(PaperSchema paperSchema) {

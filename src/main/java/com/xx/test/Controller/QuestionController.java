@@ -1,6 +1,7 @@
 package com.xx.test.Controller;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,6 +32,7 @@ import com.xx.test.Model.Message;
 import com.xx.test.Model.Org;
 import com.xx.test.Model.PaperSchema;
 import com.xx.test.Model.Question;
+import com.xx.test.Model.QuestionAnswer;
 import com.xx.test.Model.QuestionBank;
 import com.xx.test.Model.UserInfo;
 import com.xx.test.Model.UserPaper;
@@ -520,9 +523,17 @@ public class QuestionController extends BaseController {
 				    	  labelIds.add(Long.valueOf(s));
 				      }
 				      List<Long> questionIds = questionService.findByBankNative(labelIds);
+				      System.out.println(questionIds.size());
+				      List<Question> questionList = new ArrayList<Question>(); 
+				      
 				      for(Long id:questionIds){
-				    	     Question question = questionService.findQuestionById(id);
-				    	     json.append(question.getSimpleQuestionJson());
+				    	  Question question = questionService.findQuestionById(id);
+				    	  if(!questionList.contains(question)){
+				    		  questionList.add(question);
+				    	  }
+				      }
+				      for(Question q:questionList){
+				    	     json.append(q.getSimpleQuestionJson());
 				    	     json.append(",");
 				      }
 				      if(!questionIds.isEmpty()){
@@ -717,8 +728,74 @@ public class QuestionController extends BaseController {
 				@PostMapping(value="/index/setUserQuestions")
 			    @ResponseBody
 			    public String setUserQuestions(HttpServletRequest request , HttpServletResponse response) {
-					String userPaperId = request.getParameter("userPaperId");
-					System.out.println(userPaperId);
-					 return null;
+					Map<String,String> panduanMap = new HashMap<String,String>(){{
+						put("0", "对");
+						put("1","错");
+					}};
+					Long userPaperId = Long.valueOf(request.getParameter("userPaperId"));
+					UserPaper userPaper = userPaperService.findUserPaperById(userPaperId);
+					String panduanQuestionIds = userPaper.getQuestionPanduanIds();
+					String danxuanQuestionIds = userPaper.getQuestionDanxuanIds();
+					String duoxuanQuestionIds = userPaper.getQuestionDuoxuanIds();
+					String wendaQuestionIds = userPaper.getQuestionWendaIds();
+					
+					Float grade = 0.0f;
+					
+					String questionAnswers = "";
+					
+					if(panduanQuestionIds!=null&&!"".equals(panduanQuestionIds)){
+						Float panduanGrade = userPaper.getPaperSchema().getPanduanGrade();
+						String[] panduanIds = panduanQuestionIds.split(",");
+						for(String s:panduanIds){
+							 Long id = Long.valueOf(s);
+							 Question question = questionService.findQuestionById(id);
+							 String userAnswer = request.getParameter("panduan"+question.getId());
+							 if(question.getAnswer().equals(panduanMap.get(userAnswer))){
+								 grade += panduanGrade;
+							 }
+							 questionAnswers += s+":"+question.getAnswer()+":"+panduanMap.get(userAnswer);
+							 questionAnswers += ",";
+						 }
+					}
+					
+					if(danxuanQuestionIds!=null&&!"".equals(danxuanQuestionIds)){
+						Float danxuanGrade = userPaper.getPaperSchema().getDanxuanGrade();
+						String[] danxuanIds =danxuanQuestionIds.split(",");
+						for(String s:danxuanIds){
+							 Long id = Long.valueOf(s);
+							 Question question = questionService.findQuestionById(id);
+							 String userAnswer = request.getParameter("danxuan"+question.getId());
+							 if(question.getAnswer().equals(userAnswer)){
+								 grade += danxuanGrade;
+							 }
+							 questionAnswers += s+":"+question.getAnswer()+":"+userAnswer;
+							 questionAnswers += ",";
+						 }
+					}
+					
+					
+					if(duoxuanQuestionIds!=null&&!"".equals(duoxuanQuestionIds)){
+						Float duoxuanGrade = userPaper.getPaperSchema().getDuoxuanGrade();
+						String[] duoxuanIds =duoxuanQuestionIds.split(",");
+						for(String s:duoxuanIds){
+							 Long id = Long.valueOf(s);
+							 Question question = questionService.findQuestionById(id);
+							 String[] userAnswers = request.getParameterValues("duoxuan"+question.getId());
+							 String userAnswer = "";
+							 for(String u:userAnswers){
+								 userAnswer += u;
+							 }
+							 System.out.println(userAnswer);
+							 if(question.getAnswer().equals(userAnswer)){
+								 grade += duoxuanGrade;
+							 }
+							 questionAnswers += s+":"+question.getAnswer()+":"+userAnswer;
+							 questionAnswers += ",";
+						 }
+					}
+					userPaper.setGrade(grade);
+					userPaper.setQuestionAnswers(questionAnswers);
+					userPaperService.saveUserPaper(userPaper);
+					return null;
 				}
 }
