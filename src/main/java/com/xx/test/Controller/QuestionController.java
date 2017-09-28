@@ -636,6 +636,9 @@ public class QuestionController extends BaseController {
 					  modelAndView.addObject("wenda","0");
 				  }
 				  modelAndView.addObject("userPaperId",userPaperId);
+				  modelAndView.addObject("type",userPaper.getPaperSchema().getType());
+				  modelAndView.addObject("paperName",userPaper.getPaperSchema().getPaperName());
+				  modelAndView.addObject("doTime",userPaper.getPaperSchema().getDoTime());
 				  return modelAndView;
 			  }
 			  
@@ -709,4 +712,13 @@ public class QuestionController extends BaseController {
 				      json.append( "}" );
 				      return json.toString();
 			  }
+			  
+			  
+				@PostMapping(value="/index/setUserQuestions")
+			    @ResponseBody
+			    public String setUserQuestions(HttpServletRequest request , HttpServletResponse response) {
+					String userPaperId = request.getParameter("userPaperId");
+					System.out.println(userPaperId);
+					 return null;
+				}
 }

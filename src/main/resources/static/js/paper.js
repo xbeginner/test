@@ -237,6 +237,15 @@ function choosePaperQuestion(paperId){
  * @returns
  */
 function  initQuestions(userPaperId){
+	
+	var answers = new Array()
+	answers[0]="A";
+	answers[1]="B";
+	answers[2]="C";
+   answers[3]="D";
+   answers[4]="E";
+   answers[5]="F";
+	
 	$.getJSON("/index/showPaperQuestions?userPaperId="+userPaperId, function(data) {
 		  $("#panduan_question_div").html(""); 
 		  $("#danxuan_question_div").html(""); 
@@ -248,30 +257,53 @@ function  initQuestions(userPaperId){
 		  var wendaInfo = "";
 		  
 		  if(data.panduan.length>0){
-			    panduanInfo+="<table>";
+			    panduanInfo+="";
 		        $.each(data.panduan, function(i, item) {
-		        	panduanInfo += "<tr><td>"+item.title+"</td></tr>";
-		        	panduanInfo += "<tr><td>";
-	        		panduanInfo +=  "<input  type='checkbox' name='panduan"+item.id+"'  value='0'>对";
-		        	panduanInfo += "</td></tr>";
-		        	panduanInfo += "<tr><td>";
-	        		panduanInfo +=  "<input  type='checkbox' name='panduan"+item.id+"'  value='1'>错";
-	        		panduanInfo += "</td></tr>";
+		        	panduanInfo += "<div class='exam-padding-top'><span>"+(i+1)+"、"+item.title+"</span></div>";
+	        		panduanInfo +=  "<div class='exam-padding-top'><input  type='checkbox' name='panduan"+item.id+"'  value='0'><span>对</span></div>";
+	        		panduanInfo +=  "<div class='exam-padding-top'><input  type='checkbox' name='panduan"+item.id+"'  value='1'><span>错</span></div>";
+	        		panduanInfo += "<hr>";
 		        });
-		        panduanInfo+="</table>";
 		        $("#panduan_question_div").html(panduanInfo);
 		  }
 		  if(data.danxuan.length>0){
-			    
+			    danxuanInfo+="";
+		        $.each(data.danxuan, function(i, item) {
+		        	danxuanInfo += "<div class='exam-padding-top'><span>"+(i+1)+"、"+item.title+"</span></div>";
+		        	var contents = item.content.split("#");
+		        	for(var i = 0;i < contents.length; i++) {
+		        		danxuanInfo += "<div class='exam-padding-top'><input  type='radio' name='danxuan"+item.id+"'  value='"+answers[i]+"'><span>";
+		        		danxuanInfo += answers[i]+"、"+contents[i]+"</span></div>";
+		            }
+		        	danxuanInfo += "<hr>";
+		        });
+		        $("#danxuan_question_div").html(danxuanInfo);
 		  }
 		  if(data.duoxuan.length>0){
-			    
+			    duoxuanInfo+="";
+		        $.each(data.duoxuan, function(i, item) {
+		        	duoxuanInfo += "<div class='exam-padding-top'><span>"+(i+1)+"、"+item.title+"</span></div>";
+		        	var contents = item.content.split("#");
+		        	for(var i = 0;i < contents.length; i++) {
+		        		duoxuanInfo += "<div class='exam-padding-top'><input  type='checkbox' name='duoxuan"+item.id+"'  value='"+answers[i]+"'><span>";
+		        		duoxuanInfo += answers[i]+"、"+contents[i]+"</span></div>";
+		            }
+		        	duoxuanInfo += "<hr>";
+		        });
+		        $("#duoxuan_question_div").html(duoxuanInfo);
 		  }
 		  if(data.wenda.length>0){
-			    
+			   wendaInfo+="";
+		        $.each(data.wenda, function(i, item) {
+		        	wendaInfo += "<div class='exam-padding-top'><span>"+(i+1)+"、"+item.title+"</span></div>";
+		        	//wendaInfo +=  "<br><br><br><br><br><br><br><br>";
+		        	wendaInfo += "<textarea name='wenda"+item.id+"'  rows='8' cols='100' style='border:none;'></textarea>";
+	        		wendaInfo += "<hr>";
+		        });
+		        $("#wenda_question_div").html(wendaInfo);
 		  }
+ 
 		  
-//		   var paperBodyInfo = "";
 
 });
 };
