@@ -22,7 +22,11 @@ function initMainMenu(){
 	        	examBodyInfo += "<tr>";
 	        	examBodyInfo += "<td><span>"+item.paperName+"</span></td>";
 	        	examBodyInfo += "<td><span>"+item.doTime+"</span></td>";
-	        	examBodyInfo += "<td><a href='/openExamPage?paperId="+item.id+"'>参加</a></td>";
+	        	if(item.doLog=='0'){
+	        		examBodyInfo += "<td><a href='/openExamPage?paperId="+item.id+"'>参加</a></td>";
+	        	}else{
+	        		examBodyInfo += "<td><a href='/index/checkGrade'>查看成绩</a></td>";
+	        	}
 	        	examBodyInfo += "</tr>";
 	        });
 	        $("#exam_tbody").html(examBodyInfo );

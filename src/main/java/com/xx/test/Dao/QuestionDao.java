@@ -31,8 +31,12 @@ public interface QuestionDao extends CrudRepository<Question, Long>{
 	void updateQuestionLabels(Long id);
     
     @Transactional  
-    @Query(value = "SELECT q.id FROM Question q join q.questionBanks b  where b.id  in  ?1 order by q.type")
+    @Query(value = "SELECT q.id FROM Question q join q.questionBanks b  where  b.id  in  ?1 order by q.type")
     List<Long> findByBankNative(List<Long> ids);
+    
+    @Transactional  
+    @Query(value = "SELECT q.id FROM Question q join q.questionBanks b  where  q.type!=3 and b.id  in  ?1 order by q.type")
+    List<Long> findByBankNoWendaNative(List<Long> ids);
     
     @Transactional  
     @Query("select q.id  from Question q where q.fitOrgLog=?1 and q.fitUserLog=?2 and q.type=?3 and q.id in ?4")

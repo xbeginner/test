@@ -41,5 +41,11 @@ public class PaperSchemaService implements IPaperSchemaService{
 	public PaperSchema findPaperSchemaById(Long paperSchemaId) {
 		return paperSchemaDao.findOne(paperSchemaId);
 	}
+
+	@Override
+	public void deletePaperSchema(Long id) {
+		// TODO Auto-generated method stub
+		 paperSchemaDao.delete(id);
+	}
  
 }

@@ -14,4 +14,8 @@ import com.xx.test.Model.Org;
 
 public interface MenuDao extends CrudRepository<Menu, Long>{
     
+    @Transactional  
+    @Query(value = "SELECT m FROM Menu m join m.roles r  where  r.id=?1  order by m.id")
+    List<Menu> findMenuByRoleId(Long roleId);
+	
 }

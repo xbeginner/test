@@ -206,6 +206,7 @@ public class UserPaper implements Serializable{
 		   map.put("id", String.valueOf(id));
 		   map.put("paperName", paperSchema.getPaperName());
 		   map.put("doTime", String.valueOf(paperSchema.getDoTime()));
+		   map.put("doLog", String.valueOf(getDoLog()));
 		   return  map;
 	}
 	

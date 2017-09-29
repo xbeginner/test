@@ -14,5 +14,7 @@ public interface IPaperSchemaService {
 	void savePaperSchema(PaperSchema paperSchema);
 	
 	PaperSchema findPaperSchemaById(Long paperSchemaId);
+
+	void deletePaperSchema(Long id);
 	  
 }

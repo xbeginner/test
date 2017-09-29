@@ -21,7 +21,7 @@ public interface IQuestionService {
 
 	void saveQuestion(Question question);
 	
-	List<Long> findByBankNative(List<Long> bankIds);
+	List<Long> findByBankNative(List<Long> bankIds,int type);
 	
 	List<Long> findByQuestionByInfo(int fitOrgLog,int fitUserLog,int type,@Param(value = "ids") List<Long> ids);
 }

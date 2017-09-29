@@ -691,7 +691,7 @@
  
   <div th:fragment="hiddenChoosePaperUser">	
  <div class="modal fade" id="choosePaperUserModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true"
+		aria-labelledby="myModalLabel" aria-hidden="true"  
 		data-backdrop="static">
 		<form  id="choosePaperUserForm" method="post" >
 		 <div class="modal-dialog">
@@ -719,6 +719,46 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 					<button type="button" class="btn btn-default" onclick="setPaperUserText()">提交</button>
+				</div>
+			</div>
+		  </div>
+		 </div>
+		</form>
+     </div>
+ </div>
+ 
+ 
+ 
+   <div th:fragment="hiddenChoosePaperUserForAlter">	
+ <div class="modal fade" id="choosePaperUserForAlterModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"  
+		data-backdrop="static">
+		<form  id="alter_choosePaperUserForm" method="post" >
+		 <div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="panel panel-default">
+						<div class="panel-body" >
+						   <table class="table">
+								  <thead>
+								    <tr>
+									      <th><span>机构名称</span></th>
+									      <th><span>人员选择</span></th>
+								    </tr>
+								  </thead>
+								  <tbody id="alter_choose_paper_user_tbody">
+								           
+								  </tbody>
+							</table>
+						</div>
+					</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="button" class="btn btn-default" onclick="setPaperUserTextForAlter()">提交</button>
 				</div>
 			</div>
 		  </div>
@@ -767,6 +807,169 @@
      </div>
  </div>
  
-   
+ 
+ 
+ <div th:fragment="hiddenAlterPaperSchema">	
+ <div class="modal fade" id="alterPaperSchemaModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		data-backdrop="static">
+		<form  id="alterPaperSchemaForm" method="post" >
+		 <div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="form-group">
+								<div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>方案名称</span> 
+									<input type="text" name="paperName"  id="alter_paperName" class="form-control" required>
+								</div>
+								 <div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>考试时长(分钟)</span> 
+									<input type="text" name="doTime" id="alter_doTime"  class="form-control" required>
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>试卷类型</span> 
+									<div class="field_select">
+									    <select class="select_styled" name="type" style="font-size:large;" id="alter_type">
+									        <option value="0">机试</option>
+									        <option value="1">笔试</option>
+									    </select>
+									</div>
+								</div>
+								<div class="input-group">
+							    	<span class="input-group-addon"><font color="red">*</font>出题类型</span> 
+									<div class="field_select">
+									    <select class="select_styled" name="log" style="font-size:large;" id="alter_log">
+									        <option value="0">随机出题</option>
+									        <option value="1">选择试题</option>
+									    </select>
+									</div>
+								</div>
+							   <div class="input-group">
+							    	<span class="input-group-addon"><font color="red">*</font>适用机构</span> 
+									<div class="field_select">
+									    <select class="select_styled" name="fitOrgLog" style="font-size:large;" id="alter_fitOrgLog">
+									        <option value="0">人行机构</option>
+									        <option value="1">金融机构</option>
+									        <option value="2">征信机构</option>
+									        <option value="3">评级机构</option>
+									    </select>
+									</div>
+								</div>
+							   <div class="input-group">
+							    	<span class="input-group-addon"><font color="red">*</font>适用岗位</span> 
+									<div class="field_select">
+									    <select class="select_styled" name="fitUserLog" style="font-size:large;" id="alter_fitUserLog">
+									        <option value="0">个人</option>
+									        <option value="1">企业</option>
+									        <option value="2">通用</option>
+									    </select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="submit" class="btn btn-default">提交</button>
+				</div>
+			</div>
+		  </div>
+		 </div>
+		</form>
+     </div>
+ </div>
+ 
+   <div th:fragment="hiddenAlterPaperQuestionInfo">	
+ <div class="modal fade" id="alterPaperQuestionInfoModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true"
+		data-backdrop="static">
+		<input type="text" id="paper_id_text" name="paperId" hidden>
+		<form  id="alterPaperQuestionInfoForm" method="post" >
+		 <div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="form-group">
+							
+								<div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>判断题数量</span> 
+									<input type="text" name="panduanNum"  id="alter_panduanNum" class="form-control" required>
+								</div>
+								 <div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>判断题分数</span> 
+									<input type="text" name="panduanGrade"  id="alter_panduanGrade" class="form-control" required>
+								</div>
+								
+								 <div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>单选题数量</span> 
+									<input type="text" name="danxuanNum"  class="form-control"   id="alter_danxuanNum"  required>
+								</div>
+								 <div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>单选题分数</span> 
+									<input type="text" name="danxuanGrade"  class="form-control"  id="alter_danxuanGrade" required>
+								</div>
+								
+								 <div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>多选题数量</span> 
+									<input type="text" name="duoxuanNum"  class="form-control" id="alter_duoxuanNum" required>
+								</div>
+								 <div class="input-group">
+									<span class="input-group-addon"><font color="red">*</font>多选题分数</span> 
+									<input type="text" name="duoxuanGrade"  class="form-control" id="alter_duoxuanGrade" required>
+								</div>
+								
+							   <div class="input-group" id="wenda_num_alter_div">
+									<span class="input-group-addon"><font color="red">*</font>问答题数量</span> 
+									<input type="text" name="wendaNum"  class="form-control"  id="alter_wendaNum"  required>
+								</div>
+								 <div class="input-group" id="wenda_grade_alter_div">
+									<span class="input-group-addon"><font color="red">*</font>问答题分数</span> 
+									<input type="text" name="wendaGrade"  class="form-control"  id="alter_wendaGrade" required>
+								</div>
+								
+							   <div class="input-group" >
+									<span class="input-group-addon"><font color="red">*</font>选择题库</span> 
+									<div class='input_styled checklist'>
+	 									<div class='rowCheckbox checkbox-large'  id="paper_alter_bank_labels">
+	 									       
+	 								    </div>
+ 								   </div>
+					        </div>
+								
+			  <div class="input-group">
+			  <span class="input-group-addon"><font color="red">*</font>选择人员</span> 
+			                <input type="text" class="form-control" id="alter_choose_user_id" name="chooseUserIds" style="display:none">
+					        <input type="text" class="form-control" id="alter_choose_user_name" >
+					        <span class="input-group-addon">
+					               <a class="btn" onclick="choosePaperUserForAlter()">点击选择</a>
+					        </span>
+              </div>
+								
+							</div>
+						</div>
+					</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="submit" class="btn btn-default">提交</button>
+				</div>
+			</div>
+		  </div>
+		 </div>
+		</form>
+     </div>
+ </div>
  </body>
 </html>

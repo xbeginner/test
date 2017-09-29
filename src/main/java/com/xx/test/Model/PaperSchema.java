@@ -213,6 +213,50 @@ public class PaperSchema implements Serializable{
 	public String getPaperSchemaJson(){
 		return JsonUtils.getJsonString(getPaperSchemaMap());
 	}
+	
+	
+	
+	private Map<String,String> getAlterPaperSchemaMap(){
+		   Map<String,String> map = new HashMap<String, String>();
+		   map.put("id", String.valueOf(id));
+		   map.put("paperName", paperName);
+		   map.put("fitUserLog", String.valueOf(fitUserLog));
+		   map.put("fitOrgLog",String.valueOf(fitOrgLog));
+		   map.put("type",String.valueOf(type));
+		   map.put("doTime", String.valueOf(doTime));
+		   map.put("log", String.valueOf(log));
+		   return  map;
+	}
+	
+	
+	
+	public String getAlterPaperSchemaJson(){
+		return JsonUtils.getJsonString(getAlterPaperSchemaMap());
+	}
+
+	
+	
+	
+	private Map<String,String> getPaperSchemaQuestionInfoMap(){
+		   Map<String,String> map = new HashMap<String, String>();
+		   map.put("id", String.valueOf(id));
+		   map.put("panduanNum", String.valueOf(panduanNum));
+		   map.put("panduanGrade", String.valueOf(panduanGrade));
+		   map.put("danxuanNum", String.valueOf(danxuanNum));
+		   map.put("danxuanGrade", String.valueOf(danxuanGrade));
+		   map.put("duoxuanNum", String.valueOf(duoxuanNum));
+		   map.put("duoxuanGrade", String.valueOf(duoxuanGrade));
+		   map.put("wendaNum", String.valueOf(wendaNum));
+		   map.put("wendaGrade", String.valueOf(wendaGrade));
+		   return  map;
+	}
+	
+	
+	
+	public String getPaperSchemaQuestionInfoJson(){
+		return JsonUtils.getJsonString(getPaperSchemaQuestionInfoMap());
+	}
+
 
 	public Integer getPanduanNum() {
 		return panduanNum;

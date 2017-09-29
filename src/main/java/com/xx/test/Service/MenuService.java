@@ -30,6 +30,12 @@ public class MenuService implements IMenuService{
 		// TODO Auto-generated method stub
 		return menuDao.findOne(id);
 	}
+
+	@Override
+	public List<Menu> findMenuByRoleId(Long id) {
+		// TODO Auto-generated method stub
+		return menuDao.findMenuByRoleId(id);
+	}
 	
 	 
 }

@@ -12,7 +12,9 @@
 	window.onload = function(){ 
 		   initQuestions($("#userpaper_id_text").val());
 		   maxtime = $("#userpaper_time_text").val()*60; //一个小时，按秒计算，自己调整!  
-		   timer = setInterval("CountDown()",1000);  
+		   if($("#userpaper_type_text").val()==0){
+			   timer = setInterval("CountDown()",1000);  
+		   }
     }; 
     
     
@@ -28,12 +30,20 @@
 		   else{  
 				   clearInterval(timer);  
 				  $("#user_question_form").submit();
+		      }  
 		   }  
-		   }  
+	   
+	   
+	   function printme()
+	   {
+	        document.body.innerHTML=document.getElementById('print_area').innerHTML;
+	        window.print();
+	   }
 	</script>
 	
 </head>
 <body style="background: none; margin-left:300px;margin-right:300px;margin-top:50px;"  > 
+
 
 <div  style="text-align: center;">
      <h1 th:text=${paperName} style="margin: auto;"></h1>
@@ -43,11 +53,10 @@
 <div id="timer" style="color:red"></div>   
  
  <form action="#" th:action="@{/index/setUserQuestions}"    method="post" id="user_question_form" >
- 
-      
+   <div id="print_area">
       <input type="text" th:value=${userPaperId} id="userpaper_id_text"  name="userPaperId" hidden>
       <input type="text" th:value=${doTime} id="userpaper_time_text"  name="userPaperId" hidden>
-      
+      <input type="text" th:value=${type} id="userpaper_type_text"  name="type" hidden>
       
       <div th:if="${panduan}==1" id="panduan_div" style="margin-top:20px;">
           <span class='title_font'>判断题</span>
@@ -70,11 +79,13 @@
 	          </div>
       </div>
       
-      <div th:if="${wenda}==1" id="wenda_div" style="margin-top:20px;">
+      <div th:if="${wenda}==1 and ${type}==1" id="wenda_div" style="margin-top:20px;">
       		<span class='title_font'> 问答题</span>
       		<div id='wenda_question_div' class="input-group">
 	                 
 	          </div>
+      </div>
+      
       </div>
  
        <div  th:if="${type}==0" style="margin-top:30px; text-align: center;" id="exam_button_div">
@@ -83,11 +94,13 @@
        
        
         <div  th:if="${type}==1" style="margin-top:30px; align:center;" id="exam_button_div">
-            <button   class="btn btn-danger">打印本页</button>
+            <a  onclick="printme()" target="_self"  class="btn btn-danger">打印本页</a>
        </div>
       
  
 </form>
+
+
 
 </body>
 </html>

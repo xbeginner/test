@@ -43,5 +43,11 @@ public class UserPaperService implements IUserPaperService{
 		// TODO Auto-generated method stub
 		return userPaperDao.findOne(id);
 	}
+
+	@Override
+	public void deleteUserPaper(Long id) {
+		// TODO Auto-generated method stub
+		  userPaperDao.delete(id);
+	}
  
 }

@@ -55,9 +55,14 @@ public class QuestionService implements IQuestionService{
 	}
 
 	@Override
-	public List<Long> findByBankNative(List<Long> bankIds) {
-		// TODO Auto-generated method stub
-		return questionDao.findByBankNative(bankIds);
+	public List<Long> findByBankNative(List<Long> bankIds,int type) {
+		// 如果机试
+		if(type==0){
+			return questionDao.findByBankNoWendaNative(bankIds);
+		}else{
+			return questionDao.findByBankNative(bankIds);
+		}
+		
 	}
 
 	@Override

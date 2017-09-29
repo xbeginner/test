@@ -10,4 +10,6 @@ public interface IMenuService {
     List<Menu> findAllMenuList();
     
     Menu findMenuById(Long id);
+
+	List<Menu> findMenuByRoleId(Long id);
 }

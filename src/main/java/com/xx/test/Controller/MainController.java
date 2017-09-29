@@ -61,7 +61,8 @@ public class MainController extends BaseController {
 		      UserInfo userInfo = (UserInfo)request.getSession().getAttribute("currentUserInfo");
 		      Role role = userInfo.getRole();
 		      if(role!=null){
-		    	    Set<Menu> menus = role.getMenus();
+		    	   List<Menu> menus = menuService.findMenuByRoleId(role.getId());
+		    	   // Set<Menu> menus = role.getMenus();
 		    	    if(menus.size()>0){
 			    	    Map<String,String> map = new HashMap<String,String>();
 			    	    for(Menu m:menus){
@@ -88,7 +89,11 @@ public class MainController extends BaseController {
 		       String json = "{\"info\":[";
 		       if(userPapers.size()>0){
 		    	     for(UserPaper userPaper:userPapers){
-		    	    	   json += userPaper.getUserMainPaperSchemaJson()+",";
+//		    	    	 if(userPaper.getDoLog()==0){
+		    	    	     json += userPaper.getUserMainPaperSchemaJson()+",";
+//		    	    	 }else{
+//		    	    		 
+//		    	    	 }
 		    	     }
 		    	     json = json.substring(0, json.length()-1);
 		       }
