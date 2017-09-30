@@ -96,4 +96,14 @@
  };
 
  
+ function remeberUserName(){
+
+		if($("#rememberLog").is(':checked')){
+			var userName = $("#name").val();
+			$.cookie('login_username',userName, { expires: 7 });
+		}else{
+			$.cookie('login_username', null);
+		}
+ }
+ 
  

@@ -5,7 +5,16 @@
 <head th:replace="common :: common_header(~{::title},~{::link},~{::script})">
 <link rel="stylesheet" href="../static/login.css"  th:href="@{/css/login.css}"  />
 <script src="../static/js/login.js" th:src="@{/js/login.js}"></script>
+ <script>
+   
+ window.onload = function(){ 
+	   if($.cookie('login_username')!=null){
+		   $("#rememberLog").prop("checked",true);
+		     $("#name").val($.cookie('login_username'));
+	   }
+ }
  
+ </script>
 </head>
 <body class="body_back">
 <div class="body_wrap">
@@ -25,7 +34,7 @@
 		</div>   
  
 	    <div class="rowCheckbox">
-	        <input name="rememberLog" type="checkbox" id="rememberLog"/>
+	        <input name="rememberLog" type="checkbox" id="rememberLog" onclick="remeberUserName()"/>
 	        <label for="rememberLog">记住我</label>
 	    </div>
 	    
