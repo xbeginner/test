@@ -4,7 +4,7 @@
 
   <groupId>com.xx</groupId>
   <artifactId>test</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>2.0.0</version>
   <packaging>jar</packaging>
 
   <name>test</name>
@@ -131,6 +131,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <maimClass>com.xx.test.App</maimClass>
+                    <fork>true</fork>  
                 </configuration>
                 <executions>
                     <execution>
@@ -140,6 +141,17 @@
                     </execution>
                 </executions>
             </plugin>
+            
+      <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>2.3.2</version>
+    <configuration>
+        <source>1.8</source>
+        <target>1.8</target>
+    </configuration>
+</plugin>      
+            
   </plugins>
   </build>
   

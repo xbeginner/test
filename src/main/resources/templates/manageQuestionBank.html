@@ -11,25 +11,24 @@
 	       initQuestionBank();
 	</script>
 </head>
-<body style="background: none">
+<body  >
 
 <div th:insert="header:: header" ></div>
 <div>
 <ol class="breadcrumb"  id="bread_nav">
-    <li><a href="/openMainPage">首页</a></li>
-    <li class="active">题库管理</li>
+    <li><a href="/openMainPage">返回首页</a></li>
 </ol>
 
 </div>
  <div id="warning" hidden>
-    <div class="panel panel-success">
+    <div class="panel panel-default">
               <div class="panel-body">
                   正在处理，请稍后！
               </div>
     </div>
  </div>
  <div class="container" id="question_container">
- <div class="panel panel-success">
+ <div class="panel panel-default">
 			 <div class="panel-heading">
 			 <span>题库管理</span>
 			 </div>
@@ -50,7 +49,7 @@
 			  </div>
 	     	<div class="panel-footer import_button_div" >
 	     	        <a onclick="openImportQuestionFile()" class="btn btn-green "><span>导入题目</span></a>
-	       	        <a onclick="addQuestionBank()" class="btn btn-red "><span>添加题库</span></a>
+	       	        <a onclick="addQuestionBank()" class="btn btn-green "><span>添加题库</span></a>
 			  </div>
 		 </div>
  </div>
